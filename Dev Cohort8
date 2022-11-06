@@ -1,0 +1,5357 @@
+
+user.xlsx
+
+IP = Internet Protocol = 54.226.140.92
+
+SSH = Secured Shell == port 22  tunnel= partway, secret path
+
+AWS = Amazon Web Services = jeff BEZOS
+
+instance == computer
+EC2 (Elastic computer 2)-instance 
+
+root      = user
+ec2-user  = user
+
+efe       = user
+
+GUI = Graphic User Interface
+
+CLI = Command Line Interface
+
+mkdir <dirName> 		= make directory
+
+
+ls / ll         		= list directory
+
+ll
+
+ls -t
+ls -tl
+ls -tlr
+ls -tlra
+ls -a
+
+
+editors:
+	vi user.txt
+	:wq!
+	shift + zz
+
+	:q!
+
+	vim
+	nano
+
+ca user.txt
+
+
+Remove file:
+		rmdir <dirName> 		= remove directory   (only empty directory)
+		rm <dirName>
+		rm -rf <dirName>      	= force reove directory
+		cd <dirName>  			= change directory
+
+efe  === cohort7
+
+
+
+rm <DirName>			=
+rm  -rf <DirName>		=
+
+cd -				= home directory	(efe/ec2-user/femi/chima)
+
+pwd 				= present working directory
+
+whoami				= who am i 
+
+cd ..           		= one step backward
+
+cd ../.. 				= two step backward
+
+cd ../../.. 			= three step backward
+
+clear and enter 
+ctrl + l
+
+how to create a file in linux:
+	touch user.txt
+
+head user.txt
+tail.usertxt
+head -5 <filename>
+tail -3 <filename>
+
+/home/ec2-user/yusuf/cohort7/obi/ojo
+
+tree
+sudo yum install tree -y
+
+mkdir collins funke agali obinna
+mkdir -p jade/nkiru
+
+Linux is case Sensitive
+mkdir Jade
+mkdir jade
+mkdir jAde
+
+pipe = |
+
+echo 	= TO RECALL A WRITTEN STATEMENT
+
+echo  This is DevOps Master Class
+
+echo  The Lord is good > funmi.txt  ..... the > stands for REDIRECT the comment into a text file
+
+echo  DevOps is the paying job now > funmi.txt 
+
+echo Today is Thursday >> funmi.txt		 ..... the > stands for APPEND the comment into a text file
+
+
+
+takes the output of the first command
+and converts to the input of another command
+
+cat /etc/passwd | tail -2
+
+HELP
+--help
+
+remove user:
+sudo userdel <username>
+
+remove user password:
+sudo passwd -d <username>
+
+sudo useradd -cc efe juveluro
+/home/efe
+
+Options of the useradd or userdel
+c = comment full name of the user
+d = specifies the home of the user
+
+................................................
+
+SSH = Secured Shell  (port:22)
+
+SHELL = is an interface to communicate with  the mechanism
+Bourne Shell   			= /bin/sh
+Bourne again Shell   	= /bin/bash
+Korn Shell				= /bin/ksh
+C Shell 				= /bin/csh
+
+
+To lock passwd:
+sudo passwd -l moses
+
+To unlock passwd:
+sudo passwd -u moses
+
+To delete passwd:
+sudo passwd -d moses
+
+move command or copy (Rename):
+		mv <filename/source> <destination/newname>
+
+		to rename:
+		mv funmi.txt owen.txt
+
+		to move:
+		mv owen.txt /home/ec2-user/obi
+
+Copy command:
+		cp <filename/source> <destination/newname>
+
+to browse a file
+less user.txt
+
+Create symbolic(Soft) link:
+		ln -s /home/
+
+
+kill a process:
+		kill PID (PS ID)
+
+
+ps
+ps -ef
+top
+
+
+
+
+				Permissions:				  user 			  group 	   size 	 date		Time		   Name
+F= filename		= -rw-rw-r--.		1 		ec2-user		ec2-user		16		 Apr 8		04:31		database.db
+D= directory	= drwxrwxr-x.		1 		ec2-user		ec2-user		 6		 Apr 10		20:30		   dee
+L= link			= lrwxrwxrwx.		1 		ec2-user		ec2-user		18		 Apr 10		21:40		   meke -> /home/ec2-user/
+
+system user: 
+		1 - 999
+
+
+1000
+1001
+1002
+1004
+moses:x:1004:1004::/home/moses:/bin/bash
+
+username      psswd     UserID      GroupID       UserID 		Home DIR       		Shell/command
+moses:			x 		 1004		1004		  :    :   		/home/moses:		 /bin/bash
+
+
+
+
+/etc/shadow:
+
+1 January 1970 (epoch date)
+
+username	Encrypted pw  	Last PW change 			Mim PW age 			Mim PW age			Warning Period
+yvonne:			!!			:	19092			:      0 		:   	  99999		:    	7 days 		:::
+
+name == Efe Joveluro
+
+$name
+
+Departments
+
+Devops
+Admin
+Cleaning
+
+cat /etc/passwd  (to see a user that you have)
+
+instance
+root
+ec2-user		= sudo yum install tree
+efe
+arinze
+puta
+
+patching = installing
+
+create a user
+sudo useradd <username> 
+sudo adduser <username>    N.B: yOU HAVE TO ELEVATE YOUR PRIVILEGE FIRST BY USING COMMAND 'sudo'
+e.g sudo useradd efe
+
+SWITCH USER (su) 
+sudo su - <username>
+sudo su - efe
+
+PARTIAL SWITCHING (Peeping into intial user)
+sudo su <username>
+
+GIVING Sudo RIGHT
+vi sudoers
+
+GIVING PASSWORD
+sudo passwd <username>
+
+TO KNOW how many USER THAT you ALREADY have PASSWORD
+sudo cat /etc/passwd 
+
+TO KNOW IF A USER ALREADY GOT PASSWORD
+sudo cat /etc/shadow 
+
+REMOVE A USER PASSWORD
+sudo passwd -d <username>
+
+
+
+
+Option of the useradd or userdel
+c 	= comment full name to the user
+			sudo uderadd -c efe joveluro
+
+d 	= specifying the home of the user
+e
+
+
+
+-------------------------------------------------------------------------------
+
+SSH 	= Secured Shell (port 22)
+
+Shell (an interface that communicate with our mechanism)
+Bourne Shell			= /bin/sh
+Bourne again Shell		= /bin/bash
+Korn Shell				= /bin/ksh
+C Shell					= /bin/csh
+
+
+TO LOCK PASSWORD:
+		sudo passwd -l moses
+
+TO UNLOCK PASSWORD:
+		sudo passwd -u moses
+
+TO DELETE PASSWORD:
+		sudo passwd -d moses
+
+TO ASK FOR HELP
+		--help
+
+
+TO MOVE COMMAND or RENAME:
+		mv <filename/source> <destination/newname>
+
+		TO RENAME:
+		mv funmi.txt owen.txt
+
+		TO MOVE:
+		mv owen.txt /home/ec2-user/efe
+
+TO COPY COMMAND:
+		cp <filename/source> <destination/newname>
+
+TO BROWSE A FILE
+		less user.txt
+
+CREATE SYMBOLIC (SOFT) LINK:
+		ln -s /home/ec2-user/efe meke
+
+
+mkdir -v meke
+		-v VERBOSE
+
+
+
+ssh -i osa/download/cohort8.pem  ec2-user"172.157.153.2
+
+
+
+
+Link:
+
+Hard Link  ====
+Soft Link  ==== 500mb
+
+200kb
+
+
+ln -s goodman.txt  goodlink
+ln acada.txt       hardlink
+
+
+Files and Directory Permission:
+
+d            rwx     rwx           r-x.          2              ec2-user        ec2-user    6          Apr 22      21:32       emma
+File         user    Group         others        Links          username        Group      size        Date        Time        File/Dir Name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================================================================================================================================================================================================================================================================
+
+
+													COHORT 8 STARTS		(JULY 2 - DEC 24)
+
+
+========================================================================================================================================================================================================================================================================================================
+
+
+
+ACADA Learning:
+Tel: +1 587 574 2233
+
+DevOps Mater Program (Cohort 8):
+
+
+
+Linux:
+        OS = Operating Sysytem
+
+
+Types of OS
+1. Linus
+2. Windows
+3. Mac
+4. Chrome
+5. Solaris
+
+
+Why Linux?
+  Open Source      === FREE (because its Free) whilst Windows is NOT FREE
+  Security         === High level security and secured
+  Multiple Users   === Usng the same OS at the same time
+
+  GUI (GRAPHIC USER INTERFACE)    Linux does not accept GUI
+
+
+Windows === Folders
+Linux   === Directory
+SSH     === Secured Shell   ===== tunnel === like a PATHWAY
+Key.pem === cohort 8
+
+
+
+===================================================
+USER VISIUAL CODE to open your key
+===================================================
+         - ssh -i <key.pem> ec2-user@<ipaddress> -y
+         - right click on the file and "copy as file" is one of the options
+         - if you are using windows 10, press on shift key before right click and "copy as file" will be part of the option
+         - otherwise, u can just drag the key.pem from the folder onto the command
+===================================================================================================================================
+
+
+
+Linux Server:
+REDHat
+
+
+IP ===== Internet Protocol 3.91.33.27
+
+Address: 44 center street SW Calgary
+
+Info@acadalearning.com
+
+
+
+
+Linus OS:
+	
+	/		 = root directory
+
+	/home 	 = efe
+	/bin 	 = 
+	/sbin
+	/etc
+	/lib
+	/opt
+	/proc
+	/run
+	/tmp
+
+
+
+
+
+
+--- SUB DIRECTORY UNDER THE ROOT DIRECTORY ---
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+
+
+Linux Directory Structure:
+
+/	    = root directory
+/home   = contains a home directory (folder) for each users
+/bin    = single user mode (firefox, chrome)  (BINARY)
+/sbin   = all what makes the system run        (SYSTEM BINARY)
+/etc    = all the configuration files
+/lib    = essential shared library (CPU Usage, RAM, HARDWARE INFO, COMPUTER INFO)
+/Opt    = optional add-on App (microsoft, excel, whatsApp)
+/proc   = processes file & Kernal (kernal is a trait secret) --- linux distribution since it is free
+/dev    =
+/tmp    = temporary file
+/boot   = boot record information
+/mnt
+/usr    = user
+/var    = variable
+/srv    = service
+/run    = run application state file
+/media  = removable media
+
+mother ==== /
+child  ==== home    = /home
+
+
+different users:
+/home/efe
+/home/meke
+ifeoma
+ayeni
+rasheed
+
+
+AWS     === Amazon Web Service
+SSH     === Secured Shell   ===== tunnel === like a PATHWAY  port = 22     (port is like an address)
+
+GUI     === Graphic User Interface
+CLI     === Command Line Interface
+
+
+Linus Command:
+
+ls             = list
+ls -l or ll    = long list
+ls -t
+ls -ltr
+ls -ltra
+       t stands for table form
+       r stands for readable format
+       a stands for hidden file
+
+
+mkdir                    === make directory
+mkdir <directory name>
+mkdir efe
+mkdir wale deji peter    === creating multiple directory
+
+cd, cd ~                 ===  change directory  (changed or take you back home or user)
+cd efe                   ===  change directory to efe
+
+change directory multiple step backward
+cd ..                    === 1- step backward
+cd ../..                 === 2 - step backward  
+cd ../../..              === 3- steps backward
+cd -                     === last, recent or previous working directory
+and so on
+
+
+pwd                      === present working directory
+
+clear or ctrl + l        === clear all command on screen
+
+To create a file         === touch <filename>
+                             touch user.txt
+
+vi or vim or nano        === view text editor/file
+vi comes pre-installed on redhat.  redhat is owned by IBM
+
+STEPS TO SAVE A TEXT ---------------
+vi acada.txt
+press (i)  then,
+insert your text
+press ESC
+:wq! or press command Shift + zz
+then it is SAVED.....................
+
+:q! to not save text
+---------------------------------------------
+
+to display text on command line -------
+cat <filename>
+      cat acada.txt
+
+
+remove a file:
+  rm efe
+      rm stands for remove
+
+verbose:      verbose means (displaying directory for you)
+mkdir barclay -v
+
+
+man ---- manual
+help ---- help command
+
+mkdir --help or man mkdir  (displays the command of the directory you want to make)
+
+
+HEAD
+head   ===  display first 10 lines of the command
+head user.txt
+
+head -5 user.txt   ===  display first 5 lines of the command
+head -3 user.txt   ===  display first 3 lines of the command
+
+
+TAIL
+tail   ===  display last 10 lines of the command
+tail user.txt
+
+tail -5 user.txt   ===  display last 5 lines of the command
+tail -3 user.txt   ===  display last 3 lines of the command
+
+
+
+yum is a repository
+sudo elevating privileges
+
+absolute path === a path you use to create file when you are not on that file or text (direct or outside the directory or location)
+
+relative path === a path you use to create file by going one step at a time (inside the directory or location)
+
+
+
+LINUS IS CASE SENSITIVE
+mkdir efe
+mkdir Efe
+mkdir eFe 
+mkdir efE
+mkdir EFe  
+
+
+
+CREATE A FILE
+vi <filename>
+
+pipe   ====  |  (it takes output of the first command and converts it to the input of the next command)
+                (it can help you run series of command in a chain format 1st to 2nd to 3rd to 4th and so forth)
+
+======================================================
+NB:
+cat   ==== you can only cat a files (WHITE COLOR on MobaXterm)
+      
+      ==== you can only list directory  (BLUE COLOR on MobaXterm)
+
+======================================================
+
+cat etc/passwd  ==== tells you or make you see the numbers of the users you have in your linux/environment
+/etc/shadow     ==== houses/let you know whether there is password for each users
+
+================================================
+cat >> goodman.txt ==== using cat to create a text file. 
+               After typing the whole text, you press command CTRL + D to return to user (it will save and exit back to user)
+================================================
+
+
+echo  ==== repeating previously written command, file or directory 
+echo This is ACADA Learning
+
+echo add these text using pipe into an existing file | cat >> file2.txt
+
+==========================================
+NB: echo can also be used to create a new file or directory  having in mind that there must be an APPEND >> SIGN to it 
+==========================================
+
+
+REDIRECT: REDIRECTION will always override previous comment or commannd
+>
+for example === echo Today is our Second DevOps Master Class > log.txt
+echo The Lord is Good > log.txt
+
+APPEND: APPEND will always add new/more comment or command to your existing file
+>>
+             cat >> goodman.txt ==== using cat to create a text file. 
+               After typing the whole text, you press command CTRL + D to return to user (it will save and exit back to user)
+
+
+COPY
+cp <source> <destinsation>
+
+cp user.txt /home/ec2-user/wale
+
+cp -r deji/ /home/ec2-user/dela
+          r = recussively (means copying everything in that directory)
+
+
+TOP COMMAND (ALL process that are running)
+top 
+
+  ===================
+  PID USER === Process identity
+  
+  
+  pid 1 == responsible for starting up and shut down your computer
+  ===================
+
+
+FREE COMMAND
+free
+free -h
+free -m
+
+
+COMMAND DF
+df   === difference of ram usage/memory usage (the number of storage used and the one unused)
+
+
+
+MOVE COMMAND:
+mv <source> <destination>
+     === mv realman.txt omotade/
+
+RENAME FILE/TEXT
+mv <previous file> <new file>
+	 === mv file file1
+
+
+REMOVE COMMANAND:
+rm -rf <DirectoryName> 
+		=== rm -rf omotade/
+
+
+=================================
+Creating user is an admin task so in essence, you need to elevate your privilege by using the (SUDO command)  
+=================================
+
+
+
+===============================================================================================================
+
+                                        USER MANAGEMENT
+
+===============================================================================================================
+
+
+TO ADD USERS:
+sudo useradd <username>
+sudo adduser <username>
+		e.g: sudo useradd efe
+			 sudo adduser rasheed
+
+
+TO SWITCH A USER:
+sudo su - <username>
+       e.g: sudo su - efe
+       	    sudo su - rasheed
+
+
+TO GIVE USERS SUDOERS ACCESS:
+sudo vi /etc/sudoers
+			efe           ALL=(ALL)           NOPASSWD: ALL
+			THEN save and quit
+
+
+REMOVING A USER:
+sudo userdel -r josh  == remove the user with the home directory
+sudo userdel josh     == remove the user without removing the home directory
+
+
+
+PRIVATE IP (INTERNET PROTOCOL)
+hostname -i == private IP
+hostname    == display full hostname
+curl ifconfig.co == public IP
+
+
+TO CHANGE HOSTNAME:
+sudo hostname <newhostname>
+			e.g == sudo hostname cohort8
+
+
+
+
+
+
+
+===============================================================================================================
+
+                                        PACKAGE MANAGEMENT
+
+===============================================================================================================
+LINUX is open source: Kernel  (Source/Secret Code is free == something like an ingrident)
+
+RedHat   ---------    Ubuntu         ----------   CentOS         ---------
+
+Package Managers:                  
+       Help us install packages (applications)
+
+
+
+RedHat package manager is tagged as == yum
+Ubuntu  ====================== apt (apt-get)
+windows ====================== choco
+MacOS   ====================== homebrew
+
+
+
+yum install tree
+yum install vim
+yum install mailx
+
+
+RPM === RedHat Package Management
+
+sudo yum install tree
+sudo yum install mail-y
+
+
+wget    === webget    === download application from the internet
+
+
+TO UNZIP A ZIPPED APPLICATION
+unzip <appName>
+            unzip apache-tomcat-9.0.65.zip
+
+TO ZIP AN APPLICATION
+zip <Newzipname> <appName>
+           zip apache9 apache-tomcat-9.0.65
+
+
+
+
+---------------------------------------------
+etc/passwd
+
+efe     :x:         1001:          1001:         :          /home/efe:             /bin/bash
+  1      2            3              4        5                6                       7      
+
+
+1. username
+2. password
+3. userID             userID start from 1001
+4. GroupID            E.G EMPLOYED UNDER A DEPARTMENT
+5. userID Info
+6. Home Directory
+7. Command Shell
+
+
+
+
+1 ---- 1000 is reserved for the system to use
+
+
+1001    -     1002   -- 1003  ---- 1004
+
+
+
+c shell
+K shell
+/bin/bash  === interpreter
+
+
+bourne shell		===  bin/sh
+bourne again Shell  ===  bin/bash
+korn shell          ===  bin/ksh
+c Shell             === /bin/csh
+
+
+
+TO KNOW YOUR CURRENT SHELL:
+echo $SHELL
+cat /etc/passwd
+ps -p $$   == process ID === CMD = Command
+
+
+ec2-user   Redhat   AWS Version of Linux
+
+
+GCP  Redhat
+
+
+
+ssh -i cohort8.pem ec2-user@3.91.33.27
+
+
+ssh -i cohort8.pem ubuntu-user@3.91.33.27
+
+
+ssh -i cohort8.pem root-user@3.91.33.27
+
+
+
+LINK
+
+Hard Link === Exact link of the main file
+		ln acada.txt hardlink
+
+
+Soft Link === A link created as a shortcut to link you to the main file
+    	ln -s goodman.txt goodsoft
+
+ 
+PERMISSION
+
+d            rwx          rwx             r-x.            6           ec2-user          ec2-user       59      Jul 20      13:31         efe
+File 		user 		 Group 			 Others         Number        UserName          Group         Size      Date       Time      File/Dir Name 
+type 												   of links
+
+
+
+rwx  ================================== 7
+
+
+r    ==== Read      			 ====== 4
+w    ==== Write 				 ====== 2
+x    ==== Execute   			 ====== 1
+-    ==== Denied/No permission   ====== 0
+
+
+Default Permission Level for a user in linux:
+rwx      rwx     r-x    = 775       = Directory
+r        rw-
+
+
+=====================================================================================
+INTERPRETATION
+--x    = 1     -wx  =3      r--  =4     rwx =7          5  = r-x       6 === rw-
+=====================================================================================
+
+rwx r-x rwx   = 757
+=====================================================================================
+
+
+
+CHANGE MODE
+=============
+chmod 757 <filename/dirname>
+											chmod is for files and directories
+chmod 400 <filename/dirname>
+
+Adding Executable permission to a file
+chmod +x <text name>
+                  = chmod +x look.txt
+
+Removing Executable permission to a file
+chmod -x <text name>
+                  = chmod -x look.txt
+
+
+
+drwxrwxr-x.
+drwxr-xrwx.
+
+
+400  = r-- --- ---
+
+
+umask
+0   = Read, Write, Execute
+1   = Read, Write
+2   = Read, Execute
+3   = Read Only
+4   = Write and Execute
+5   = Write Only
+6   = Execute Only
+7   = No Permission
+
+
+Default umask value is:
+umask  = 0   002
+											umask is for users
+rwx rwx r-x
+
+umask <value>
+
+
+chown <username>  <file/dirname>
+
+
+groupadd
+
+
+DATE COMMANND
+cal =================    calender
+
+date ================    timedatectl set-timezone America/New_York
+
+cal -y =============== calender year
+
+
+
+DISPLAY 
+users  ===== display current user
+whoami ===== display current user
+
+
+GREP COMMAND
+
+cat /etc/passwd | grep efe                  (use grep to look for a word in a sentence)
+cat joboffer.txt | grep multiple
+
+
+SEPERATOR
+run multiple line of command using seperator
+			use: [] or ;  or &&
+
+
+CHECK FILE
+        cksum log.txt
+
+
+COMPARING FILES
+        comm log.txt look.txt
+
+
+ENVIRONMENTAL VARIABLE
+        env
+
+
+FINDING A FILE 
+    find <filename> -name
+ find /home/ec2-user -name look.txt
+ sudo find /home/ec2-user --name look.txt
+ find /home/ec2-user --name look.txtsudo find /home/ec2-user --name look.txt
+ sudo find /home/ec2-user -name look.txt
+ sudo find /home/ec2-user --name look.txtfind /home/ec2-user --name look.txtsudo find /home/ec2-user --name look.txt
+   find /home/ec2-user --name look.txtsudo find /home/ec2-user --name look.txt
+ sudo find /home/ec2-user -name file2.txt
+
+FINDING A LINK THAT LEADS TO A FILE
+    find <filename> -L  -name
+
+ 
+free
+groups
+groups adm
+
+
+
+
+
+IP TABLES (INTERVIEW QUESTIONS)
+
+
+TEE
+tee is used to append the output of the first command into a file rather than use the append (>>) sign. tee is more like verbose
+
+
+POWEROFF LINUX from commandline
+         sudo systemctl poweroff
+         sudo systemctl reboot
+
+SORT FILE
+sort look.txt
+  692  sort log100.txt
+
+
+df -h  |  tee
+  682  cat log100.txt
+  683  df -h  |  tee log100.txt
+  684  cat log100.txt
+  685  cat look.txt
+  686  cat look.txt  | tee dela.py
+
+
+TO KILL A PROCESS
+kill -h
+
+TO view all list of PROCESS that can be killed
+kill -l
+
+
+TO KNOW ALL YOUR RUNNING PROCESSED
+ps -ef
+
+
+top
+ wall "This is Devops"
+ wall "please shutdown"
+ whoami && pwd && ls
+  whoami ; pwd ; ls
+
+
+changing borne again shell 
+sudo usermod --shell /bin/sh efe 
+
+
+transform
+cat file2.txt  |  tr [a-z]  [A-Z]
+
+
+===================================================================================================================================================
+ usermod --help
+Usage: usermod [options] LOGIN
+
+Options:
+  -c, --comment COMMENT         new value of the GECOS field
+  -d, --home HOME_DIR           new home directory for the user account
+  -e, --expiredate EXPIRE_DATE  set account expiration date to EXPIRE_DATE
+  -f, --inactive INACTIVE       set password inactive after expiration
+                                to INACTIVE
+  -g, --gid GROUP               force use GROUP as new primary group
+  -G, --groups GROUPS           new list of supplementary GROUPS
+  -a, --append                  append the user to the supplemental GROUPS
+                                mentioned by the -G option without removing
+                                the user from other groups
+  -h, --help                    display this help message and exit
+  -l, --login NEW_LOGIN         new value of the login name
+  -L, --lock                    lock the user account
+  -m, --move-home               move contents of the home directory to the
+                                new location (use only with -d)
+  -o, --non-unique              allow using duplicate (non-unique) UID
+  -p, --password PASSWORD       use encrypted password for the new password
+  -R, --root CHROOT_DIR         directory to chroot into
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files
+  -s, --shell SHELL             new login shell for the user account
+  -u, --uid UID                 new UID for the user account
+  -U, --unlock                  unlock the user account
+  -v, --add-subuids FIRST-LAST  add range of subordinate uids
+  -V, --del-subuids FIRST-LAST  remove range of subordinate uids
+  -w, --add-subgids FIRST-LAST  add range of subordinate gids
+  -W, --del-subgids FIRST-LAST  remove range of subordinate gids
+  -Z, --selinux-user SEUSER     new SELinux user mapping for the user account
+
+
+
+===================================================================================================================================================
+===================================================================================================================================================
+
+
+                                                         BASH SHELL SCRIPTING
+
+
+===================================================================================================================================================
+===================================================================================================================================================
+
+
+What does shell script do?
+Shell scripting is an important part of process of automation in Linux
+
+Shell scripting helps to write a sequence (lists) of commands in a file and then we execute them
+shell script automates task on our machine
+
+mkdir efe
+cd efe
+date
+cal
+whoami
+
+==== COMPONENTS IN COMPUTER ==== 
+       Bare Metal MEANS == Hardware Components
+Monitor 
+CPU
+Keyboard
+Mouse
+RAM
+HDD
+
+		Software Components
+OS = Operating Systems
+     macOS
+     Windows
+     Linux
+     ChromeOS
+
+
+Application:
+	 Sublime
+	 MobaXterm
+	 NotePad++
+
+
+
+GUI ==== Graphic User Interface
+			Pros: User Friendly
+			
+			Cons: Lack of Security
+			      Time consuming
+			      Uses more storage (Limited Storage)
+			      Limited Functions
+
+
+
+
+
+CLI ==== Command Line Interface
+          Pros: More level of security
+                Uses less storage
+                Faster in processing
+                Affordability
+			
+			Cons: Complex (difficult to understand)
+
+
+seperators:
+		&& or ; or ;;
+
+		example == whoami && pwd && ls
+
+
+BSS  == Bash shell scripting == Multiple lines of commands or collection of command in a file runned sequencially from top to buttom
+
+
+
+Interpreter: SHELL
+
+TYPES OF SHELL INLIUX: 
+        bash
+        sh
+        csh
+        ksh
+        tsh
+
+
+Default shell in Linux:
+        sh   == Bourne Shell
+        bash == bourne again shell
+
+
+SHELL NAMING CONVENTION:
+		shell-script
+
+		<scriptname>.sh or sc
+				example == hello.sh
+						   hello.sc
+						   hello
+
+
+						   java-code
+						   hello.java
+
+
+						   python
+						   hello.py
+
+
+						   text-file
+						   hello.txt
+
+
+						   database file
+						   hello.db
+
+
+						   html file
+						   hello.html
+
+
+						   yaml file
+						   hello.yaml or hello.yml
+
+
+
+
+example:
+
+whoami
+pwd
+date
+cal
+
+			      
+
+echo hello
+whoami
+echo Good Morning Nigeria
+echo Good Evening Canada
+date
+
+
+
+bash <filename>.sh
+			bash hello2.sh
+				sudo ./hello2.sh
+
+  change mode in order to have an execution mode/privilege
+  			chmod +x hello2.sh
+  					./hello2.sh
+
+
+csh <filename>.sh
+			csh hello2.sh
+			if nee be want to install the command then, === sudo yum install csh
+
+
+#!/bin/bash
+echo "hello Engineers"
+echo "Welcome to scripting"
+echo "This is the third shell script example"
+echo "Today date is"
+date
+echo "Scripting is very easy"
+
+
+
+shebang:  #!/bin/bash  (All what is meant to be on a script before you run them)
+        
+
+
+IQ: How do you resolve an issue in a script:
+
+Answer:
+		1. debug your script or you run the script in debugging mode ( -x )
+		2. vi into the file and edit it
+		3. redirect the error into another file 
+
+
+
+#!/bin/bash
+whoami
+set -x
+pwd
+echo thanks
+Pwd
+date
+set +x
+echo $SHELL
+echo welcome on board
+
+
+=====================================================
+PACKAGE MANAGEMENT
+=====================================================
+
+#!/bin/bash
+echo "Start installation of packages"
+sudo yum install ksh git wget -y
+echo installation successful
+
+
+
+COMMENT: It is used to explain the code/script for better usability or understanding
+two types of comments
+1. single line comment     ===== #
+2. multi line comment      ===== <<qqq
+
+====================================
+Single line comment     ===== #
+====================================
+#!/bin/bash
+#Author; eFE
+#Date: 20 July 2022
+#this script is going to install package
+#like: ksh git and wget
+echo "Start installation of packages"
+sudo yum install ksh git wget -y
+echo installation successful
+
+
+
+====================================
+Multi line comment     ===== <<qqq
+====================================
+#!/bin/bash
+<<zin
+#Author; eFE
+#Date: 20 July 2022
+#this script is going to install package
+#like: ksh git and wget
+echo "Start installation of packages"
+sudo yum install ksh git wget -y
+echo installation successful
+
+
+
+Java or groovy:
+// = single line comment
+
+
+Scripting or automation languages:
+1. Bash shell scripting
+2. Python 
+3. Groovy (Jenkins)
+4. Ruby
+5. Powershell
+6. ymal (K8s, Anisble, cloudformation)
+7. Json
+8. HCL Terraform
+9. XML html
+10.Go and Golang
+
+
+
+
+What does shell script do?
+
+Shell script automates task on our machine
+Ansible is used to automate task on multi servers
+
+Uses of script:
+Package Management
+User Management
+File Management
+Export SSH-Keys
+Monitor server
+deploy application
+
+
+
+
+#!/bin/bash
+echo "DevOps requires consistency studies"
+echo Also needs patience
+echo "At the end of the cohort you all will be hired with multiple job 's"
+echo 'At the end of the cohort you all will be hired with multiple job 's'
+
+
+
+VARIABLES: A variable is a character of string assigned to a value
+
+STRING     VALUE
+name=     efe
+school=   "acada learning"
+A.K.A ==  USA == United States of America
+
+Types of vavariables in Linux shell scripting:
+
+1. System defined variable
+    SDV == are generally in UPPERCASES
+	SHELL
+	USER
+	PWD
+	HISTSIZE
+
+2. User defined variables:
+	Lower cases recommended
+	name=efe
+	school= "ACADA Learning"
+
+
+env = environmental variables:
+	How to modify History size
+
+1. session or user:
+	vi /etc/bashrc
+	export HISTSIZE=2000
+	source /etc/bashrc
+
+2. All-users:
+	vi /etc/profile
+	export HISTSIZE=2000
+	source /etc/profile
+
+
+call a variable:
+we use the $ sign to call a variable in Linux
+
+
+#!/bin/bash
+name="cohort8"
+school="ACADA Learning"
+course=DevOpsMasterProgram
+echo $name
+echo $school
+echo course
+echo $course
+echo ${name}
+echo ${school}
+echo ${course}
+echo "This is $name and the school is $school"
+echo The course we are offering is $course
+
+
+read command is used  to accept input values
+
+#!/bin/bash
+school="ACADA Learning"
+course=DevOpsMasterProgram
+echo "welcome to $school"
+echo "please enter your name"
+read username
+echo "Thank you for signing up"
+echo "Hello $username"
+echo "please enter your name"
+
+echo "your's time is now"
+
+name="acada learning"
+school=acadalearming
+
+
+#!/bin/bash
+firstname=Efe
+lastname=Joveluro
+echo This is your $first and $lastname
+
+#!/bin/bash
+firstname=Efe
+lastname=Joveluro
+echo Your firstname and lastname is $firstname and $lastname
+
+HARDCODED
+==========================================================
+
+==================================================================================
+DYNAMIC
+#!/bin/bash
+echo "please enter your firstname"
+read firstname
+echo "please enter your lastname"
+read lastname
+echo Your firstname and lastname is $firstname and $lastname
+==================================================================================
+
+
+school="ACADA Learning"
+echo "welcome to ${school}"
+echo "please enter your student code"
+read code
+echo "Is this $code correct"
+read answer
+echo "You have succesfully confirmed your student code"
+
+
+
+Bank="RBC"
+echo "welcome to $Bank"
+echo "Please slot in your card details"
+echo "Please insert your pin"
+read pin
+echo "The pin you entered is $pin"
+echo "is this correct"
+read answer
+echo "Login Successful"
+
+
+
+#!/bin/bash
+<<ss
+Author: Efe Joveluro
+You need to be root user or have accesss to execute this script.
+This script will only execute in Linux
+ss
+
+echo "creating a new user in Linux"
+echo "Enter username"
+read username
+echo "Enter your password"
+read -s password
+sudo adduser
+echo $password | sudo passwd $username --stdin
+tail -2 /etc/passwd
+
+
+# this option is used to indicate that 
+# passwd should read the new user password 
+# from the standard input value, which can be a pipe
+# cat /etc/password to verify
+
+
+
+
+
+
+#!/bin/bash
+<<ss
+Author: Efe Joveluro
+You need to be root user or have accesss to execute this script.
+This script will only execute in Linux
+ss
+
+echo "creating a new user in Linux"
+echo "Enter username"
+read answer
+sudo adduser $answer
+sudo passwd $answer
+tail -2 /etc/passwd
+
+
+# this option is used to indicate that
+# passwd should read the new user password
+# from the standard input value, which can be a pipe
+# cat /etc/password to verify
+
+
+
+
+ASSIGNMENT:
+#!/bin/bash
+<<comment
+touch a file, copy the file and pipe it and 
+then change the ownership of that file to another user.
+comment
+
+echo "create a new file"
+read filenma
+touch $filename
+eho "file successfully created"
+echo "About to copy file. Enter new name for file after copying"
+read newfilename
+echo "Thank you fo creating a new file"
+echo "Enter user to switch new file ownership to:"
+read newowner
+cp $filename $newfilename | sudo chown $newowner $newwwfilenae
+echo "Owneship of file transferred Successfully"
+
+
+
+
+
+COMMAND LINE INTERFACE:
+
+
+
+
+sh user.sh start
+ARGUMENT:
+ 
+B
+
+echo $# : number of argument
+echo $$ : process ID
+echo $0 : scriptname
+echo $2 : second argument
+echo ${3} : third argument
+echo $* : Displays all the argument
+echo $@ : Displays all the argument
+echo $? : Output of the status of the last executed command
+        : $?  = 
+
+
+
+sh    user.sh    restart     school    start     dev
+         $0        $1          $2       $3       $4
+
+sh monitor_server.sh
+
+
+pwd
+echo $0
+echo $1
+echo $1
+echo $1
+echo $9
+`
+
+
+
+------------------------------------------------------------
+
+CON
+
+a==b
+a!=b
+
+
+iphone!=b
+
+
+-eq      ==      equal to 
+			     [ a -eq b ]  or  [ a == b ]
+
+
+-ne      !=      not equal to 
+			     [ a -ne b ]  or  [ a != b ]			
+
+
+-gt      >       greater than
+			     [ a -gt b ]  or  [ a > b ]			 
+
+
+-lt      <       Less than 
+			     [ a -lt b ]  or  [ a < b ]
+
+
+-ge      >=      greater than or equal to
+			     [ a -ge b ]  or  [ a >= b ]	
+
+
+-le      <=      less than or equal to
+			     [ a -le b ]  or  [ a <= b ]	
+
+
+
+if else statement:
+		synthax for if statement
+			if
+			then
+			command or statement
+			else
+			fi
+
+
+if statement:
+		synthax for if statement
+			if
+			then
+			command or statement
+			fi
+
+
+
+a=10
+b=20
+if [ $a == $b ]
+then
+echo "The values is not the same"
+echo "Login not successful"
+fi
+
+
+
+condition:
+echo Please slot in your cared
+echo please enter your pin for authentication
+read pin
+if [ $pin == 1234 ]
+then
+echo login successful
+else
+echo Sorry you entered the wrong pin
+fi
+
+
+
+echo -n "please enter a number"
+read num1
+echo please enter another number
+read num2
+if [ $num1 == $num2 ]
+then
+echo $num1 is equals to $num2
+fi
+
+
+
+compare price:
+echo please enter the price of mangoes
+read price1
+echo Enter the prices of the mangoes
+then
+echo mangoes and oranges sells for the same price
+echo mangoes sells for $price1
+echo oranges sells for $price2
+
+
+
+LOOPS:
+
+b <= 100; b= expr $b+1
+b=1
+
+echo $b
+b = 1
+b = 1 + 1 = 2
+b = 2 + 1 = 3
+b = 3 + 1 = 4
+b = 4 + 1 = 5
+
+
+
+c for customers
+c <=5000000; c=exp $c + 1000
+
+
+examples of loops:
+for-loops:
+
+c/c++/java:
+for ( Initiation;condition;inc/dec )
+{
+	write statement/command
+}
+
+
+FOR BAR SHELL SCRIPTING:
+for (( Initiation;condition;inc/dec ))
+do
+command/statement
+done
+
+
+echo "for-loop starts"
+for (( a=1;a<=5;a++ ))
+do
+echo $a
+done
+
+
+
+a+1 or a++  == are same command
+
+
+for (( r=1000;r<=10000;r+=1000 ))
+do
+echo $r
+done
+echo "for loops ends"
+
+
+for (( i=98;i<=100;i++ ))
+do
+echo $i
+done
+echo "End of loop"
+
+=============================================================================
+Assignment:
+Write a shell script to print numbers from 100 to 1 using for loop
+=============================================================================
+
+
+
+
+while loop:
+	c/c++/java
+
+	initiation
+	while [ condition ]
+
+
+Bash Shell scripting:
+	initiation
+	while [ condition ]
+	do
+	command / statement
+	done
+
+
+echo "While loop starts"
+i=1
+while [ $i -le 5 ]
+do
+echo $i
+i=`expr $i + 1`
+done
+echo "while loop ends"
+
+
+
+i 1 = 1
+i 1 + 1 = 2
+i 2 + 1 = 3
+i 3 + 1 = 4
+i 4 + 1 = 5
+i 5 + 1 = 6  ***** out of range
+
+
+#Performing load test for a web application
+#using while loop
+#rec = request count
+echo "Perform load test"
+echo "Load testing start"
+rc=5000
+while [ $rc -le 50000 ]
+do
+echo $rc
+rc=`expr $rc + 5000`
+done
+echo "load-testing complete"
+echo "end of load testing"
+
+
+
+
+MANAGING MULTIPLE CONDITIONS:
+SWITCH CASE:
+
+case
+Option1)
+COMMAND/STATEMENT;;
+Option2)
+COMMAND/STATEMENT;;
+Option3)
+COMMAND/STATEMENT;;
+esac
+
+
+example:
+	service httpd start|stop|enable|restart|start|status|disable|install|uninstall|shutdown|update|upgrade
+
+	sh sonar.sh enable
+
+
+echo "switch case demo start"
+case $1 in
+start)
+echo "starting sonarqube server"
+echo "sonarqube server started";;
+stop)
+echo "stopping sonarqube server"
+echo "sonarqube server stopped";;
+enable)
+echo "enable sonarqube server"
+echo "sonarqube server enabled";;
+status)
+echo "sonarqube status display"
+echo "sonarqube status output";;
+*)
+echo "You passed the wrong option"
+echo "the options are start | stop | enable | status"
+esac
+echo "End of switch case demo"
+
+
+
+========================================================================
+Assignment:
+write a switch case script to take values from 1 to 5
+========================================================================
+
+
+
+functions:
+
+	synthax:
+  fn()
+  {
+  	statements / command
+  }
+  fn
+
+or
+
+ greetfn()
+ userfn()
+ packagesMGT()
+ {
+ 	statements / command
+ }
+ packagesMGT
+
+
+
+greetfn()
+ {
+ 	echo "Hello Engineers"
+ 	echo "Wecome to DevOps Master Program"
+ 	echo "todays date is:"
+ 	date
+ }
+ greetfn
+
+
+#!bin/bash
+#This function verify user account status
+#-e = exist
+check()
+{
+	if [ -e /etc/passwd ]
+	then
+	echo "It Exist. Please proceed"
+	grep efe /etc/passwd
+	tail -3 /etc/passwd
+	touch /home/ec2-user/test1234.java
+	else
+	echo "User does not exist"
+	fi
+}
+check
+
+
+
+EXPLAIN YOUR EXPERIENCE IN BASH SCRIPTING:
+
+
+
+you can run the script and the exit code !=0,
+
+HOW DO YOU TROUBLESHOOT:
+	Identify and explain
+	the script was for user management
+	1.	I ran it in debugging mode sh -x <scriptname>
+	2.  Contacted my peers
+	3.	Check google, youtube and stack overflow
+	4.	Check with the server vendor (AWS) echo BASH_VERSION
+	5.	Open source  == enterprise
+
+
+hard coding === static
+
+dynamic
+
+./
+
+bash <filename>
+sh <filename>
+./
+chmod +x <filename>
+
+
+
+
+
+
+
+
+
+
+
+===================================================================================================================================================
+===================================================================================================================================================
+
+
+                                                         GIT 
+
+
+===================================================================================================================================================
+===================================================================================================================================================
+GIT
+GIT is a version control system (VCS)
+A Version Control system is one which changes to a fileor a group of files are being tracked such that those changes can be recalled at any point in time
+
+We have 3 kinds or types of VCS:
+
+			1. Local VCS: Here, you make changes to your files on your local system and the changes are tracked but only on your system
+			2. Centralised VCS: Here, a developer pulls out o checks out a file from the remote repository to his local repository, makes changes and pushes back to the remote repository
+			3. Distributed VCS: Here, developers can pull files from the remote repo to their local repo, make changes from different locationss, and merge those changes to remote repository.
+
+
+C lang is the language used in GitHub
+
+
+N.B: GitHub is the GUI for  VCS
+
+
+Why VCS?
+1. Traceability
+2. Collaboration
+3. Time saving
+4. Logging/Tracking
+5. Security
+6. Snapshots of files and projects overtime
+7. Quality control
+8. Manages project Updates
+9. Version management
+10. Disaster recovery
+11. Backup and recovery
+12. Storage
+
+
+Git Installation: sudo yum install -y git
+git config --global user.name "acadalearning"
+git config --global user.email "info@acadalearning.com"
+
+mkdir fintech
+cd fintech
+git init: to initialize the directory fintech for tracking
+git status: to show the status of the working tree
+																				. also means PWD (Present Working Directory)
+git add <filename> moves the commit from working directory to local directory
+git commit -m "<commit messgae>": moves the change from staging area to local repo
+git commit -am "<commit messgae>": moves directly from working from working dir to local repo, but only used for files that are already being tracked
+git log = to show a log of all commits made to the repository
+git log --oneline: for an abrigded version of all the commits made
+git log --since=<date>
+git log --until=<date>
+git log -3: to view the last 3 commits
+git show <commit ID>: This gives details about a commit
+git diff <commit ID 1> <commit ID 2>: This displays the differences between 2 commits.
+git --help
+git commit --amend -m <new message>: updates the latest commit message
+
+
+git log
+git log --oneline : it summarizes the git commit and message in just one line
+SHA   : The first 7 characters of the commit ID used as an identifier by git
+Master branch is created when we initialize get in out working directory
+git branch :To check your working branch
+git branch <branchname> --- To create a new branch
+git switch <branchname> or git checkout <branchname> ---- To switch to a branch
+git merge <branchnamr> --- To merge the code or changes from new branch to master
+
+
+
+COMMANDS
+git clone
+git merge
+git pull
+
+
+
+
+
+----------------------------------------------------
+Jenkins-Git Integration:
+
+https://github.com/acadalearning/web-app
+
+Create your project directory and name it appropiately, add a description to it where necessary
+
+
+
+Jenkins-Github Integration:
+------------------------------------------------------------------------------------------------------
+
+precheck - INSTALL GIT in Jenkins or
+Configure git plugin in Jenkins
+
+In "Source Code Management" tab, select "Git"
+
+Copy the remote repository URL from github and paste in the Repository URL
+
+Add/create credentials to access code in Guthub - Username and Password. ID == Description = Github-Cred and Add it.
+
+Apply and Save.
+
+Click build and monitor progress in the console output to check it connection is successful
+							
+
+
+
+
+
+
+
+
+
+
+===================================================================================================================================================
+===================================================================================================================================================
+
+
+                                                      			JENKINS
+
+
+===================================================================================================================================================
+===================================================================================================================================================
+
+Jenkins:
+	CI = Continous Integration means automating build and testing of code
+
+The DevOps Lifecycle consists of eight stages in the planning, development, and operation of a sysyem of a sysytem or software application
+
+			Plan
+			Code
+			Build 
+			Test
+			Release
+			Deploy
+			Operation
+			Monitor
+
+Jenkins automates building and testing by running commands that create the software artifacts and running it through a sec 
+
+	JENKINS can be applied in the following steps
+		 	CI
+			 Build 
+			 Test -- cost money to write application 
+			 		 application security
+					 JUnit test or unit test ... 1 + 1 = 4 failure
+							
+
+			CD
+			 Release version
+			 Deploy make it available for use in a remote repository
+
+
+
+
+CI Tools
+
+		Buildbot
+		TeamCity
+		Draco.NET
+		TravisCI
+		Jenkins
+		GitLab
+		Circlrci
+		Bambo
+		Buddy
+
+
+Jenkins depends on plugins. Plugin extends the functionality of Jenkins.
+Plugin allow jenkins integration with of DevOps tools.
+
+Jenkins:
+	Jenkins is an open source continous integration and cross platform tool written in Java
+
+Platform:
+	Linux ---> RedHat, UBUNTU
+	Windows
+	MacOS -
+
+	5 YEARS EXPERIENCE                             
+	                
+	                Deploy --- makes it available for use in a remote repository
+
+
+
+
+
+precheck - INSTALL GIT in Jenkins or
+Configure git plugin in Jenkins
+
+In "Source Code Management" tab, select "Git"
+
+Copy the remote repository URL from github and paste in the Repository URL
+
+Add/create credentials to access code in Guthub - Username and Password. ID == Description = Github-Cred and Add it.
+
+Apply and Save.
+
+Click build and monitor progress in the console output to check it connection is successful
+							
+
+
+HUDSON -----------  2004 ----------- Oracle
+
+2011   ----------- JENKINS COMMUNITY ------------- Jenkins
+
+
+Jenkins:
+Continues Integration that automates the Build and test process in our projects
+
+Maven:
+validate  ---- Compiles ---- test ---- Package (target Envi. Dir)  ---- tomcat
+
+
+Continues delivery
+Code ---- Build ---- test ---- (UAT/Testing)STAGING ---- Manual Approval ---- Production (Prod)  ---- JBoss/Tomcat
+																			  Continues Delivery
+
+Continues Deployment 
+Code ---- Build ---- test ---- (UAT/Testing) STAGING ---- Auto Approval ---- Production(Prod) ----   JBoss/Tomcat
+																			 Continues Deployment
+
+Oxdit Envi:
+Developement
+Stag/Test/UAT/Pre-prod
+Production
+
+
+Internal Project: In House ---- Continues Deployment
+
+External Project: Client   ---- Continues Delivery
+
+Which edition of jenkins have you used in Production?
+ Community Edition (CE)
+	Jenkins
+ENTERPRISE ENTERPRISE -EE
+	CloudBees Jenkins
+
+	Installation of Jenkins: Community Edition (CE)
+
+Provisioning of Jenkins server.
+
+1. Goto AWS Account, login
+2. Goto EC2
+3. Create a Security Group
+	Name ‹name eg jenkins>
+	Inbound rule
+		- expose port 8080 from anywhere IPV4 to allow traffic to/from jenkins
+		- expose SSH on port 22 to allow you communicate with your jenkins server.
+	Save and exit
+
+4. Spin up a server with following configuration
+	RedHat v8
+	t2. medium
+
+	select existing SG (No 3) under Network
+	default on others
+	Launch the instance
+
+
+5. SSH into the jenkins instance
+
+#!/bin/bash
+# Author: Prof. Efe J.
+# date: 10/08/2022
+# Installing Jenkins on RHEL 7/8, CentOS 7/8 or Amazon Linux OS
+# You can execute this script as user-data when launching your EC2 VM.
+# Create Red hat EC2 t2.medium Instance with 4GB RAM.
+# Create Security Group and open Required ports 8080 got Jenkins, ..etc.
+
+cd /opt
+
+# 1. Install Java and other pre-requisits. 
+sudo yum -y install unzip wget tree git
+sudo wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm
+sudo yum install jdk-8u131-linux-x64.rpm -y
+
+# 2. Add Jenkins Repository and key
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+cd /etc/yum.repos.d/
+sudo curl -O https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+# 3. Install Jenkins
+sudo yum -y install jenkins --nobest
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+sudo systemctl status jenkins
+
+
+
+systemctl status jenkins --no-pager | grep -i "active"
+
+The command: sudo cat /var/lib/jenkins/secrets/initialAdminPassword will print the password at console.
+systemctl status jenkins --no-pager | grep -i "active"
+
+to access jenkins from the webUI ‹public-url>:8080 eg 54.234.174.218:8080
+
+
+<public-url>:8080
+
+
+
+
+================================================================================
+
+													MAVEN
+
+================================================================================
+
+Maven is a build tool for creating deployable artifact from source code
+
+Build tools
+ANT 	10001ines
+Gradle
+npm
+maven 400 lines
+
+
+Why Maven
+1. It reduces the line of code
+2. It have set of standards
+
+
+
+	Project Management tool with project object Model
+		• Have set of standards
+		• Have a project Lifecycles
+		• A dependency management system
+		• logic for execution at various lifecyle of project
+		• Maven makes project IDE agnostic
+		• Allows for easy modification to the projects
+		• Simplifies the declaration of project dependency
+		• Ease the preparation of project documentation - pom. xml
+
+
+Organization of Code - Developer
+
+
+Directories/Folder
+POM file - Project Object Model (The heart of maven project) pom.xmi
+
+
+	Baseline construct - files are set-up with specific/default behaviours
+		source code - src/main folder/directory
+		resources - another folder/directory
+		test cases - another folder/directory unit test - junit
+		built artifact - target folder/directory
+
+		just place each in the right directory
+
+Folder Structure
+	src
+	target
+	pom
+
+Jenkins, maven need java
+
+
+Maven pre-prequisite:
+JRE - Java Runtime Environment
+JDK - Java Development Kits 1.8+
+
+1. Maven can ve installed as a statful application
+2. Maven can be installed as tool in Jenkins
+3. Maven can be installed as a plugin in Jenkins
+
+Install Maven as a tool in Jenkins:
+
+
+Maven Lifecycle goals
+	Maven have 3 life cycles:
+		1. Clean
+		2. Site / Swagger
+		3. Default - mostly used and consider all the features of other life cycle
+
+
+
+
+Lifecycle 														Goals
+==========================================================================
+Clean															Delete and erases all the old builds
+																
+																command: mvn clean
+
+
+Site / Swagger													Site:
+																Javac is a command that compiles java classes,
+																Generate bytes that JVM can understand
+
+																JVM = 110011101001010101010101010101
+
+
+
+Default															validate:
+																maven will validate that the project is correct and all necessary information is available
+																
+																command: mvn validate
+
+																Compile:
+																Compiles the source code of the project
+																Compile all the java classes and unit test cases of the project
+
+																command: mvn compile
+
+
+																Test:
+																it will run the unit test cases (JUnit)
+
+																command: mvn test
+
+
+																Package:
+																Will create the package file in the target directory
+																	(will create .jar or .war or .ear in the target directory)
+																This package will download all plugins/dependencies of that application
+
+																command: mvn package
+
+
+																Install:
+																Install the packages into the local repository for use as dependency for other projects
+																It will store the build artifacts in the repository
+																local = .m2/repository
+
+																command: mvn install
+
+
+																Deploy:
+																It will upload the build artifacts to the remote repository
+
+																mvn deploy
+
+
+
+
+
+
+Types of packages in maven:
+.jar 	= Java archive  --  Standalone application, Microservice
+.war 	= Web app;ication archive -- Web Application
+.ear 	= Enterprise Application archive -- Enterprise Appliations
+
+
+
+
+
+
+
+
+===================================================================================
+3 basics developers commit to source code management
+	1. source code
+	2. unit test cases
+	3. build script
+====================================================================================
+
+
+Human Readable:
+
+JVM = Java Virtual Machine
+bin:
+0011101001010101010101010101
+
+
+
+<h1> The lord is good </h1>
+
+convert to suitecase can understand
+
+convert to human 
+
+
+mvn packagr
+
+validate
+compile
+test
+package
+
+
+
+package
+Building war: /var/lib/jenkins/workspace/cohort8-project/target/web-app.war
+
+clean/delete
+[INFO] Deleting /var/lib/jenkins/workspace/cohort8-project/target
+
+
+
+
+
+You can install maven on windows and Linux
+Maven installation in Centos 7 & 8 and RHEL 7 & 8
+t2 medium 4GM RAM 
+-------------------------------------------------------------------------------------------------------------------------
+1. JAVA -  Pre Requisite Software  and Git for code download
+-----------------------------
+# Become root and cd /opt  (sudo su && cd /opt)
+
+sudo su – 
+cd /opt
+
+sudo yum install wget nano tree unzip git-all -y
+
+sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
+java -version
+git -version
+
+2. Install Maven.sh
+------------------
+Step1) Download the Maven Software
+
+sudo wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
+sudo unzip apache-maven-3.6.3-bin.zip 
+sudo rm -rf apache-maven-3.6.3-bin.zip
+sudo mv apache-maven-3.6.3/ maven
+
+Step3) Set Environmental Variable  -  For Specific User
+----------------------
+sudo vi ~/.bash_profile
+export M2_HOME=/opt/maven
+export PATH=$PATH:$M2_HOME/bin
+
+OR:
+
+Step3b) Set Environmental Variable  For All Users
+---------------------- 
+sudo vi /etc/profile
+export M2_HOME=/opt/maven
+export PATH=$PATH:$M2_HOME/bin
+
+Step4) Activate the maven home and mvn by running the below scripts
+sudo source ~/.bash_profile
+sudo source /etc/profile
+
+Step5) Check the Maven version
+mvn -version
+END OF INSTALLATION.
+
+
+
+
+https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
+
+
+
+python pip
+
+nodeJS  angula
+
+
+
+Total time:  4.917 s    
+             2.701 s
+
+
+mvn package --- local repository --- remote repository   ---- central repos  (maven central library)
+
+
+
+
+
+==============================================================
+
+Tomcat: (Apache Tomcat):
+
+Introduction:
+Tomcat or apache tomcat is a light weight, open source web container used to deploy amd run java-based web application.
+it is developed by Apache Software Foundation (ASF).
+
+Webserver:
+a webserver is a program that uses HTTP (Hypertext Transfer Protocol) protocols that serves web content 
+(HTML) Hypertext markup Language.
+
+Application server:
+  is a container upon which you can build and expose business logic and processes to client through various protocols 
+  including HTTP in an n-tier achitecture.
+
+
+Examples:
+Apache Tomcat
+JBoss/ Wildfly -- RedHat
+WebLogic - Oracle
+Websphere Liberty Profile - IBM
+Websphere Liberty Application Server - IBM
+GlassFish
+
+
+Apache Tomcat Installation:
+
+
+#!/bin/bash
+# install Java JDK 1.8+ as a pre-requisite for tomcat to run.
+# EC2 t2micro
+
+cd /opt 
+sudo yum install unzip wget -y
+sudo yum install java-1.8.0-openjdk-devel -y
+
+# Download tomcat software and extract it.
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65.tar.gz
+sudo tar -xvf apache-tomcat-9.0.65.tar.gz
+sudo rm -rf apache-tomcat-9.0.65.tar.gz
+sudo mv apache-tomcat-9.0.65 tomcat9
+sudo chmod 777 -R /opt/tomcat9                                                        
+sudo sh /opt/tomcat9/bin/startup.sh
+
+# create a soft link to start and stop tomcat
+sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat
+sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
+sudo starttomcat
+
+echo "end on tomcat installation"
+
+To know if Tomcat is running
+ps -ef | grep tomcat
+
+
+Tomcat default Port: 8080
+
+Catalina.sh
+
+
+Tomcat configuration:
+
+1. Enable Tomcat External Access:
+
+
+Multiline comment:
+<!--
+
+-->
+
+TMD = /opt/tomcat9
+vi /opt/tomcat9/webapps/manager/META-INF/context.xml
+
+Comment the below value out:
+<!--
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+-->
+
+
+================================================================
+deployment takes place in the webapps directory
+================================================================
+
+2 Create Tomcat User and Password:
+
+vi /opt/tomcat9/conf/tomcat-users.xml
+
+<user username="acada" password="admin123" roles="manager-gui,manager-script,admin-gui"/>
+
+  (Deployment takes place in the webapps directory)
+
+3. Change the tomcat default port from 8080 to 7000 (Custom Port):
+
+ vi /opt/tomcat9/conf/server.xml
+
+      <Connector port="7000" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+=============================================================================================
+
+4. Create password for your user:
+
+   sudo passwd ec2-user
+
+5. Enable password authentication:
+
+  sudo vi /etc/ssh/sshd_config
+
+  Change the no to yes
+  PasswordAuthentication yes
+
+
+  Restart sshd:
+  sudo service sshd restart
+  OR
+  sudo systemctl restart sshd
+
+
+
+http://54.225.2.53:7000/
+
+http://54.225.2.53:7000/
+
+
+==============================================================================================================================================================================
+
+on-prem
+
+
+
+
+
+on-prem
+
+SDLC =  Requirement --- design --- development --- testing  ---- Deployment --- maintainance(monitoring)
+     =  Coding   ----- Build  ---- test  ------  Deployment 
+
+
+We support Java based projects and a few .NET projects
+we support apps written in java, .NET, nodeJS
+
+Java, .NET, nodeJS is a programming Language
+
+http://34.229.165.253:7000/
+
+==========================================================
+
+.m2/repository
+
+.jar
+.war
+.ear
+
+/opt/tomcat9
+/var/lib/jenkins
+
+
+local server:
+cp <source> <destination>
+
+
+clone
+scp
+ssh copy id
+mv
+pull
+push
+fetch
+
+.war from server A to Server B
+scp <source> <destination>
+
+
+scp maven-web-app.war ec2-user@54.167.55.55:/opt/tomcat9/webapps
+
+
+
+ec2-user@34.229.165.253
+
+
+ec2-user@
+
+
+server A     to server B  =  ec2-user@34.229.165.253
+
+http://34.229.165.253:7000/maven-web-app/
+
+http://34.229.165.253:7000/web-app/
+
+
+http://54.167.55.55:7000/paypal/
+
+4.224 s
+
+
+standalone application (.jar)
+ web application (.war)
+enterprice application (.ear)
+
+
+I am managing a federated enterprice application for a banking client.
+Enterprice applciation with over 20 modules
+
+.war
+.ear = .war .jar .ear
+
+
+.ear .war
+
+pom.xml
+
+
+.
+├── MavenEnterpriseApp-ear
+│   ├── pom.xml
+│   └── src
+│       └── main
+│           └── application
+│               └── META-INF
+│                   └── MANIFEST.MF
+├── MavenEnterpriseApp-web
+│   ├── pom.xml
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── mt
+│       │   │           └── HelloWorldController.java
+│       │   └── webapp
+│       │       └── WEB-INF
+│       │           ├── home.jsp
+│       │           ├── mvc-dispatcher-servlet.xml
+│       │           └── web.xml
+│       └── test
+│           └── java
+│               └── com
+│                   └── mt
+│                       └── TestController.java
+└── pom.xml
+
+
+========================================
+
+.
+├── MavenEnterpriseApp-ear
+│   ├── pom.xml
+│   ├── src
+│   │   └── main
+│   │       └── application
+│   │           └── META-INF
+│   │               └── MANIFEST.MF
+│   └── target
+│       ├── application.xml
+│       ├── maven-archiver
+│       │   └── pom.properties
+│       ├── MavenEnterpriseApp-ear
+│       │   ├── MavenEnterpriseApp-web-1.0.war
+│       │   └── META-INF
+│       │       ├── application.xml
+│       │       └── MANIFEST.MF
+│       └── MavenEnterpriseApp-ear.ear
+├── MavenEnterpriseApp-web
+│   ├── pom.xml
+│   ├── src
+│   │   ├── main
+│   │   │   ├── java
+│   │   │   │   └── com
+│   │   │   │       └── mt
+│   │   │   │           └── HelloWorldController.java
+│   │   │   └── webapp
+│   │   │       └── WEB-INF
+│   │   │           ├── home.jsp
+│   │   │           ├── mvc-dispatcher-servlet.xml
+│   │   │           └── web.xml
+│   │   └── test
+│   │       └── java
+│   │           └── com
+│   │               └── mt
+│   │                   └── TestController.java
+│   └── target
+│       ├── classes
+│       │   └── com
+│       │       └── mt
+│       │           └── HelloWorldController.class
+│       ├── generated-sources
+│       │   └── annotations
+│       ├── generated-test-sources
+│       │   └── test-annotations
+│       ├── maven-archiver
+│       │   └── pom.properties
+│       ├── MavenEnterpriseApplication
+│       │   ├── META-INF
+│       │   └── WEB-INF
+│       │       ├── classes
+│       │       │   └── com
+│       │       │       └── mt
+│       │       │           └── HelloWorldController.class
+│       │       ├── home.jsp
+│       │       ├── lib
+│       │       │   ├── hamcrest-core-1.3.jar
+│       │       │   ├── junit-4.12.jar
+│       │       │   ├── spring-aop-5.0.2.RELEASE.jar
+│       │       │   ├── spring-beans-5.0.2.RELEASE.jar
+│       │       │   ├── spring-context-5.0.2.RELEASE.jar
+│       │       │   ├── spring-core-5.0.2.RELEASE.jar
+│       │       │   ├── spring-expression-5.0.2.RELEASE.jar
+│       │       │   ├── spring-jcl-5.0.2.RELEASE.jar
+│       │       │   ├── spring-web-5.0.2.RELEASE.jar
+│       │       │   └── spring-webmvc-5.0.2.RELEASE.jar
+│       │       ├── mvc-dispatcher-servlet.xml
+│       │       └── web.xml
+│       ├── MavenEnterpriseApplication.war
+│       ├── surefire-reports
+│       │   ├── com.mt.TestController.txt
+│       │   └── TEST-com.mt.TestController.xml
+│       └── test-classes
+│           └── com
+│               └── mt
+│                   └── TestController.class
+└── pom.xml
+
+
+aws.amazon.com
+
+login
+payment
+services
+etransfer
+loan
+training
+
+
+mvn package -DskipTests
+
+
+ mvn package -Dmaven.test skip=true
+ mvn -X package
+
+
+
+.m2/repository
+
+ls ~/.m2/repository/
+
+
+creating a maven custome repository:
+
+/tmp/fintech-mlr
+
+MHD = /opt/maven
+
+sudo vi /opt/maven/conf/settings.xml
+
+<localRepository>/tmp/fintech-mlr/</localRepository>
+
+
+
+hsperfdata_ec2-user   namespace-dev-cye0wE  systemd-private-a84944fb44fc4892910226ab611e535d-chronyd.service-DJiojf
+hsperfdata_root       namespace-dev-jlCLCb
+namespace-dev-70NTe7  namespace-dev-n8mpDQ
+
+
+fintech-mlr          namespace-dev-70NTe7  namespace-dev-n8mpDQ
+hsperfdata_ec2-user  namespace-dev-cye0wE  systemd-private-a84944fb44fc4892910226ab611e535d-chronyd.service-DJiojf
+hsperfdata_root      namespace-dev-jlCLCb
+
+
+
+ssh -i maven8.pem ec2-user@54.167.55.55
+
+
+scp -i maven8.pem target/*.war ec2-user@54.167.55.55:/opt/tomcat9/webapps
+
+
+
+
+
+==============================================================================================================================================================================
+
+
+SONARQUBE: Code Quality Check
+
+==============================================================================================================================================================================
+
+Why Code Quality Check:
+
+Make code readable
+Easy to maintain code in future
+Detech Bugs at earlier stage
+
+
+Code Quality Check tools:
+SonarQube
+Sonar Cloud
+Sylinium
+Codacy
+Checkmark
+CodeBeat
+Cypress
+snyk
+
+SonarQube Features:
+* It gives you a snapshot of your code quality at a giving time
+* It provides us with code quality metrics to help us in decision making.
+* it addresses coding rules, test coverage, code duplications, complexity, 
+  and architecture providing all the details in a dashboard.
+
+
+SRC, BS, UTC
+
+
+
+1000 lines of code
+
+75% of 1000 lins of code  = 750 lins of code
+
+<h1>welcome</h1>
+
+
+<h1>welcome</h1>
+
+
+Sonarqube Installation:
+
+#!/bin/bash
+# Author: Efe Joveluro
+# CentOS or REHEL 7/8
+#  Install JAVA pre-requisite
+t2 medium
+Default port 9000
+sudo hostname sonar
+
+cd /opt
+sudo yum -y install unzip wget git
+sudo wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm
+sudo yum install jdk-8u131-linux-x64.rpm -y
+#Download the SonarQube Server software. 
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.8.zip
+sudo unzip sonarqube-7.8.zip
+sudo rm -rf sonarqube-7.8.zip
+sudo mv sonarqube-7.8 sonarqube
+
+
+#As a good security practice, SonarQube Server is not advised to run sonar service as a root user, 
+so create a new user called sonar and grant sudo access to manage sonar services as follows
+add
+
+sudo useradd sonar
+
+# Grand sudo access to sonar user
+
+sudo echo "sonar ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/sonar
+
+sudo chown -R sonar:sonar /opt/sonarqube/
+sudo chmod -R 775 /opt/sonarqube/
+
+
+# start sonarqube as sonar user using relative path
+sudo su - sonar  
+cd /opt/sonarqube/bin/linux-x86-64/ 
+sh sonar.sh start
+# or start sonarqube as sonar user using absolute path
+sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start 
+
+#sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start | stop | status | restart
+
+Sonarqube default user: admin
+Sonarqube default password: admin
+
+
+quality profile = are sets of rules passed for a specific project
+sonar way 
+
+
+mvn package: validate, compiles, test, package
+
+mvn sonar:sonar 
+
+
+<sonar.host.url>http://172.31.23.188:5000/</sonar.host.url>
+
+
+54.226.59.90:9000
+
+----------------------------------
+how to configure sonarqube details:
+
+vi pom.xml
+
+look for the properties tag and change the following:
+* sonar.host IP and post address
+* sonar.login: admin
+* sonar.password: admin
+
+
+
+How to change Sonarqube Default port:
+ sudo vi /opt/sonarqube/conf/sonar.properties
+
+look for:
+sonar.web.port=9000
+
+uncomment and the value
+save and exit
+
+restart sonarqube
+
+
+
+
+
+==============================================================================================================================================================================
+																
+
+																NEXUS:
+
+==============================================================================================================================================================================
+ 
+
+ "Nexus is a repository manager. It allows you to proxy (Maven-remote repo), collect, 
+   and manage your dependencies so that you are not constantly juggling a 
+   collection of JARs. It makes it easy to distribute your software. 
+   Internally, you configure your build to publish artifacts to 
+   Nexus and they become available to other developers.
+
+
+
+Nexus Installation:
+
+#Nexus Default Username: admin Password: admin123
+As a good security practice, Nexus is not advised to run nexus service as a root user,
+# so create a new user called nexus and grant sudo access to manage nexus services as follows.
+# Nexus will run on 4G of RAM
+sudo hostname nexus
+sudo useradd nexus
+# Grant sudo access to nexus user
+sudo echo "nexus ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/nexus
+sudo su - nexus
+
+
+cd /opt
+sudo yum install wget git nano unzip -y
+sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
+
+
+#sudo wget http://download.sonatype.com/nexus/3/nexus-3.37.2-02-unix.tar.gz
+#sudo tar -zxvf nexus-3.37.2-02-unix.tar.gz
+sudo wget http://download.sonatype.com/nexus/3/nexus-3.15.2-01-unix.tar.gz
+sudo tar -zxvf nexus-3.15.2-01-unix.tar.gz
+sudo mv /opt/nexus-3.15.2-01 /opt/nexus
+
+
+# Change the owner and group permissions to /opt/nexus and /opt/sonatype-work directories.
+sudo chown -R nexus:nexus /opt/nexus
+sudo chown -R nexus:nexus /opt/sonatype-work
+sudo chmod -R 775 /opt/nexus
+sudo chmod -R 775 /opt/sonatype-work
+
+
+vi /opt/nexus/bin/nexus.rc
+#remove comment and add nexus
+
+
+sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
+
+#Enable and start the nexus services
+sudo systemctl enable nexus
+sudo systemctl start nexus
+sudo systemctl status nexus
+echo "end of nexus installation"
+
+
+Creating repository:
+
+http://54.157.215.99:8081/repository/rbc-release/
+
+http://54.157.215.99:8081/repository/rbc-snapshot/ 
+
+
+snapshot   ------ 
+
+release
+
+Why Nexus:
+version control
+disaster management
+downtime
+reduce redundancies
+rollback
+add a layer of security
+use to track progress or the porjects
+
+
+Nexus Configuration:
+
+1. Do the following on Jenkins server:
+
+vi /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven3.8.5/conf/settings.xml
+
+sudo vi /opt/maven/conf/settings.xml
+
+look for the server tag
+
+    <server>
+      <id>nexus</id>
+      <username>acada</username>
+      <password>admin123</password>
+    </server>
+
+
+2: Edit the pom.xml
+
+Look for the below
+
+
+  	<distributionManagement>
+	    <repository>
+	      <id>nexus</id>
+	      <name>ACADA Learning Releases Nexus Repository</name>
+	      <url>http://172.31.84.94:8081/repository/rbc-release/</url>
+	    </repository>
+	    
+	    <snapshotRepository>
+	      <id>nexus</id>
+	      <name>ACADA Learning Snapshot Nexus Repository</name>
+	      <url>http://172.31.84.94:8081/repository/rbc-snapshot/</url>
+	    </snapshotRepository>
+	    
+	</distributionManagement>
+
+
+
+commit changes
+
+
+
+
+http://172.31.84.94:8081/repository/fransapp-release/
+
+
+http://172.31.84.94:8081/repository/fransapp-snapshot/
+
+
+Maven Home directory is where: in maven server = /opt/maven
+
+Maven Home directory is where: in jenkins server = /var/lib/jenkins/tools/hudson........../maven3.8.5
+
+
+
+    <server>
+      <id>nexus</id>
+      <username>acada</username>
+      <password>admin123</password>
+    </server>
+
+
+
+
+
+==============================================================================================================================================================================
+
+
+
+																		PROJECT- 1
+
+
+==============================================================================================================================================================================
+
+
+
+http://172.31.84.94:8081/repository/new-project-release/
+
+
+http://172.31.84.94:8081/repository/new-project-snapshot/
+
+
+ 172.31.18.101
+
+ 172.31.18.101
+
+ smtp.gmail.com
+
+
+ =============================================================
+ Jenkins Environment Configuration:
+
+*Discard old builds
+*Disable this project
+*Delete workspace before build starts
+*Add time stamp to console output
+
+
+sudo timedatectl set-timezone America/New_York
+
+
+Build triggers:
+Automating build processes in Jenkins:
+1. Build Periodically
+
+crontab
+
+* * * * *
+
+* = minutes
+* * = Hour
+* * * day of the month
+* * * * = month
+* * * * * = day of week
+
+
+2. Poll SCM
+
+
+3. Github webhook
+   http://52.90.158.25:8080/github-webhook/
+
+
+Jenkins plugins:
+
+
+
+
+#!/bin/bash
+# Author: Prof. Efe J.
+# date: 10/08/2022
+# Installing Jenkins on RHEL 7/8, CentOS 7/8 or Amazon Linux OS
+# You can execute this script as user-data when launching your EC2 VM.
+# Create Red hat EC2 t2.medium Instance with 4GB RAM.
+# Create Security Group and open Required ports 8080 got Jenkins, ..etc.
+
+# 1. Install Java and other pre-requisits. 
+sudo yum install wget git -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum upgrade
+# Add required dependencies for the jenkins package
+sudo yum install java-11-openjdk
+sudo yum install jenkins
+sudo systemctl daemon-reload
+
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+
+
+==================================================
+Jenkins Groovy:
+
+2 Types Jenkins groovy script:
+ * Scripted groovy script
+ * Declarative groovy script
+
+Single line comment:    
+//
+Multiline comment:
+**/
+/**
+
+
+----------------------
+scripted Groovy script:
+
+//scripted
+node(""){
+def MHD = tool name: "maven3.8.6"
+stage('GitClone'){
+sh "echo this is git clone"
+git credentialsId: 'Github-Cred', url: 'https://github.com/acadalearning/web-app.git'
+}
+stage('Build'){
+sh "echo start of build process"
+sh "${MHD}/bin/mvn package"
+}
+stage('CodeQuality'){
+sh "echo performing SonarQube Test"
+sh "${MHD}/bin/mvn sonar:sonar"
+}
+stage('BackupArtifacts'){
+sh "echo backup to Nexus"
+sh "${MHD}/bin/mvn deploy"
+}
+stage('DeploytoTomcat'){
+sh "echo Deploy to Tomcat server"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://54.146.210.166:7000/')], contextPath: null, war: 'target/*war'
+}
+}
+
+
+
+
+
+
+MHD = tool name: "maven3.8.6"
+mavenHome = tool name: "maven3.8.6"
+MHD = /opt/maven
+
+${MHD}/bin/mvn package
+
+node(''){
+stage('Build'){
+}
+stage('CodeQuality'){
+}
+stage('BackupArtifacts'){
+}
+stage('DeploytoTomcat'){
+}
+}
+
+GitClone
+build
+Code Quality Check
+Backup to Nexus
+Deploy to Tomcat
+Email Notification
+
+
+
+
+Dev:
+
+
+node(''){
+def mavenHome = tool name: "maven3.8.6"
+stage('1.initiation'){
+sh "echo start of web-app application"
+}
+stage('2.Gitclone'){
+sh "echo Start of Gitclone"
+git credentialsId: 'Github-Cred', url: 'https://github.com/acadalearning/web-app.git'
+}
+stage('3.Build'){
+sh "echo Start of Build"
+sh "${mavenHome}/bin/mvn package"
+}
+stage('4.CodeQuality'){
+sh "echo start of SonarQube Analysis"
+sh "${mavenHome}/bin/mvn sonar:sonar"
+}
+stage('5.BackupArtifacts'){
+sh "echo start of Nexus backup"
+sh "${mavenHome}/bin/mvn deploy"
+}
+stage('6.DeploytoTomcat'){
+sh "echo start tomcat deployment"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+stage('6.DeploytoTomcat2'){
+sh "echo start tomcat deployment"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.145:7000/')], contextPath: null, war: 'target/*war'
+}
+stage('6.DeploytoTomcat3'){
+sh "echo start tomcat deployment"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.145:7000/')], contextPath: null, war: 'target/*war'
+}
+}
+
+
+============================================================
+node(''){
+def mavenHome = tool name: "maven3.8.6"
+stage('1.initiation'){
+sh "echo start of web-app application"
+}
+stage('2.Gitclone'){
+sh "echo Start of Gitclone"
+git credentialsId: 'Github-Cred', url: 'https://github.com/acadalearning/web-app.git'
+}
+stage('3.Build'){
+sh "echo Start of Build"
+sh "${mavenHome}/bin/mvn package"
+}
+stage('4.CodeQuality'){
+sh "echo start of SonarQube Analysis"
+//sh "${mavenHome}/bin/mvn sonar:sonar"
+}
+stage('5.BackupArtifacts'){
+sh "echo start of Nexus backup"
+sh "${mavenHome}/bin/mvn deploy"
+}
+stage('6.DeploytoTomcat'){
+sh "echo start tomcat deployment"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+}
+
+
+web-app
+Environment:
+
+Sandbox
+
+
+Dev  = 3 tomcat
+stage/ staging = 3 tomcats approval
+UAT  = 100 tomcats QA === Approval
+Prod = 100 tomcats
+
+
+Dev  = 3 tomcat
+stage/ staging = 3 tomcats approval
+UAT  = 5 tomcats QA === Approval
+Pre-prod = 100 tomcats / performance
+Prod = 100 tomcats
+
+
+Dev
+Stage
+UAT
+Prod
+
+
+node(''){
+def mavenHome = tool name: "maven3.8.6"
+stage('1.initiation'){
+sh "echo start of web-app application"
+}
+stage('2.Gitclone'){
+sh "echo Start of Gitclone"
+git credentialsId: 'Github-Cred', url: 'https://github.com/acadalearning/web-app.git'
+}
+stage('3.Build'){
+sh "echo Start of Build"
+sh "${mavenHome}/bin/mvn package"
+}
+stage('4.CodeQuality'){
+sh "echo start of SonarQube Analysis"
+//sh "${mavenHome}/bin/mvn sonar:sonar"
+}
+stage('5.BackupArtifacts'){
+sh "echo start of Nexus backup"
+sh "${mavenHome}/bin/mvn deploy"
+}
+stage('6.Deploytostaging'){
+sh "echo start tomcat deployment"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+stage('7.Approval'){
+sh "echo Approval needed"
+timeout(time:5, unit:"DAYS"){
+input message:'Approval for UAT'
+}
+}
+stage('8.DeploytoUAT'){
+sh "echo start tomcat deployment"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+stage('9.Approval'){
+sh "echo Approval needed"
+timeout(time:2, unit:"DAYS"){
+input message:'Approval for Production'
+}
+}
+stage('10.DeploytoProduction'){
+sh "echo start tomcat deployment"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+stage('11.EmailNotification'){
+sh "echo Start of Email Notification"
+emailext body: 'Build Success', recipientProviders: [developers(), buildUser()], subject: 'Build Success', to: 'info@acadalearning.com'
+}
+}
+
+
+==================================================
+Declarative Groovy Script
+
+pipeline{
+agent any
+tools{
+maven "maven3.8.6"
+}
+stages{
+stage('GitClone'){
+steps{
+sh "echo Git Clone"
+git credentialsId: 'Github-Cred', url: 'https://github.com/acadalearning/web-app.git'
+}
+}
+stage('Build'){
+steps{
+sh "echo Start of Build"
+sh "mvn package"
+}
+}
+stage('CodeQuality'){
+steps{
+sh "echo start sonarQube Test"
+sh "mvn sonar:sonar"
+}
+}
+stage('BackupArtifacts'){
+steps{
+sh "echo Nexus Backup"
+sh "mvn deploy"
+}
+}
+stage('Deploytostage'){
+steps{
+sh "echo Deploy to Tomcat"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+}
+stage('ProdApproval'){
+steps{
+sh "echo Approval required"
+timeout(time:1, unit:'DAYS'){
+input message:'Approval for Production'
+}
+}
+}
+stage('DeploytoProd'){
+steps{
+sh "echo Deploy to Prod"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+}
+}
+// This stages is for UAT Environment
+stages{
+stage('GitClone'){
+steps{
+sh "echo Git Clone"
+git credentialsId: 'Github-Cred', url: 'https://github.com/acadalearning/web-app.git'
+}
+}
+stage('Build'){
+steps{
+sh "echo Start of Build"
+sh "mvn package"
+}
+}
+stage('CodeQuality'){
+steps{
+sh "echo start sonarQube Test"
+sh "mvn sonar:sonar"
+}
+}
+stage('BackupArtifacts'){
+steps{
+sh "echo Nexus Backup"
+sh "mvn deploy"
+}
+}
+stage('Deploytostage'){
+steps{
+sh "echo Deploy to Tomcat"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+}
+stage('ProdApproval'){
+steps{
+sh "echo Approval required"
+timeout(time:1, unit:'DAYS'){
+input message:'Approval for Production'
+}
+}
+}
+stage('DeploytoProd'){
+steps{
+sh "echo Deploy to Prod"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+}
+}
+}
+
+
+web-app
+Environment:
+
+Sandbox
+
+
+Dev  = 3 tomcat
+stage/ staging = 3 tomcats approval
+UAT  = 100 tomcats QA === Approval
+Prod = 100 tomcats
+
+
+Dev  = 3 tomcat
+stage/ staging = 3 tomcats approval
+UAT  = 5 tomcats QA === Approval
+Pre-prod = 100 tomcats / performance
+Prod = 100 tomcats
+
+
+Dev
+Stage
+UAT
+Prod
+
+
+node(''){
+def mavenHome = tool name: "maven3.8.6"
+stage('1.initiation'){
+sh "echo start of web-app application"
+}
+stage('2.Gitclone'){
+sh "echo Start of Gitclone"
+git credentialsId: 'Github-Cred', url: 'https://github.com/acadalearning/web-app.git'
+}
+stage('3.Build'){
+sh "echo Start of Build"
+sh "${mavenHome}/bin/mvn package"
+}
+stage('4.CodeQuality'){
+sh "echo start of SonarQube Analysis"
+//sh "${mavenHome}/bin/mvn sonar:sonar"
+}
+stage('5.BackupArtifacts'){
+sh "echo start of Nexus backup"
+sh "${mavenHome}/bin/mvn deploy"
+}
+stage('6.Deploytostaging'){
+sh "echo start tomcat deployment"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+stage('7.Approval'){
+sh "echo Approval needed"
+timeout(time:5, unit:"DAYS"){
+input message:'Approval for UAT'
+}
+}
+stage('8.DeploytoUAT'){
+sh "echo start tomcat deployment"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+stage('9.Approval'){
+sh "echo Approval needed"
+timeout(time:2, unit:"DAYS"){
+input message:'Approval for Production'
+}
+}
+stage('10.DeploytoProduction'){
+sh "echo start tomcat deployment"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+stage('11.EmailNotification'){
+sh "echo Start of Email Notification"
+emailext body: 'Build Success', recipientProviders: [developers(), buildUser()], subject: 'Build Success', to: 'info@acadalearning.com'
+}
+}
+
+
+==================================================
+Declarative Groovy Script
+
+pipeline{
+agent any
+tools{
+maven "maven3.8.6"
+}
+stages{
+stage('GitClone'){
+steps{
+sh "echo Git Clone"
+git credentialsId: 'Github-Cred', url: 'https://github.com/acadalearning/web-app.git'
+}
+}
+stage('Build'){
+steps{
+sh "echo Start of Build"
+sh "mvn package"
+}
+}
+stage('CodeQuality'){
+steps{
+sh "echo start sonarQube Test"
+sh "mvn sonar:sonar"
+}
+}
+stage('BackupArtifacts'){
+steps{
+sh "echo Nexus Backup"
+sh "mvn deploy"
+}
+}
+stage('Deploytostage'){
+steps{
+sh "echo Deploy to Tomcat"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+}
+stage('ProdApproval'){
+steps{
+sh "echo Approval required"
+timeout(time:1, unit:'DAYS'){
+input message:'Approval for Production'
+}
+}
+}
+stage('DeploytoProd'){
+steps{
+sh "echo Deploy to Prod"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+}
+}
+// This stages is for UAT Environment
+stages{
+stage('GitClone'){
+steps{
+sh "echo Git Clone"
+git credentialsId: 'Github-Cred', url: 'https://github.com/acadalearning/web-app.git'
+}
+}
+stage('Build'){
+steps{
+sh "echo Start of Build"
+sh "mvn package"
+}
+}
+stage('CodeQuality'){
+steps{
+sh "echo start sonarQube Test"
+sh "mvn sonar:sonar"
+}
+}
+stage('BackupArtifacts'){
+steps{
+sh "echo Nexus Backup"
+sh "mvn deploy"
+}
+}
+stage('Deploytostage'){
+steps{
+sh "echo Deploy to Tomcat"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+}
+stage('ProdApproval'){
+steps{
+sh "echo Approval required"
+timeout(time:1, unit:'DAYS'){
+input message:'Approval for Production'
+}
+}
+}
+stage('DeploytoProd'){
+steps{
+sh "echo Deploy to Prod"
+deploy adapters: [tomcat9(credentialsId: 'Tomcat-cred', path: '', url: 'http://50.16.57.173:7000/')], contextPath: null, war: 'target/*war'
+}
+}
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+stages{}
+stages{}
+stages{}
+stages{}
+stages{}
+
+
+
+stages{
+stage{
+steps{
+}
+}
+}
+
+
+
+
+
+
+
+
+=======================================================================================
+
+											DOCKER
+
+
+=======================================================================================
+
+
+
+
+
+
+
+Docker: is a software use to create docker images and run containerised application.
+Container: is a running instance of an application
+
+20l          =          100 x 25cl
+
+                         login
+                         payment
+ Amazon                  about
+                         cart
+                         application
+                         request
+                         Shipping
+                         account
+
+
+monolitic application  / micro-services
+
+vertualization vs containerization:
+
+Tomcat:
+Patching 
+Installation
+
+maven 
+scp <app-location> <destination>
+scp target/app.war ec2-user@192.168.2.5:/opt/tomcat/webapps
+scp *.war ec2-user@192.168.2.5:/opt/tomcat/webapps
+
+What is Docker:
+Docker is a containerisation platform which packages your app and all 
+dependencies together in the form of containers. so as to ensure that your 
+application works seamlessly in any environment be it dev or test or prod.
+
+Docker is an open platform for developers, system admins or engineers to build, 
+ship, and run distributed applications.
+
+Docker is Available in two editions (CE) - Community Edition and Enterprice Edition (EE)
+
+Docker  = 70%
+CoreOS  = 15%
+Rocket  = 15%
+
+Jenkinsfile  ----- pipeline script
+
+Dockerfile   ----- is a package that contains application code and all dependencies
+                   eg: rbc.war, paypal.war 
+                   + All dependencies (Software, Env vars, etc) 
+                   eg: Tomcat /wildfly - JBoss
+                   
+
+mvn package:   
+
+    app.war     ----  Docker Image === app.war  + Tomcat/java
+    app.ear     ----  Docker Image === app.ear + Tomcat or JBoss or wildfly / Java
+    app.jar     ----  Docker Image === app.jar + Java
+
+
+Dockerfile = app.war  +  Tomcat   : 
+
+running state or packaged state === Docker Image   :
+
+#######################################################
+#!/bin/bash
+Ubuntu Server 18.04 LTS (HVM),
+sudo hostname docker
+sudo apt update -y 
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu 
+#docker swarm init
+#to add nodes
+#docker swarm join --token SWMTKN-1-6c3ke0mcewu62k3eaf1g5y4rvqvod45elyillk0g0gogeo3vz5-99csbag2d9j39u7y9nwvfignn 172.31.16.91:2377
+
+
+#!/bin/bash
+# Run this as a script
+sudo hostname docker
+sudo apt-get update
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu 
+# Install java as Jenkins dependency
+sudo apt install openjdk-11-jdk -y
+# install Jenkins in ubuntu:
+sudo wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
+    /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins -y 
+sudo systemctl start jenkins 
+echo "jenkins  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/jenkins 
+sudo echo "jenkins:admin" | chpasswd
+sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
+sudo service sshd restart
+sudo usermod -aG docker jenkins 
+sudo su - ubuntu
+
+Docker       ==== build docker images
+docker swarm = to manage containers
+K8s          ==== to manage containers
+
+Dockerfile :
+
+FROM tomcat:10.0.26-jre8
+COPY target/*.war /usr/local/tomcat/webapps
+
+
+docker pull tomcat:10.0.26-jre8
+docker pull tomcat:10.0.26-jre8-temurin-jammy
+
+my docker Image
+
+
+
+
+mvn package  target = app.war + tomcat
+scp target/*.war ec2-user@192.168.2.5:/opt/tomcat/webapps
+
+scp <app-location> <destination>
+
+
+http://3.92.207.184:2000/web-app
+
+IP:containerPort/Appname
+
+To build Images:
+docker build -t cohort8 .
+
+To Run a Container:
+docker run --name app -d -p 2000:8080 cohort8
+
+
+
+continoues delivery: Manual Gate (Approval gate) production.
+
+Build ----- Test ------ Backup  ------  Deploy to (Tomcat)STAGE  ----  Approval Gate ---- Deploy to UAT(Tomcat) ------- Approval Gate --- Prod (Tomcat)
+
+Example:
+Build ----- Test ------ Backup  ------  Deploy to (Tomcat)STAGE  ----  Approval Gate 
+
+Build ----- Test ------ Backup -----    Deploy to UAT(Tomcat) ------- Approval Gate
+
+Build ----- Test ------ Backup -----  Prod (Tomcat)
+
+
+continoues deployment:
+
+Build ----- Test ------ Backup  ------  Deploy to (Tomcat)STAGE  ---- Deploy to UAT(Tomcat) --- Prod (Tomcat)
+
+
+Docker Commands:
+
+docker build -t <imageName>:tag <dockerfileLocation>
+
+docker build -t cohort8:1 .
+
+docker images
+
+docker pull
+
+docker run 
+
+docker rmi jboss/wildfly
+
+docker login -u <Username> 
+enter password
+
+
+docker rm <containerID>
+
+docker rm -f <containerID>
+
+docker rmi <imageID>
+
+docker rmi -f <imageID>
+
+docker rmi -f $(docker images -qa)
+
+docker rm -f $(docker ps -qa)
+
+docker images prune
+docker history
+
+docker tag acada:12.0 acadalearning/acada:1
+
+docker login -u <username> -p <password> IP:portnumber
+
+docker login -u IP:portnumber
+enter your password
+
+This will create a container from a running container
+docker create acadalearning/acada:1 cohort10
+
+docker exec <containerID/Name> command
+docker exec a2ae0f2d5498 pwd
+
+
+docker exec -it <containerID/Name> /bin/bash
+docker exec -it a2ae0f2d5498
+
+DOCKER KEYWORDS:
+
+FROM tomcat:10.0.26-jre8
+COPY target/*.war /usr/local/tomcat/webapps/acada.war
+MAINTAINER Acada learning
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.zip /opt
+
+docker build -t app .
+COPY . .
+
+RUN mkdir Francisca
+RUN cd Francisca
+RUN
+
+docker build 
+docker run 
+
+
+
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.zip /opt
+RUN mkdir efe \
+&& adduser tomcat \
+&& cd /opt \
+&& unzip https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.zip
+
+docker build -t imgae .
+
+
+CMD
+
+docker run
+
+Syntax:
+Shell Form
+Executable Form
+
+Shell Form:
+RUN <command with arguments>
+
+Executable Form:
+RUN ["command" , "Arg1" , "Arg2"]
+
+CMD java -jar springapplication.jar
+
+CMD ["Java" ,"-jar" ,"springapplication.jar"]
+
+CMD ["ls" ,"/"]
+CMD ["ls" , "/opt"]
+
+
+container exposed port 123   application exposed port 123
+
+What is the difference between RUN and CMD:
+RUN instructions will be executed while building the imgage
+CMD instructions will be executed while running the container
+We can have multiple RUN instructions while building or creating in the defined order (top to bottom)
+
+Can we have more than one CMD in a Dockerfile, YES
+however only the last one or most recent will be executed or procceesed
+CMD ["java" , "-jar" , ,"springapplication.jar""]
+CMD ["ls" ,"/"]
+CMD ["ls" , "/opt"]
+
+
+ENTRYPOINT:
+CMD ["ls" , "/opt"] 
+ENTRYPOINT ["echo" , "Hello"]
+
+ENTRYPOINT instruction overides CMD when bothh are in the same dockerfile
+
+hello
+
+CMD start
+ENTRYPOINT ["sh", "catalina.sh"]
+
+docker run = sh catalina.sh start
+
+CMD start
+ENTRYPOINT ["sh", "sonar.sh"] 
+
+sh sonar.sh start
+
+Shell Form: (Child process)
+CMD java -jar springapplication.jar
+ENTRYPOINT java -jar springapplication.jar
+/bin/bash or /bin/sh
+
+Executable Form:  (Parent Process)
+CMD ["sh" , "sonar.sh" , "start"] 
+ENTRYPOINT ["sh" , "catalina.sh" "start"]
+
+SIGNALS
+PID 1
+
+ENV: 
+for jenkins
+
+JENKINS_HOME /var/lib/jenkins
+
+
+ENV name Efe J
+ENTRYPOINT ["/bin/echo" , "Hello, $name"]
+
+EXPOSE 
+
+WORKDIR /opt
+
+VOLUME
+LABEL
+
+ARG 
+
+Single stage Dockerfile:
+FROM ubuntu 
+COPY
+ADD
+RUN
+
+FROM centos
+RUN yum install java -y
+RUN yum install maven -y
+RUN yum install wget git unzip zip -y
+RUN git clone https://github.com/acadalearning/web-app.git
+WORKDIR web-app
+RUN mvn clean package
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.zip
+RUN unzip apache-tomcat-9.0.68.zip
+COPY target/*.war /usr/local/tomcat/webapps
+CMD ["catalina.sh" , "run"]
+
+
+
+Multistage Dockerfile:
+FROM alpine/git as repo
+MAINTAINER acadalearning@gmail.com
+WORKDIR /app
+RUN git clone https://github.com/acadalearning/web-app.git
+#Maven
+FROM maven:3.5-jdk-8-alpine as build
+WORKDIR /app
+COPY --from=repo /app/web-app  /app
+RUN mvn package
+#Tomcat
+FROM tomcat:8.0.20-jre8 
+#COPY  /app/target/*war /usr/local/tomcat/webapps/maven-web-app.war
+COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/
+
+
+===================================================================
+
+Best Practice:
+    * Use linux lightweight alpine images where applicable.
+    * Reduce the number of layers by minimising the numbers of run instructions, 
+      these affects the performace of containers.
+        ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.zip /opt
+        RUN mkdir efe \
+        && adduser tomcat \
+        && cd /opt \
+        && unzip https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.zip
+    * Use only official images in docker hub for base image
+    * Avoid downloading unneccessary software or packages
+    * Scan your docker images 
+    * Use Multistage Dockerfile where applicable
+    * Use the executable shell or parent process when applicable
+
+RDB                         noRDB:
+mySQL                       mongodb
+MariaDB                     noSQL
+ProstgreSQL                 dynamoDB
+RabitMQ                     graphDB
+aurora                      REDSHIFT
+                            Casandra
+
+
+RDB:
+In relational Database data is stored in ROWS and COLUMNS (Table)
+SN          Name             Class           Age
+1           Efe             DevOps           16
+2           Ifeoma          Platform         14
+
+Non-RDB:
+In non relational Database data is stored in JSON format
+
+{
+    name: 'Efe'
+    SN:    "1'
+    age:   '16'
+    Class:  'DevOps'
+}
+
+{
+    name: 'Ifeoma'
+    SN:    "2'
+    age:   '14'
+    Class:  'Paltform'
+}
+
+How to install Database:
+1. Create an EC2 Instance
+2. Install DB Engine
+
+Create DB Username and Password:
+Username: admin
+Password: admin123
+Hostname: mongo
+
+
+Self Managed DB: mongo
+Managed DB: RDS 
+
+Docker Network:
+
+Docker           = containerisation Engine/ Software / tool
+Docker  Network  = to group applications in a cluster so that they can talk to each other
+Dockerfile       = A file that contains list of docker instructions
+Docker Image     = Build docker-image artifacts that is used to run docker container (dependencies + App Code)
+Docker Container = Running instance of a docker image
+Docker Registry  = Centtral storage for docker images
+Docker command:  = docker ps/run/pull/exec/start/stop/logs/rmi/build/push/images/rm/login/kill/search/prune
+
+
+3 Types of Network:
+
+Bridge Network:  Default bridge Network   = Containers communicates using the containerIP Only
+Host Network:    Containers will not have IP address.  Containers will be created in the system network
+None Network:    Containers communicates with both IP and Hostname 
+
+
+How to create  network:
+Custom network
+docker network create -d <driver> <networkName>
+docker network create <networkName>
+
+3.84.254.198
+172.31.84.47
+
+
+172.17.0.2
+
+
+username
+Password
+
+
+docker run  -d --name mongo26 --network fintech \
+-e MONGO_INITDB_ROOT_USERNAME=uatdb -e MONGO_INITDB_ROOT_PASSWORD=uatdb123  mongo
+
+
+
+docker run -d -p 8001:8080 --name springapp26  -e MONGO_DB_HOSTNAME=mongo26 \
+-e MONGO_DB_USERNAME=uatdb -e MONGO_DB_PASSWORD=uatdb123 --network fintech \
+acadalearning/spring-boot-mongo
+
+
+MONGO_DB_HOSTNAME
+MONGO_DB_USERNAME
+MONGO_DB_PASSWORD
+
+
+
+docker run --name acada -d -p 4600:8080 acadalearning/spring-boot-mongo
+
+
+
+=======================================================================================
+
+DOCKER NETWORKING:
+
+======================================================================================
+
+
+limitation about Docker is container management
+
+Docker Swarm to manage container
+
+Kubernetes to ochestrate or manage our container 
+
+Port binding
+name conflix 
+complex managing containerized application 
+
+
+
+
+
+-e MONGO_DB_HOSTNAME=mongo26
+-e MONGO_DB_USERNAME=uatdb
+-e MONGO_DB_PASSWORD=uatdb123
+
+docker run -d -p 8000:8080 --name springapp -e MONGO_DB_HOSTNAME=mongo26 \
+-e MONGO_DB_USERNAME=uatdb -e MONGO_DB_PASSWORD=uatdb123 --network fintech \
+acadalearning/spring-boot-mongo
+
+
+
+docker run -d --name mongo26 --network fintech \
+-e MONGO_INITDB_ROOT_USERNAME=uatdb -e MONGO_INITDB_ROOT_PASSWORD=uatdb123 mongo
+
+
+
+overlay network
+
+docker 
+
+docker swarm 
+
+Must of the time will use docker for containerization
+and use other tools for conainter management
+
+Docker Swarm
+Kubernetes
+OpenShift
+Mesos
+
+
+Docker Volumes:
+we manage statefull applications like database
+
+fintech network
+subnet: 172.19.0.0/16
+        2^32 - 16 = 2 ^ 16 = 65,536
+
+By default docker daemon determine the subnet prefix
+
+
+Where does it store data:
+docker run --name some-mongo -v /my/own/datadir:/data/db -d mongo
+
+docker run --name mongo26 -v /home/ubuntu/data/datadir:/data/db -d mongo
+
+Create a mount point:
+    mkdir data
+    cd data
+    pwd
+
+Bind Mounts:
+/home/ubuntu/data    --- host
+/tmp/mydata          --- Container
+
+Problem:
+non-Docker process on the docker host or docker container can modify them at ay time
+
+Solve the problem:
+Volume to be fully managed by docker process
+
+
+Docker to manage this process:
+Local volume:
+docker volume create -d local mongostore
+docker volume create mongostore
+-v mongostore:/data/db
+
+
+External volume:
+    docker volume create -d rexray <volumename>
+    /var/lib/docker/volumes
+https://rexray.readthedocs.io/en/v0.9.1/user-guide/docker-plugins/
+
+
+
+
+docker plugin install rexray/ebs \
+  EBS_ACCESSKEY=AKIA2OFMX4GARXIOB6VS \
+  EBS_SECRETKEY=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
+
+
+
+http://3.140.248.243:4000/app/
+
+
+==========================================================
+
+DOCKER COMPOSE: COHORT 7
+
+==========================================================
+
+
+Docker Compose is a tool for defining and running multiple containerised applications.
+
+An e-commerce java based web application for ebay 
+login
+Registration
+Checkout
+Payment
+Order
+
+
+docker network create ecommerce
+
+docker volume create datas
+
+docker run --name login --network ecommerce -d -p 5000:8080 acadalearning/login
+
+docker run --name registration --network ecommerce -d acadalearning/registration
+
+docker run --name Checkout --network ecommerce -d acadalearning/Checkout
+
+docker run --name payment --network ecommerce -d acadalearning/payment
+
+docker run --name Order --network ecommerce -d acadalearning/Order
+
+docker run --name mongo --network ecommerce -v datas/:/data/db mongo
+
+docker run --name mysql --network ecommerce -v datas:/var/lib/mysql mysql
+
+
+https://docs.docker.com/compose/compose-file/compose-versioning/
+-------------------------------------------------------
+
+.yml/.yaml
+
+
+integer
+  age: 23
+float
+  price: 60.55
+string
+  name: 'acada'
+dictionary (key and value pairs)
+  name: efe
+  age: 23
+  country: 'canada'
+list/arrays:
+    students:
+        - name: efe
+           age: 23 
+        - name: toyin
+        - name: richard
+
+
+docker-compose.yml
+version: '3.1'
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    networks:
+    - ecommerce
+    - fintech
+    volumes:
+    - mongo-data:/data/db
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=uatdb
+    - MONGO_INITDB_ROOT_PASSWORD=uatdb123
+  springapp:
+    image: joveluro/spring-boot-mongo
+    restart: always
+    network:
+    - ecommerce
+    - fintech
+    ports:
+    - 6000:8080
+    environment:
+    - MONGO_DB_USERNAME=uatdb
+    - MONGO_DB_PASSWORD=uatdb123
+    - MONGO_DB_HOSTNAME=mongo26
+    depends_on:
+    - mongodb
+volumes:
+  mongo-data:
+    driver: local
+  ebs-data:
+    driver: rexray/ebs
+networks:
+   ecommerce:
+     driver: bridge
+   fintech:
+     external: true
+
+
+docker-compose config
+docker-compose up -d
+docker-compose down
+
+docker run  -d --name mongo26 --network fintech \
+-e MONGO_INITDB_ROOT_USERNAME=uatdb -e MONGO_INITDB_ROOT_PASSWORD=uatdb123  mongo
+
+docker run -d -p 8000:8080 --name springapp  -e MONGO_DB_HOSTNAME=mongo26 \
+-e MONGO_DB_USERNAME=uatdb -e MONGO_DB_PASSWORD=uatdb123 --network fintech \
+joveluro/spring-boot-mongo
+
+
+version: '3.1'
+services:
+  springboot:
+    image: joveluro/maven-web-app
+    restart: always
+    ports:
+    - 9090:8080
+    networks:
+    - mavenappbridge
+networks:
+    mavenappbridge:
+
+Declarative: running the instractions in a file format
+Imperative: running it on CLI
+
+version: '3.1'
+services:
+  login:
+    image:
+    network:
+  Registration:
+    image:
+    network:
+  Checkout:
+    image:
+    network:
+  Payment:
+    image:
+    network:
+  Order:
+    image:
+    network:
+
+dns resolution is donw using the service name  acada.com/payment
+
+Docker Swarm installation:
+docker swarm init
+
+sudo hostname node1
+sudo apt update -y 
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu
+sudo docker swarm join --token SWMTKN-1-4pe97ytgcgnxehs3glpvrcddmtcf0lexpmo5gb6677fy4wj7ii-0rj1rw6s4j059uivpk98z90nv 172.31.88.230:2377
+
+Containerization Tools: docker,rocker(rkt),coreos
+
+Container Orchestration Tools: docker swarm, kubernetes, openshift ..etc
+
+H.A --> High Availability
+F.T --> Fault Tolarence
+Scalability
+L.B
+
+# In Normal(Standalone) Docker Server We can use below command to create a container.
+docker run -d -p <hostPort>:<containerPort> --name <containerName> <imageName>
+
+# In docker swarm we will use below command to deploy service.
+docker service create --name <serviceName> -p <hostPort>:<containerPort>  <imageName>
+
+# In Normal(Standalone) Docker Server We can use below command to create a containers from compose.
+docker-compose up -d
+
+# In docker swarm we will use below command to deploy services using docker compose.
+docker stack deploy --compose-file docker-compose.yml <stackName>
+
+Deploy application in a swarm using the standalone:
+docker service create --name <serviceName> -p <hostPort>:<containerPort>  <imageName>
+docker service create --name javawebapp -p 7000:8080 joveluro/spring-boot-mongo
+
+Docker Swarm has two modes of deployments:
+
+Replicas mode: --> It will deploy based on replicated number.
+             (Default mode)
+             Scaling is achievable
+             docker service scale javawebapp=5
+             we deploy custome applicatios using this mode
+command for replica mode -
+docker service create --name <serviceName> -p <hostPort>:<containerPort>  <imageName>
+Note: replica mode schedules 1 container in all the nodes 
+
+Global Mode: --> All the nodes (3 servers 1 Manager + 2 Workers)
+             use for monitoring softwares deployments 
+               New Relic / Prometheus  / Cloudwatch / EFK / logmgt
+Note: in global mode scalling is not possible (you cannot scale)
+docker service create --name logmgt -p 8000:8080  --mode=global joveluro/spring-boot-mongo
+
+What is service in docker or docker swarm?:
+Serivce is nothing but a collection of one or more replicas(contianers) of same type(Image).
+(dns) domain name resolution is done using the servicename
+
+What is stack in docker or docker swarm?:
+Stack is nothing but a collection of one or more serivces.
+
+
+
+version: '3.1'
+services:
+  springapp:
+    image: joveluro/spring-boot-mongo:latest
+    environment:
+    - MONGO_DB_HOSTNAME=mongo
+    - MONGO_DB_USERNAME=devdb
+    - MONGO_DB_PASSWORD=devdb123
+    ports:
+      - 9000:8080
+    working_dir: /opt/app
+    depends_on:
+      - mongo
+    deploy: #This will be considered only in docker swarm.
+    replicas: 3 # v1 
+    update_config:
+      parallelism: 1  # By default rolling Update is the deployment strategy
+      delay: 20s
+    restart_policy:
+      condition: on-failure
+      delay: 10s
+      max_attempts: 5
+
+  mongo:
+    image: mongo
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=devdb
+    - MONGO_INITDB_ROOT_PASSWORD=devdb123
+    volumes:
+    - mongodb:/data/db
+    restart: always
+
+  volumes:
+    mongodb:
+      driver: local
+
+
+updating a service:
+docker service ls
+docker service update --image joveluro/maven-web-app:5 javawebapp
+docker service ls
+
+How many docker swarm nodes do you have in production?  : 
+free -m 
+free -g
+
+and What is their capacities?  :
+
+   11 worker nodes  = 60GB memory and 20TB 
+   03 master nodes  = 
+       $200,000
+
+# Create a service with Volume mapping
+docker service create  -p <hostPort>:<containerPort> --name <serviceName> --replicas 1  --mount type=volume,source=<volumeName>,destination=<containerfolderPath> <imageName>
+
+# List Services
+docker service ls
+
+# List Services process
+docker service ps <servicenName>
+
+# Scale Services 
+docker service scale javawebapp=3
+
+docker service rm javawebapp
+
+In DockerSwarm:
+  Service is a collection of one or more containers(replicas)
+  of same image
+  Service creates containers and manages those containers
+
+
+# Add labels to node
+docker node update --label-add key=value <nodeid>
+Ex: docker node update --label-add server=nodeone qmdh9tgvdef99sryhbezswfl9
+
+docker node update --label-add server=nodetwo  n2brbkq0h61a1m1i0wz8dsbbp
+docker node ls
+
+docker node ls
+docker node update --label-add server=nodetwo node2
+docker node update --label-add server=dbnode node1
+docker inspect node1
+
+#Use above label in constraints  deploy this
+docker service create --name mydb \
+--replicas 2 --constraint 'node.labels.server==dbnode' mongo
+
+docker service ps mydb
+we can use this to deploy to a specific node
+
+can we have this in different level yes
+
+docker node ls
+
+
+# Global mode 
+docker service create  -p 9000:8080 --name myapp2 --mode=global   joveluro/maven-web-app
+
+# Drain Nodes in Cluster(Swarm will not create containers in drained nodes)
+
+docker node update --availability drain <NodeID>
+docker node ls
+docker node update --availability drain node2
+docker service ls
+docker service ps javawebapp
+
+why do we need to drain node 
+1. we want to do some parching 
+2. want to update your node
+
+
+
+
+==============================================================================================
+
+DOCKER COMPOSE: COHORT 8
+
+==============================================================================================
+
+
+Is a tool for defining and running multiple containerised application
+
+docker network create fintech
+Micro-services:
+
+Login
+image:
+network:
+Registration
+image:
+network:
+Checkout
+image:
+network:    
+payment
+image:
+network:    
+order
+image:
+network:   
+mongodb
+image:
+network:
+
+docker run --name login -d -p 5000:8080 acadalearning/login --network fintech
+
+docker run --name registration -d acadalearning/registration --network fintech
+
+docker run --name Checkout -d acadalearning/Checkout --network fintech 
+
+docker run --name payment -d acadalearning/payment --network fintech
+
+docker run --name order -d acadalearning/order --network fintech
+
+docker run --name mongo -d acadalearning/mongo --network fintech
+
+
+docker --version
+sudo apt  install docker-compose
+
+
+.yaml
+
+integer
+age: 100
+float
+price: 60.5
+string
+name: 'acada'
+dictionary (key value pairs)
+ name: efe
+ age: 105
+ country: Canada
+list/arrays
+    student:
+        - name: Efe
+          age: 105
+        - name: Dela
+          age: 25
+        - name: Ese
+          age: 15
+
+
+docker run  -d --name mongo26 --network fintech -v /home/ubuntu/data:/data/db \
+-e MONGO_INITDB_ROOT_USERNAME=uatdb -e MONGO_INITDB_ROOT_PASSWORD=uatdb123  mongo
+
+version: '3.5'
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    networks:
+    - fintech
+    - barclay
+    volumes: 
+    - mongo-data:/data/db
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=uatdb
+    - MONGO_INITDB_ROOT_PASSWORD=uatdb123
+  springapp:
+    image: acadalearning/spring-boot-mongo
+    restart: always
+    networks:
+    - fintech
+    ports:
+    - 6000:8080
+    environment:
+    - MONGO_DB_HOSTNAME=mongo26
+    - MONGO_DB_USERNAME=uatdb
+    - MONGO_DB_PASSWORD=uatdb123
+    depends_on:
+    - mongodb
+volumes:
+  mongo-data:
+    driver: local
+  ebs-data:
+    driver: rexray/ebs
+networks:
+  fintech:
+    external: true
+
+
+  docker plugin install rexray/ebs \
+  EBS_ACCESSKEY=AKIA2OFMX4GAZU6EING3 \
+  EBS_SECRETKEY=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
+
+docker-compose up -d
+
+docker-compose ps
+
+
+===================================
+Docker Swarm:
+
+#!/bin/bash
+sudo hostname node1
+sudo apt update -y 
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu 
+docker swarm join --token SWMTKN-1-533idox0kqom9s74rzzyjpwpr6nti816g0r3yyiwuiqcwzr162-6th8fvah8um78hxjk06am0a4p 172.31.30.151:2377
+
+
+docker service create <serviceName>
+
+docker service create --name javawebapp -p 7000:8080 acadalearning/java-web-app
+
+
+Docker Swarm has two modes:
+Replicas mode:  -- Default mode --  it will deploy based on the number of replicas
+                                   scalling is achievable 
+                                   docker service scale javawebapp=7
+                                   we can deploy custome application using this mode
+
+Global mode:  1 Server 2 worker nodes (all nodes)
+              Use to deploy log or monitoring management application
+              New Relic / Prometheus and Grafana / Cloudwatch / Dynatrace / DataDog / Splunk
+
+
+Stack is used to deploy a collection of more than one service (multiple services)
+
+
+version: '3.8'
+services:
+  mongo:
+    image: mongo
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=devdb
+    - MONGO_INITDB_ROOT_PASSWORD=devdb123
+    volumes:
+    - mongodb:/data/db
+    restart: always
+
+volumes:
+  mongodb:
+    driver: local
+
+
+docker stack deploy --compose-file dc.yml springmongo
+
+services creats containers and manages the containers
+
+docker service create --name mydb \
+--replicas 2 --constraint 'node.labels.server==dbnode' \
+mongo
+
+
+
+
+ACADA Learning:  Kubernetes   || k8s 
+
+Kubernetes is an ochestration engine and open-source platform
+we use it to manage containarized applciations
+
+1. Container ochestration
+2. Container management 
+
+Benefits:
+  container deployement
+  automated scaling 
+  container management and ochestration
+  load balancing
+  Open source
+  horizontal scaling
+  optimizing cost 
+  self healing 
+  cloud migration
+
+  kubernetes was released on july 21, 2015
+
+  1-5 years 
+
+  kubernetes achitecure:
+    Service Discovery
+
+Control plane/master:
+  API server
+  etcd
+  scheduler
+  Controller manager
+
+Worker Nodes:
+  kubelet
+  kube-proxy
+
+Command Line utility:
+  for Docker    [ docker ] docker build
+  for maven      [ mvn ]      mvn package
+  for k8s       [ kubectl ]   kubectl apply 
+
+
+  Kubernetes components 
+
+  Cluster  -----> Worker Nodes  --->  pods  ----> Containers  ---> images ---> Appplication and Base image
+
+Kubernetes Objects:
+  Controller Manager:
+    ReplicationController
+    Deployment
+    ReplicaSet
+    DaemonSet
+    StatefulSets
+    Job
+
+  Service:
+    ClusterIP
+    Service
+    NodePort
+    LoadBalancer
+    ExternalName
+
+
+  https://labs.play-with-k8s.com/
+
+  Installtion of K8S:
+    1. Self managed   --- Manage the control plane
+    2. Managed / Cloud Managed  ---  Cloud provider is managing the control plane
+ 
+    1. Self managed:
+      minikube    --- single node cluster
+      kubeadm     --- we can setup multiple nodes withing a cluster
+
+    2. Managed/Cloud Managed:
+      EKS        ---  Elastic Kubernetes Service (AWS)
+      AKS        ---  Azure Kubernetes Service  (Azure)
+      GKE        ---  Google Kubernetes Engine   (GCP)
+
+      KOPS
+
+  How do we deploy in docker:
+    Imperative       -----  command
+    docker run / create 
+    docker service create
+
+
+    Declarative --- Files + command
+    docker-compose up
+    docker-compose down
+    docker stack deploy --docker-compose-file web.yml
+
+  How do deploy in K8s:
+    Imperative  --Command
+    kubectl create namespace test
+    kubectl create ns prod
+
+    Declarative --File (Manifest files) + commands
+    track file/record
+
+
+Open all Port:
+
+Kubernetes Installtion:
+#!/bin/bash
+#t2 Medium
+#Common stages for both master and worker nodes
+#This can be use as user data in launch template or launch configutions
+sudo hostname master
+sudo -i
+sudo swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
+sudo apt update -y
+sudo apt install -y apt-transport-https -y
+
+sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+sudo cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+sudo apt update -y
+sudo apt install -y kubelet kubeadm  containerd kubectl
+# apt-mark hold will prevent the package from being automatically upgraded or removed.
+
+sudo apt-mark hold kubelet kubeadm kubectl containerd
+
+sudo cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
+overlay
+br_netfilter
+EOF
+
+sudo modprobe overlay
+sudo modprobe br_netfilter
+
+sudo cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
+net.bridge.bridge-nf-call-iptables = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward = 1
+EOF
+
+sudo sysctl --system
+
+sudo mkdir -p /etc/containerd
+sudo containerd config default | sudo tee /etc/containerd/config.toml
+sudo systemctl restart containerd
+
+# Enable and start kubelet service
+sudo systemctl daemon-reload
+sudo systemctl start kubelet
+sudo systemctl enable kubelet.service
+
+#step2
+kubeadm init
+
+
+#step3
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config      
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+#Step4
+sudo kubeadm join 172.31.24.209:6443 --token 8bdmlp.0v7ee3j8rj8gcuvs \
+        --discovery-token-ca-cert-hash sha256:edb07e2a5094746fb48fb9e270878423ffb7cde60ca05c654710b5839d6d8dc6
+
+
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+
+
+
+creating namespace using Declarative file (Manifest file)
+
+.yaml .yml
+
+namespaces:
+  Is a virtual cluster within your cluster
+  Is it use to isolate your environment/ projects/teams
+  used for securing k8s
+
+namespaces = ns
+
+how we deploy in k8s:
+*Imperative 
+kubectl get ns
+
+kubectl create ns test
+kubectl get ns
+
+*Declarative
+we deploy using Manifest files .yml
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod
+
+kubectl apply -f ns.yml --dry-run=client
+
+
+
+kubectl config set-context --current --namespace=dev
+kubectl get pod
+
+
+kubectl api-resources | grep Pod
+
+.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+  namespace: dev
+  labels:
+    app: webapp
+spec:
+  containers:
+  - name: webapp-c
+    image: acadalearning/java-web-app
+    ports:
+    - containerPort: 8080
+
+
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+  namespace: dev
+  labels:
+    app: hello
+spec:
+  containers:
+  - name: hello-c
+    image: joveluro/helloworld
+    ports:
+    - containerPort: 80
+
+--------------------------------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+  namespace: dev
+  labels:
+    app: webapp
+spec:
+  containers:
+  - name: webapp-c
+    image: acadalearning/java-web-app
+    ports:
+    - containerPort: 8080
+
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-svc 
+  namespace: dev
+spec:
+  type: ClusterIP
+  selector:
+    app: webapp
+  ports:
+  - port: 80
+    targetPort: 8080
+
+
+
+NodePort and LoadBalancer Service have a port range:
+  30000 -- 32767
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-svc
+  namespace: dev
+spec:
+  type: NodePort
+  selector:
+    app: webapp
+  ports:
+  - targetPort: 8080
+    port: 80
+    nodePort: 31000
+
+
+
+app exposed port: 8080
+svc exposed port: 80
+NodePort exposed port: 31000
+
+
+
+Kubernetes note responding to localhost:
+run these command on all the nodes
+sudo vi /etc/cloud/cloud.cfg
+change the preserve hostname from false to true
+
+sudo vi /etc/hostname
+change the hostname the the desdired or specifid hostname
+reboot the all the instance
+
+kubectl getn nodes
+
+on master run this:
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+
+
+==================================================================
+
+
+FQDN = <podname>.<NS>.<cluster.local>
+       curl -v webapp.prod.webappsvc.cluster.local
+
+Service descovery: is what applciations uses to talk to each other in the same namespace (they use service name)
+
+Fully qualified Domain name: applications uses FQDN to talk to each other in the same namespace and accross namespaces
+                             is uses the full name to establish commmunication externaly (DNS)
+
+CONTROLLER MANAGERS:
+
+ReplicationController:
+====================
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+  namespace: dev
+  labels:
+    app: webapp
+----------------------------
+spec:
+  containers:
+  - name: webapp-c
+    image: acadalearning/java-web-app
+    ports:
+    - containerPort: 8080
+
+=======================================================
+----------------------------------- Controllers
+apiVersion: v1  
+kind: ReplicationController
+metadata:
+  name: webapp-RC
+  namespace: dev
+spec:
+  selector:
+    app: webapp
+----------------------------------- Pods
+  template: 
+    metadata:
+      name: webapp-pod 
+      labels:
+        app: webapp
+----------------------------------- Containers
+    spec: 
+      containers:
+      - name: webapp-c
+        image: acadalearning/java-web-app
+        ports:
+        - containerPort: 8080
+
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: webapp-RC
+  namespace: dev
+spec:
+  selector:
+    app: webapp
+  template: 
+    metadata:
+      name: webapp-pod 
+      labels:
+        app: webapp
+    spec: 
+      containers:
+      - name: webapp-c
+        image: acadalearning/java-web-app
+        ports:
+        - containerPort: 8080
+
+kubectl scale rc webapp-rc --replicas=8
+
+
+
+ReplicaSet:
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rs
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      tier: myapp
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        tier: myapp
+    spec:
+      containers:
+      - name: myapp-c
+        image: acadalearning/myapp
+        ports:
+        - containerPort: 8080
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-svc
+spec:
+  selector:
+    tier: myapp
+  ports:
+  - targetPort: 8080
+    port: 80
+    nodePort: 30200
+  type: NodePort
+
+
+
+DaemonSet:
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: grafana
+spec:
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      name: grafana
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - name: grafana
+        image: grafana/grafana
+        ports: 
+        - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+spec:
+  type: NodePort
+  selector:
+    app: grafana
+  ports:
+  - targetPort: 3000
+    port: 80
+
+
+
+
+
+
+
+
+
+
+
+
+
