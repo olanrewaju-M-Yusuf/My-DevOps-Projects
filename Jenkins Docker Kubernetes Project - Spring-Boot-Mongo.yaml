@@ -1,0 +1,97 @@
+sudo apt-get install git wget -y
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
+
+Install Docker in Jenkins:
+
+  1. Install Docker
+curl -fsSL get.docker.com | /bin/bash  
+
+  2. Add Jenkins User to docker group  
+ sudo usermod -aG docker jenkins  
+
+  3. Restart Jenkins
+sudo systemctl restart jenkins
+
+==========================================
+
+
+sudo apt-get update -y  
+sudo apt-get install -y apt-transport-https  
+sudo su -  
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list  
+deb https://apt.kubernetes.io/ kubernetes-xenial main  
+EOF  
+
+Note:  when you paste the above line wait a while before hitting the enter key 
+
+apt-get update -y  
+
+Disable swap memory
+
+swapoff -a  
+sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab  
+
+Enable IP memories:
+
+modprobe br_netfilter
+sysctl -p  
+sudo sysctl net.bridge.bridge-nf-call-iptables=1  
+
+Add ubuntu user to the docker group
+
+apt  install docker.io -y
+
+This is optional
+usermod -aG docker ubuntu  
+
+systemctl restart docker
+systemctl enable docker.service  
+
+Install k8s modules:
+apt-get install -y kubelet kubeadm kubectl kubernetes-cni  
+
+systemctl daemon-reload
+systemctl start kubelet   
+systemctl enable kubelet.service  
+
+==========COMMON FOR MASTER & SLAVES END=====  
+
+Execute below commands only in master machine.  
+
+===========In Master Node Start====================  
+ 
+Execute below command as root user  
+kubeadm init  
+ 
+Exit root user & execute as normal user  
+mkdir -p $HOME/.kube  
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config  
+sudo chown $(id -u):$(id -g) $HOME/.kube/config  
+
+kubectl get nodes
+kubectl get pods --all-namespaces
+
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version |  base64 | tr -d '\n')"  
+
+kubectl get nodes  
+kubectl get pods --all-namespaces
+# Get token  
+
+kubeadm token create --print-join-command  
+
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl version --client

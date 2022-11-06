@@ -1,0 +1,708 @@
+DOCKER:
+=======
+
+Docker is a software use to create docker images and run containerized apps. 
+A container is a running instance of an application.
+
+Docker is used by Developers, Administrator and others to build 
+    and run applications as containers.
+
+Monolitic / Micro-Services
+
+Login
+payment
+loan
+application
+request
+
+
+we maintian a minimium of 3 environments
+Dev
+Stag
+Prod
+
+dev branch ---> Developed ----- build  ------- Test (Unit Testing) ---- Deploy (Tomcatserver - VM)
+Running well
+
+-------------------------------------------------------------------------------------------------------
+
+QA Branch ----> Developed ---- Build --------- Test (add Testing) ---- Deploy (Tomcatserver-VM)
+Running well
+
+-------------------------------------------------------------------------------------------------------
+
+Stage Branch --- Developed --- Build ------ Test (add Testing)  ---- Deploy (Tomcatserver-VM)
+Not running well
+
+
+-----------------------------------------------------------------------------------------------------
+Virtualization VS containerization:
+
+V: 
+
+C:
+
+Tomcat:
+    patching
+    Installation
+
+scp app.war ec2-user@192.125.5.30:/opt/tomcat/webapps/uba.war
+
+
+What is Docker? 
+❖Docker is a containerisation platform which packages your app and all dependencies together in the   
+form of containers. so as to ensure that your application works seamlessly in any environment be it dev or   
+test or prod. 
+❖Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications 
+❖Docker is available in two editions: Community Edition (CE) and Enterprise Edition (EE). 
+❖Docker Community Edition (CE) is ideal for developers and small teams looking to get started with Docker 
+and experimenting with container-based apps. 
+❖Docker Enterprise Edition (EE) is designed for enterprise development and IT teams who build, ship, and   
+run business critical applications in production at scale. 
+
+Docker Edition:
+Docker Community Edition (CE)   open source (free)
+Docker Enterprise Edition (EE)  (Commercial)
+
+Docker can run on cross platform 
+
+Assignment ---> Install docker on your OS 
+
+Docker EE:
+    DTR ---> Docker Trusted Registry(Private repo to keep your docker images)
+    UCP ---> Universal control plane (Docker GUI it helps us to manage docker machine)
+
+Containerization plaforms/software:
+    Docker = 80%
+    CoreOS = 10%
+    Rocket = 10%
+
+Jenkinsfiles    ---  pipeline script
+
+Dockerfile      --- is a package that contains application code and all dependencies
+                    eg: uba.war, rbc.war , paypal.war
+                    + All dependencies (Env Vars / softwares etc)
+
+mvn package
+
+    app.war  -- docker image = app.war + tomcat/java
+    app.ear  -- docker image = app.war + Jboss or wildfly/java
+    app.jar  -- docker image = app.war + java
+
+
+    app.war  +  Tomcat   ==== Dockerfile
+
+
+Docker Container = Its a runtime instance of a docker image where our application is running
+
+GitHub  / Nexus  / Gitlab  
+
+where are docker images stored == docker repo
+
+Docker have two types of repo:
+    Private and Public 
+
+
+############################
+#!/bin/bash
+Ubuntu Server 18.04 LTS (HVM),
+sudo hostname docker
+sudo apt update -y 
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu 
+#docker swarm init
+#to add nodes
+#docker swarm join --token SWMTKN-1-6c3ke0mcewu62k3eaf1g5y4rvqvod45elyillk0g0gogeo3vz5-99csbag2d9j39u7y9nwvfignn 172.31.16.91:2377
+
+
+#!/bin/bash
+# Run this as a script
+sudo hostname docker
+sudo apt-get update
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu 
+# Install java as Jenkins dependency
+sudo apt install openjdk-11-jdk -y
+# install Jenkins in ubuntu:
+sudo wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
+    /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins -y 
+sudo systemctl start jenkins 
+echo "jenkins  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/jenkins 
+sudo echo "jenkins:admin" | chpasswd
+sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
+sudo service sshd restart
+sudo usermod -aG docker jenkins 
+
+
+
+Dockerfile
+
+FROM tomcat:8.0.20-jre8
+COPY target/*.war /usr/local/tomcat/webapps
+
+
+
+docker build -t <imagename> .
+docker images
+
+docker run --name <containerName> -d -p 600:8080 image26
+docker ps
+
+
+FROM tomcat:9.0.64-jre8-temurin-jammy
+
+
+
+
+scp target/*.war ec2-user@197.51.26.24:/opt/tomcat/webapps
+
+
+
+
+Follow-up
+meeting schedule
+reminders
+check workflows
+
+
+--------------------------------------------------------------
+mvn package    +   tomcat image   =      own image
+
+
+
+
+pipeline{ 
+    agent any 
+    tools { 
+        maven "maven3.8.4" 
+    } 
+    stages{ 
+       stage('1. Git Clone'){ 
+           steps{ 
+               git "https://github.com/acadalearning/web-app.git" 
+           } 
+       }  
+       stage('2. Build Package'){ 
+           steps{ 
+               sh "mvn package" 
+           } 
+       } 
+       stage('3. Code Quality'){ 
+           steps{ 
+               sh "mvn sonar:sonar" 
+           } 
+       } 
+    stage('5. Approval'){
+                steps{
+                    sh "echo Approval for BOA"
+                    timeout(time:5, unit:'DAYS'){
+                        input message:'Approval for Production'
+                    }
+        }
+        }
+    stage('6.predeployment'){
+        steps{
+            sh "docker build -t acadalearning/cohort7 ."
+            sh "docker run --name cohort7 -d -p 2000:8080 acadalearning/cohort7"
+        }
+    }
+}
+}
+
+
+docker build -t cohort7 .
+
+
+
+-------------------------------
+Docker Commands:
+
+docker build -t <imagename> .
+docker pull <imagename>:<verion/tag>
+docker images or docker image <imageID>
+docker scan 
+
+docker ps -aq
+docker ps -q
+docker ps -a
+
+docker images 
+
+docker rmi -f $(docker images -qa)
+docker rm -f $(docker ps -qa)
+
+docker push <IPAddress>:8081/<imagename>    === Nexus repo
+
+docker login -u <dockerhubName> -p <password>     
+
+docker login -u admin -p admin123 <IPAddress>:<port>             
+
+
+What is the difference b/w docker stop & docker kill?:
+
+docker stop will first send SIGTERM then 
+    SIGKILL it will kill process with grace period. 
+
+Docker kill send SIGKILL it will kill process without any grace period.
+
+
+docker pause <containerID>
+docker unpause <containerID>
+docker start <containerID>
+docker stop <containerID>
+docker cp <source> <destination>
+
+docker cp myapp:/usr/local/tomcat/webapps/uba.war /tmp
+docker commit <containerID/name> <newimagename>
+
+
+
+ec2-user@IP:/opt
+
+docker password:
+sudo cat /var/lib/jenkins/.docker/config.json
+
+docker inspect <containerID>
+
+
+Management Commands:
+  builder     Manage builds
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+
+AWS:
+ECR - Elastic Container Registry:
+
+
+
+Dockerfile:
+Docker Key words
+
+Dockerfile:
+    Dockerfile is a text document that contains all the commands a user could 
+    call or run on the command line to assemble an image.
+Dockerfile: a file that contains instructions (docker domain specific keywords) 
+            use to create an image.
+
+docker daemon: an engine that proceess the instructions from top to bottom
+
+
+------------------------------------------------------------------------
+Keywords:
+docker pull bitnami/wildfly:latest
+
+FROM ubuntu  / tomcat_9.20-jre8 / centos
+
+FROM bitnami/wildfly:latest
+COPY target/*.war /usr/local/tomcat/webapps
+
+COPY <source> <destination>
+
+
+FROM ubuntu 
+MAINTAINER acada learning
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.zip
+RUN mkdir -p acada/local
+RUN cd /opt
+RUN sudo hostname docker
+
+
+CMD 
+
+Syntax:
+shell form:
+CMD <command with Args>
+Executable form:
+CMD ["command", "args"]
+
+docker run
+CMD ["java", "-jar", "springapplication.jar"]
+CMD ["ls", "/"]
+CMD ["ls", "/opt"]
+
+
+
+ENTRYPOINT  
+WORKDIR
+ENV
+EXPOSE
+USER
+VOLUME
+LABEL
+ARG
+
+
+Syntax:
+Shell form:
+RUN <command with Args>
+
+Executable form:
+RUN ["command", "Arg1", "Arg2"]
+
+------------------
+RUN mkdir -p acada/local
+RUN adduser tomcat
+RUN unzip /opt/apache-tomcat-9.0.64.zip
+
+
+CMD ["echo", "From CMD "]
+
+
+ENTR
+
+
+vi cohort
+
+FROM tomcat
+COPY target/ /usr
+RUN mkdir -p acada/local
+RUN adduser tomcat
+RUN unzip /opt/apache-tomcat-9.0.64.zip
+
+RUN cd /efe
+RUN sh catalina.sh start
+CMD sh catalina.sh start
+
+CMD ["sh", "catalina.sh" "start"]
+ENTRYPOINT ["echo" ,"FROM DockerFile"]
+
+
+docker build -t image5 -f cohort .
+docker run --name test -d -p 80:8080 image5
+
+CMD sh sonar.sh start
+CMD ["sh", "sonar.sh", "start"]
+
+ENV
+JENKINS_HOME /var/lib/jenkins_home
+
+USER root (default-USER)
+
+WORKDIR /opt/tomcat-9
+CMD 
+
+LABEL 
+
+
+VOLUME 
+
+ARG 
+
+
+ARG VAR_A 5
+ENV VAR_B 6
+RUN echo $VAR_A
+RUN echo $VAR_B
+docker build 
+docker run
+
+
+EXPOSE 8080
+
+SSH 22
+
+export=$HOME=PATH/TOMCAT
+
+
+Multi-stage Dockerfile:
+
+Multi-stage Docker builds: let you write Dockerfiles with multiple FROM statements. 
+This means you can create images which drive from several bases images, which can help 
+cut the size of your final build.
+
+Docker files are created by selecting a base using the FROM statement.
+
+
+FROM centos
+RUN yum install java -y
+RUN yum install maven -y
+RUN yum install git wget unzip -y
+RUN git clone https://github.com/acadalearning/web-app.git
+WORKDIR web-app
+RUN mvn clean package
+RUN wget tomcat-9.0.58.zip
+RUN unzip tomcat-9.0.58.zip
+COPY target/*.war /usr/local/tomcat/webapps
+CMD ["catalina.sh", "start"]
+
+
+#git
+FROM alpine/git as repo
+MAINTAINER acadalearning@gmail.com
+WORKDIR /app
+RUN git clone https://github.com/team16flight/maven-web-application.git
+#Maven
+FROM maven:3.5-jdk-8-alpine as build
+WORKDIR /app
+COPY --from=repo /app/maven-web-application  /app
+RUN mvn package
+#Tomcat
+FROM tomcat:8.0.20-jre8 
+#COPY  /app/target/*war /usr/local/tomcat/webapps/maven-web-app.war
+COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/
+
+
+
+
+yum install maven
+
+cd maven-web-application
+mvn package
+
+vi Dockerfile
+FROM tomcat:8.0.20-jre8
+COPY target/*.war /usr/local/tomcat/webapps
+
+docker build -t cohort7 .
+
+
+
+https://github.com/team16flight/maven-web-application.git
+
+maven-web-application
+
+
+
+COPY /app/target/*war /usr/local/tomcat/webapps/
+
+
+
+Best Practices:
+1. Use linux lightweight alpine images were application.
+redhat / ubuntu /centos /alpine
+
+2. reduce the numbers of layers by minimising the numbers of RUN instructions.
+   Multiple RUN instructions affects the performance of containers.
+
+RUN yum install java -y \
+&& yum install maven -y \
+&& yum install git wget unzip tree nano -y \
+&& git clone github/maven-web-application 
+
+
+3. Use only official images in docker hub for base image
+
+4. Avoid downloading unnecessary software, application or package
+
+5. use multi-stage dockerfile where applicable
+
+6. scan base image
+
+
+
+statefull applciation
+stateless applciation
+
+
+SQL and RDS 
+Relationals database:
+data are stored in ROWS and COLUMNS (table)
+
+oracle
+mySQL
+ProsgresSQL
+MariaDB
+aurora
+
+non RDS (noSQL) non relational database:
+EG:
+    mongo
+    casandra
+    dynamoDB
+    REDSHIFT
+
+non_RDS store data in JSON
+{
+    name: 'efe'
+    id: 'id229991'
+    age: '21'
+}
+
+
+
+SELF MANAGED DATABASE:
+How to install DB:
+1. Create an EC2 server
+2. install the DB /ProsgresSQL / Oracle  / mySQL   == RDS
+                    mongo      / casandra          == noSQL  {non-RDS}
+3. Create DB username and password
+4. login using the username and password
+
+
+
+
+RUN docker/login-acada@123
+
+WORKDIR /app
+
+docker login -u acadalearning -p ${../secret.txt}
+
+
+yml 
+
+
+
+
+docker build -t coohrt7 -d -p 200:8080 -v /data/db:data -n fintech  MONGO_USRNAME =123 MONGO_PASSWORD=123 mongo -env 
+
+
+
+DOCKER NETWORKING:
+
+
+limitation about Docker is container management
+
+Docker Swarm to manage container
+
+Kubernetes to ochestrate or manage our container 
+
+Port binding
+name conflix 
+complex managing containerized application 
+
+
+docker run --name springapp -d -p 3000:8080 --network fintech acadalearning/spring-boot-mongo
+
+
+-e MONGO_DB_HOSTNAME=mongo26
+-e MONGO_DB_USERNAME=uatdb
+-e MONGO_DB_PASSWORD=uatdb123
+
+docker run -d -p 8000:8080 --name springapp -e MONGO_DB_HOSTNAME=mongo26 \
+-e MONGO_DB_USERNAME=uatdb -e MONGO_DB_PASSWORD=uatdb123 --network fintech \
+acadalearning/spring-boot-mongo
+
+
+
+docker run -d --name mongo26 --network fintech \
+-e MONGO_INITDB_ROOT_USERNAME=uatdb -e MONGO_INITDB_ROOT_PASSWORD=uatdb123 mongo
+
+
+
+overlay network
+
+docker 
+
+docker swarm 
+
+Must of the time will use docker for containerization
+and use other tools for conainter management
+
+Docker Swarm
+Kubernetes
+OpenShift
+Mesos
+
+
+Docker Volumes:
+we manage statefull applications like database
+
+fintech network
+subnet: 172.19.0.0/16
+        2^32 - 16 = 2 ^ 16 = 65,536
+
+By default docker daemon determine the subnet prefix
+
+
+Where does it store data:
+docker run --name some-mongo -v /my/own/datadir:/data/db -d mongo
+
+docker run --name mongo26 -v /home/ubuntu/data/datadir:/data/db -d mongo
+
+Create a mount point:
+    mkdir data
+    cd data
+    pwd
+
+Bind Mounts:
+/home/ubuntu/data    --- host
+/tmp/mydata          --- Container
+
+Problem:
+non-Docker process on the docker host or docker container can modify them at ay time
+
+Solve the problem:
+Volume to be fully managed by docker process
+
+
+Docker to manage this process:
+Local volume:
+docker volume create -d local mongostore
+docker volume create mongostore
+-v mongostore:/data/db
+
+
+External volume:
+    docker volume create -d rexray <volumename>
+    /var/lib/docker/volumes
+https://rexray.readthedocs.io/en/v0.9.1/user-guide/docker-plugins/
+
+
+
+
+docker plugin install rexray/ebs \
+  EBS_ACCESSKEY=AKIA2OFMX4GARXIOB6VS \
+  EBS_SECRETKEY=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
+
+
+
+http://3.140.248.243:4000/app/

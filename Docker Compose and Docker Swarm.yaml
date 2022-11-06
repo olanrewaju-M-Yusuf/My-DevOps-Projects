@@ -1,0 +1,311 @@
+DOCKER COMPOSE:
+Docker Compose is a tool for defining and running multiple containerised applications.
+
+An e-commerce java based web application for ebay 
+login
+Registration
+Checkout
+Payment
+Order
+
+
+docker network create ecommerce
+
+docker volume create datas
+
+docker run --name login --network ecommerce -d -p 5000:8080 acadalearning/login
+
+docker run --name registration --network ecommerce -d acadalearning/registration
+
+docker run --name Checkout --network ecommerce -d acadalearning/Checkout
+
+docker run --name payment --network ecommerce -d acadalearning/payment
+
+docker run --name Order --network ecommerce -d acadalearning/Order
+
+docker run --name mongo --network ecommerce -v datas/:/data/db mongo
+
+docker run --name mysql --network ecommerce -v datas:/var/lib/mysql mysql
+
+
+https://docs.docker.com/compose/compose-file/compose-versioning/
+-------------------------------------------------------
+
+.yml/.yaml
+
+
+integer
+  age: 23
+float
+  price: 60.55
+string
+  name: 'acada'
+dictionary (key and value pairs)
+  name: efe
+  age: 23
+  country: 'canada'
+list/arrays:
+    students:
+        - name: efe
+           age: 23 
+        - name: toyin
+        - name: richard
+
+
+docker-compose.yml
+version: '3.1'
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    networks:
+    - ecommerce
+    - fintech
+    volumes:
+    - mongo-data:/data/db
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=uatdb
+    - MONGO_INITDB_ROOT_PASSWORD=uatdb123
+  springapp:
+    image: joveluro/spring-boot-mongo
+    restart: always
+    network:
+    - ecommerce
+    - fintech
+    ports:
+    - 6000:8080
+    environment:
+    - MONGO_DB_USERNAME=uatdb
+    - MONGO_DB_PASSWORD=uatdb123
+    - MONGO_DB_HOSTNAME=mongo26
+    depends_on:
+    - mongodb
+volumes:
+  mongo-data:
+    driver: local
+  ebs-data:
+    driver: rexray/ebs
+networks:
+   ecommerce:
+     driver: bridge
+   fintech:
+     external: true
+
+
+docker-compose config
+docker-compose up -d
+docker-compose down
+
+docker run  -d --name mongo26 --network fintech \
+-e MONGO_INITDB_ROOT_USERNAME=uatdb -e MONGO_INITDB_ROOT_PASSWORD=uatdb123  mongo
+
+docker run -d -p 8000:8080 --name springapp  -e MONGO_DB_HOSTNAME=mongo26 \
+-e MONGO_DB_USERNAME=uatdb -e MONGO_DB_PASSWORD=uatdb123 --network fintech \
+joveluro/spring-boot-mongo
+
+
+version: '3.1'
+services:
+  springboot:
+    image: joveluro/maven-web-app
+    restart: always
+    ports:
+    - 9090:8080
+    networks:
+    - mavenappbridge
+networks:
+    mavenappbridge:
+
+Declarative: running the instractions in a file format
+Imperative: running it on CLI
+
+version: '3.1'
+services:
+  login:
+    image:
+    network:
+  Registration:
+    image:
+    network:
+  Checkout:
+    image:
+    network:
+  Payment:
+    image:
+    network:
+  Order:
+    image:
+    network:
+
+dns resolution is donw using the service name  acada.com/payment
+
+Docker Swarm installation:
+docker swarm init
+
+sudo hostname node1
+sudo apt update -y 
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu
+sudo docker swarm join --token SWMTKN-1-4pe97ytgcgnxehs3glpvrcddmtcf0lexpmo5gb6677fy4wj7ii-0rj1rw6s4j059uivpk98z90nv 172.31.88.230:2377
+
+Containerization Tools: docker,rocker(rkt),coreos
+
+Container Orchestration Tools: docker swarm, kubernetes, openshift ..etc
+
+H.A --> High Availability
+F.T --> Fault Tolarence
+Scalability
+L.B
+
+# In Normal(Standalone) Docker Server We can use below command to create a container.
+docker run -d -p <hostPort>:<containerPort> --name <containerName> <imageName>
+
+# In docker swarm we will use below command to deploy service.
+docker service create --name <serviceName> -p <hostPort>:<containerPort>  <imageName>
+
+# In Normal(Standalone) Docker Server We can use below command to create a containers from compose.
+docker-compose up -d
+
+# In docker swarm we will use below command to deploy services using docker compose.
+docker stack deploy --compose-file docker-compose.yml <stackName>
+
+Deploy application in a swarm using the standalone:
+docker service create --name <serviceName> -p <hostPort>:<containerPort>  <imageName>
+docker service create --name javawebapp -p 7000:8080 joveluro/spring-boot-mongo
+
+Docker Swarm has two modes of deployments:
+
+Replicas mode: --> It will deploy based on replicated number.
+             (Default mode)
+             Scaling is achievable
+             docker service scale javawebapp=5
+             we deploy custome applicatios using this mode
+command for replica mode -
+docker service create --name <serviceName> -p <hostPort>:<containerPort>  <imageName>
+Note: replica mode schedules 1 container in all the nodes 
+
+Global Mode: --> All the nodes (3 servers 1 Manager + 2 Workers)
+             use for monitoring softwares deployments 
+               New Relic / Prometheus  / Cloudwatch / EFK / logmgt
+Note: in global mode scalling is not possible (you cannot scale)
+docker service create --name logmgt -p 8000:8080  --mode=global joveluro/spring-boot-mongo
+
+What is service in docker or docker swarm?:
+Serivce is nothing but a collection of one or more replicas(contianers) of same type(Image).
+(dns) domain name resolution is done using the servicename
+
+What is stack in docker or docker swarm?:
+Stack is nothing but a collection of one or more serivces.
+
+
+
+version: '3.1'
+services:
+  springapp:
+    image: joveluro/spring-boot-mongo:latest
+    environment:
+    - MONGO_DB_HOSTNAME=mongo
+    - MONGO_DB_USERNAME=devdb
+    - MONGO_DB_PASSWORD=devdb123
+    ports:
+      - 9000:8080
+    working_dir: /opt/app
+    depends_on:
+      - mongo
+    deploy: #This will be considered only in docker swarm.
+    replicas: 3 # v1 
+    update_config:
+      parallelism: 1  # By default rolling Update is the deployment strategy
+      delay: 20s
+    restart_policy:
+      condition: on-failure
+      delay: 10s
+      max_attempts: 5
+
+  mongo:
+    image: mongo
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=devdb
+    - MONGO_INITDB_ROOT_PASSWORD=devdb123
+    volumes:
+    - mongodb:/data/db
+    restart: always
+
+  volumes:
+    mongodb:
+      driver: local
+
+
+updating a service:
+docker service ls
+docker service update --image joveluro/maven-web-app:5 javawebapp
+docker service ls
+
+How many docker swarm nodes do you have in production?  : 
+free -m 
+free -g
+
+and What is their capacities?  :
+
+   11 worker nodes  = 60GB memory and 20TB 
+   03 master nodes  = 
+       $200,000
+
+# Create a service with Volume mapping
+docker service create  -p <hostPort>:<containerPort> --name <serviceName> --replicas 1  --mount type=volume,source=<volumeName>,destination=<containerfolderPath> <imageName>
+
+# List Services
+docker service ls
+
+# List Services process
+docker service ps <servicenName>
+
+# Scale Services 
+docker service scale javawebapp=3
+
+docker service rm javawebapp
+
+In DockerSwarm:
+  Service is a collection of one or more containers(replicas)
+  of same image
+  Service creates containers and manages those containers
+
+
+# Add labels to node
+docker node update --label-add key=value <nodeid>
+Ex: docker node update --label-add server=nodeone qmdh9tgvdef99sryhbezswfl9
+
+docker node update --label-add server=nodetwo  n2brbkq0h61a1m1i0wz8dsbbp
+docker node ls
+
+docker node ls
+docker node update --label-add server=nodetwo node2
+docker node update --label-add server=dbnode node1
+docker inspect node1
+
+#Use above label in constraints  deploy this
+docker service create --name mydb \
+--replicas 2 --constraint 'node.labels.server==dbnode' mongo
+
+docker service ps mydb
+we can use this to deploy to a specific node
+
+can we have this in different level yes
+
+docker node ls
+
+
+# Global mode 
+docker service create  -p 9000:8080 --name myapp2 --mode=global   joveluro/maven-web-app
+
+# Drain Nodes in Cluster(Swarm will not create containers in drained nodes)
+
+docker node update --availability drain <NodeID>
+docker node ls
+docker node update --availability drain node2
+docker service ls
+docker service ps javawebapp
+
+why do we need to drain node 
+1. we want to do some parching 
+2. want to update your node

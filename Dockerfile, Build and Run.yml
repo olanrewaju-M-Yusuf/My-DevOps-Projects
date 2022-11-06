@@ -1,0 +1,128 @@
+Docker: is a software use to create docker images and run containerised application.
+Container: is a running instance of an application
+
+20l          =          100 x 25cl
+
+                         login
+                         payment
+ Amazon                  about
+                         cart
+                         application
+                         request
+                         Shipping
+                         account
+
+
+monolitic application  / micro-services
+
+vertualization vs containerization:
+
+Tomcat:
+Patching 
+Installation
+
+maven 
+scp <app-location> <destination>
+scp target/app.war ec2-user@192.168.2.5:/opt/tomcat/webapps
+scp *.war ec2-user@192.168.2.5:/opt/tomcat/webapps
+
+What is Docker:
+Docker is a containerisation platform which packages your app and all 
+dependencies together in the form of containers. so as to ensure that your 
+application works seamlessly in any environment be it dev or test or prod.
+
+Docker is an open platform for developers, system admins or engineers to build, 
+ship, and run distributed applications.
+
+Docker is Available in two editions (CE) - Community Edition and Enterprice Edition (EE)
+
+Docker  = 70%
+CoreOS  = 15%
+Rocket  = 15%
+
+Jenkinsfile  ----- pipeline script
+
+Dockerfile   ----- is a package that contains application code and all dependencies
+                   eg: rbc.war, paypal.war 
+                   + All dependencies (Software, Env vars, etc) 
+                   eg: Tomcat /wildfly - JBoss
+                   
+
+mvn package:   
+
+    app.war     ----  Docker Image === app.war  + Tomcat/java
+    app.ear     ----  Docker Image === app.ear + Tomcat or JBoss or wildfly / Java
+    app.jar     ----  Docker Image === app.jar + Java
+
+
+Dockerfile = app.war  +  Tomcat   : 
+
+running state or packaged state === Docker Image   :
+
+#######################################################
+#!/bin/bash
+Ubuntu Server 18.04 LTS (HVM),
+sudo hostname docker
+sudo apt update -y 
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu 
+#docker swarm init
+#to add nodes
+#docker swarm join --token SWMTKN-1-6c3ke0mcewu62k3eaf1g5y4rvqvod45elyillk0g0gogeo3vz5-99csbag2d9j39u7y9nwvfignn 172.31.16.91:2377
+
+
+#!/bin/bash
+# Run this as a script
+sudo hostname docker
+sudo apt-get update
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu 
+# Install java as Jenkins dependency
+sudo apt install openjdk-11-jdk -y
+# install Jenkins in ubuntu:
+sudo wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
+    /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins -y 
+sudo systemctl start jenkins 
+echo "jenkins  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/jenkins 
+sudo echo "jenkins:admin" | chpasswd
+sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
+sudo service sshd restart
+sudo usermod -aG docker jenkins 
+sudo su - ubuntu
+
+Docker       ==== build docker images
+docker swarm = to manage containers
+K8s          ==== to manage containers
+
+Dockerfile :
+
+FROM tomcat:10.0.26-jre8
+COPY target/*.war /usr/local/tomcat/webapps
+
+
+docker pull tomcat:10.0.26-jre8
+docker pull tomcat:10.0.26-jre8-temurin-jammy
+
+my docker Image
+
+
+
+
+mvn package  target = app.war + tomcat
+scp target/*.war ec2-user@192.168.2.5:/opt/tomcat/webapps
+
+scp <app-location> <destination>
+
+
+http://3.92.207.184:2000/web-app
+
+IP:containerPort/Appname
+
+To build Images:
+docker build -t cohort8 .
+
+To Run a Container:
+docker run --name app -d -p 2000:8080 cohort8

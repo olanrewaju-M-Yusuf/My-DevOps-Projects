@@ -1,0 +1,682 @@
+Docker: is a software use to create docker images and run containerised application.
+Container: is a running instance of an application
+
+20l          =          100 x 25cl
+
+                         login
+                         payment
+ Amazon                  about
+                         cart
+                         application
+                         request
+                         Shipping
+                         account
+
+
+monolitic application  / micro-services
+
+vertualization vs containerization:
+
+Tomcat:
+Patching 
+Installation
+
+maven 
+scp <app-location> <destination>
+scp target/app.war ec2-user@192.168.2.5:/opt/tomcat/webapps
+scp *.war ec2-user@192.168.2.5:/opt/tomcat/webapps
+
+What is Docker:
+Docker is a containerisation platform which packages your app and all 
+dependencies together in the form of containers. so as to ensure that your 
+application works seamlessly in any environment be it dev or test or prod.
+
+Docker is an open platform for developers, system admins or engineers to build, 
+ship, and run distributed applications.
+
+Docker is Available in two editions (CE) - Community Edition and Enterprice Edition (EE)
+
+Docker  = 70%
+CoreOS  = 15%
+Rocket  = 15%
+
+Jenkinsfile  ----- pipeline script
+
+Dockerfile   ----- is a package that contains application code and all dependencies
+                   eg: rbc.war, paypal.war 
+                   + All dependencies (Software, Env vars, etc) 
+                   eg: Tomcat /wildfly - JBoss
+                   
+
+mvn package:   
+
+    app.war     ----  Docker Image === app.war  + Tomcat/java
+    app.ear     ----  Docker Image === app.ear + Tomcat or JBoss or wildfly / Java
+    app.jar     ----  Docker Image === app.jar + Java
+
+
+Dockerfile = app.war  +  Tomcat   : 
+
+running state or packaged state === Docker Image   :
+
+#######################################################
+#!/bin/bash
+Ubuntu Server 18.04 LTS (HVM),
+sudo hostname docker
+sudo apt update -y 
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu 
+#docker swarm init
+#to add nodes
+#docker swarm join --token SWMTKN-1-6c3ke0mcewu62k3eaf1g5y4rvqvod45elyillk0g0gogeo3vz5-99csbag2d9j39u7y9nwvfignn 172.31.16.91:2377
+
+
+#!/bin/bash
+# Run this as a script
+sudo hostname docker
+sudo apt-get update
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu 
+# Install java as Jenkins dependency
+sudo apt install openjdk-11-jdk -y
+# install Jenkins in ubuntu:
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+/etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins -y 
+sudo systemctl start jenkins 
+echo "jenkins  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/jenkins 
+sudo echo "jenkins:admin" | chpasswd
+sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
+sudo service sshd restart
+sudo usermod -aG docker jenkins 
+sudo su - ubuntu
+
+
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+/etc/apt/sources.list.d/jenkins.list > /dev/null
+
+
+
+
+Docker       ==== build docker images
+docker swarm = to manage containers
+K8s          ==== to manage containers
+
+Dockerfile :
+
+FROM tomcat:10.0.26-jre8
+COPY target/*.war /usr/local/tomcat/webapps
+
+
+docker pull tomcat:10.0.26-jre8
+docker pull tomcat:10.0.26-jre8-temurin-jammy
+
+my docker Image
+
+
+
+
+mvn package  target = app.war + tomcat
+scp target/*.war ec2-user@192.168.2.5:/opt/tomcat/webapps
+
+scp <app-location> <destination>
+
+
+http://3.92.207.184:2000/web-app
+
+IP:containerPort/Appname
+
+To build Images:
+docker build -t cohort8 .
+
+To Run a Container:
+docker run --name app -d -p 2000:8080 cohort8
+
+
+
+continoues delivery: Manual Gate (Approval gate) production.
+
+Build ----- Test ------ Backup  ------  Deploy to (Tomcat)STAGE  ----  Approval Gate ---- Deploy to UAT(Tomcat) ------- Approval Gate --- Prod (Tomcat)
+
+Example:
+Build ----- Test ------ Backup  ------  Deploy to (Tomcat)STAGE  ----  Approval Gate 
+
+Build ----- Test ------ Backup -----    Deploy to UAT(Tomcat) ------- Approval Gate
+
+Build ----- Test ------ Backup -----  Prod (Tomcat)
+
+
+continoues deployment:
+
+Build ----- Test ------ Backup  ------  Deploy to (Tomcat)STAGE  ---- Deploy to UAT(Tomcat) --- Prod (Tomcat)
+
+
+Docker Commands:
+
+docker build -t <imageName>:tag <dockerfileLocation>
+
+docker build -t cohort8:1 .
+
+docker images
+
+docker pull
+
+docker run 
+
+docker rmi jboss/wildfly
+
+docker login -u <Username> 
+enter password
+
+
+docker rm <containerID>
+
+docker rm -f <containerID>
+
+docker rmi <imageID>
+
+docker rmi -f <imageID>
+
+docker rmi -f $(docker images -qa)
+
+docker rm -f $(docker ps -qa)
+
+docker images prune
+docker history
+
+docker tag acada:12.0 acadalearning/acada:1
+
+docker login -u <username> -p <password> IP:portnumber
+
+docker login -u IP:portnumber
+enter your password
+
+This will create a container from a running container
+docker create acadalearning/acada:1 cohort10
+
+docker exec <containerID/Name> command
+docker exec a2ae0f2d5498 pwd
+
+
+docker exec -it <containerID/Name> /bin/bash
+docker exec -it a2ae0f2d5498
+
+DOCKER KEYWORDS:
+
+FROM tomcat:10.0.26-jre8
+COPY target/*.war /usr/local/tomcat/webapps/acada.war
+MAINTAINER Acada learning
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.zip /opt
+
+docker build -t app .
+COPY . .
+
+RUN mkdir Francisca
+RUN cd Francisca
+RUN
+
+docker build 
+docker run 
+
+
+
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.zip /opt
+RUN mkdir efe \
+&& adduser tomcat \
+&& cd /opt \
+&& unzip https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.zip
+
+docker build -t imgae .
+
+
+CMD
+
+docker run
+
+Syntax:
+Shell Form
+Executable Form
+
+Shell Form:
+RUN <command with arguments>
+
+Executable Form:
+RUN ["command" , "Arg1" , "Arg2"]
+
+CMD java -jar springapplication.jar
+
+CMD ["Java" ,"-jar" ,"springapplication.jar"]
+
+CMD ["ls" ,"/"]
+CMD ["ls" , "/opt"]
+
+
+container exposed port 123   application exposed port 123
+
+What is the difference between RUN and CMD:
+RUN instructions will be executed while building the imgage
+CMD instructions will be executed while running the container
+We can have multiple RUN instructions while building or creating in the defined order (top to bottom)
+
+Can we have more than one CMD in a Dockerfile, YES
+however only the last one or most recent will be executed or procceesed
+CMD ["java" , "-jar" , ,"springapplication.jar""]
+CMD ["ls" ,"/"]
+CMD ["ls" , "/opt"]
+
+
+ENTRYPOINT:
+CMD ["ls" , "/opt"] 
+ENTRYPOINT ["echo" , "Hello"]
+
+ENTRYPOINT instruction overides CMD when bothh are in the same dockerfile
+
+hello
+
+CMD start
+ENTRYPOINT ["sh", "catalina.sh"]
+
+docker run = sh catalina.sh start
+
+CMD start
+ENTRYPOINT ["sh", "sonar.sh"] 
+
+sh sonar.sh start
+
+Shell Form: (Child process)
+CMD java -jar springapplication.jar
+ENTRYPOINT java -jar springapplication.jar
+/bin/bash or /bin/sh
+
+Executable Form:  (Parent Process)
+CMD ["sh" , "sonar.sh" , "start"] 
+ENTRYPOINT ["sh" , "catalina.sh" "start"]
+
+SIGNALS
+PID 1
+
+ENV: 
+for jenkins
+
+JENKINS_HOME /var/lib/jenkins
+
+
+ENV name Efe J
+ENTRYPOINT ["/bin/echo" , "Hello, $name"]
+
+EXPOSE 
+
+WORKDIR /opt
+
+VOLUME
+LABEL
+
+ARG 
+
+Single stage Dockerfile:
+FROM ubuntu 
+COPY
+ADD
+RUN
+
+FROM centos
+RUN yum install java -y
+RUN yum install maven -y
+RUN yum install wget git unzip zip -y
+RUN git clone https://github.com/acadalearning/web-app.git
+WORKDIR web-app
+RUN mvn clean package
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.zip
+RUN unzip apache-tomcat-9.0.68.zip
+COPY target/*.war /usr/local/tomcat/webapps
+CMD ["catalina.sh" , "run"]
+
+
+
+Multistage Dockerfile:
+FROM alpine/git as repo
+MAINTAINER acadalearning@gmail.com
+WORKDIR /app
+RUN git clone https://github.com/acadalearning/web-app.git
+#Maven
+FROM maven:3.5-jdk-8-alpine as build
+WORKDIR /app
+COPY --from=repo /app/web-app  /app
+RUN mvn package
+#Tomcat
+FROM tomcat:8.0.20-jre8 
+#COPY  /app/target/*war /usr/local/tomcat/webapps/maven-web-app.war
+COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/
+
+
+===================================================================
+
+Best Practice:
+    * Use linux lightweight alpine images where applicable.
+    * Reduce the number of layers by minimising the numbers of run instructions, 
+      these affects the performace of containers.
+        ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.zip /opt
+        RUN mkdir efe \
+        && adduser tomcat \
+        && cd /opt \
+        && unzip https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.67/bin/apache-tomcat-9.0.67.zip
+    * Use only official images in docker hub for base image
+    * Avoid downloading unneccessary software or packages
+    * Scan your docker images 
+    * Use Multistage Dockerfile where applicable
+    * Use the executable shell or parent process when applicable
+
+RDB                         noRDB:
+mySQL                       mongodb
+MariaDB                     noSQL
+ProstgreSQL                 dynamoDB
+RabitMQ                     graphDB
+aurora                      REDSHIFT
+                            Casandra
+
+
+RDB:
+In relational Database data is stored in ROWS and COLUMNS (Table)
+SN          Name             Class           Age
+1           Efe             DevOps           16
+2           Ifeoma          Platform         14
+
+Non-RDB:
+In non relational Database data is stored in JSON format
+
+{
+    name: 'Efe'
+    SN:    "1'
+    age:   '16'
+    Class:  'DevOps'
+}
+
+{
+    name: 'Ifeoma'
+    SN:    "2'
+    age:   '14'
+    Class:  'Paltform'
+}
+
+How to install Database:
+1. Create an EC2 Instance
+2. Install DB Engine
+
+Create DB Username and Password:
+Username: admin
+Password: admin123
+Hostname: mongo
+
+
+Self Managed DB: mongo
+Managed DB: RDS 
+
+Docker Network:
+
+Docker           = containerisation Engine/ Software / tool
+Docker  Network  = to group applications in a cluster so that they can talk to each other
+Dockerfile       = A file that contains list of docker instructions
+Docker Image     = Build docker-image artifacts that is used to run docker container (dependencies + App Code)
+Docker Container = Running instance of a docker image
+Docker Registry  = Centtral storage for docker images
+Docker command:  = docker ps/run/pull/exec/start/stop/logs/rmi/build/push/images/rm/login/kill/search/prune
+
+
+3 Types of Network:
+
+Bridge Network:  Default bridge Network   = Containers communicates using the containerIP Only
+Host Network:    Containers will not have IP address.  Containers will be created in the system network
+None Network:    Containers communicates with both IP and Hostname 
+Overlay network: Docker Swarm
+                 Kubernetes
+                 Openshift
+                 Nomand
+                 Mesos
+
+
+How to create  network:
+Custome network
+docker network create -d <driver> <networkName>
+docker network create <networkName>
+
+3.84.254.198
+172.31.84.47
+
+
+172.17.0.2
+
+
+username
+Password
+
+
+docker run  -d --name mongo26 --network fintech \
+-e MONGO_INITDB_ROOT_USERNAME=uatdb -e MONGO_INITDB_ROOT_PASSWORD=uatdb123  mongo
+
+
+
+docker run -d -p 8001:8080 --name springapp26  -e MONGO_DB_HOSTNAME=mongo26 \
+-e MONGO_DB_USERNAME=uatdb -e MONGO_DB_PASSWORD=uatdb123 --network fintech \
+acadalearning/spring-boot-mongo
+
+
+MONGO_DB_HOSTNAME
+MONGO_DB_USERNAME
+MONGO_DB_PASSWORD
+
+
+
+docker run --name acada -d -p 4600:8080 acadalearning/spring-boot-mongo
+
+
+Docker Volume:
+
+network:
+fintech
+
+subnet: 172.18.0.0/16
+        2^32 -16 ==== 2 ^ 16  65,536
+
+Network:
+    subnet: 172.18.0.0/16,
+    Gateway: 172.18.0.1
+
+By Default Docker Daemon determines the subnet prefix
+
+When we create a mondodb where does it store data
+
+docker run --name some-mongo -v /my/own/datadir:/data/db -d mongo
+
+docker run --name some-mongo -v /home/ubuntu/data:/data/db -d mongo
+
+
+
+mount point
+/home/ubuntu/data
+
+
+
+bind mount:
+/home/ubuntu/data:/data/db
+
+
+docker run  -d --name mongo26 --network fintech -v /home/ubuntu/data:/data/db \
+-e MONGO_INITDB_ROOT_USERNAME=uatdb -e MONGO_INITDB_ROOT_PASSWORD=uatdb123  mongo
+docker run -d -p 8001:8080 --name springapp26  -e MONGO_DB_HOSTNAME=mongo26 \
+-e MONGO_DB_USERNAME=uatdb -e MONGO_DB_PASSWORD=uatdb123 --network fintech \
+acadalearning/spring-boot-mongo
+
+
+=====================================
+Docker Compose:
+
+Is a tool for defining and running multiple containerised application
+
+docker network create fintech
+Micro-services:
+
+Login
+image:
+network:
+Registration
+image:
+network:
+Checkout
+image:
+network:    
+payment
+image:
+network:    
+order
+image:
+network:   
+mongodb
+image:
+network:
+
+docker run --name login -d -p 5000:8080 acadalearning/login --network fintech
+
+docker run --name registration -d acadalearning/registration --network fintech
+
+docker run --name Checkout -d acadalearning/Checkout --network fintech 
+
+docker run --name payment -d acadalearning/payment --network fintech
+
+docker run --name order -d acadalearning/order --network fintech
+
+docker run --name mongo -d acadalearning/mongo --network fintech
+
+
+docker --version
+sudo apt  install docker-compose
+
+
+.yaml
+
+integer
+age: 100
+float
+price: 60.5
+string
+name: 'acada'
+dictionary (key value pairs)
+ name: efe
+ age: 105
+ country: Canada
+list/arrays
+    student:
+        - name: Efe
+          age: 105
+        - name: Dela
+          age: 25
+        - name: Ese
+          age: 15
+
+
+docker run  -d --name mongo26 --network fintech -v /home/ubuntu/data:/data/db \
+-e MONGO_INITDB_ROOT_USERNAME=uatdb -e MONGO_INITDB_ROOT_PASSWORD=uatdb123  mongo
+
+version: '3.5'
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    networks:
+    - fintech
+    - barclay
+    volumes: 
+    - mongo-data:/data/db
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=uatdb
+    - MONGO_INITDB_ROOT_PASSWORD=uatdb123
+  springapp:
+    image: acadalearning/spring-boot-mongo
+    restart: always
+    networks:
+    - fintech
+    ports:
+    - 6000:8080
+    environment:
+    - MONGO_DB_HOSTNAME=mongo26
+    - MONGO_DB_USERNAME=uatdb
+    - MONGO_DB_PASSWORD=uatdb123
+    depends_on:
+    - mongodb
+volumes:
+  mongo-data:
+    driver: local
+  ebs-data:
+    driver: rexray/ebs
+networks:
+  fintech:
+    external: true
+
+
+  docker plugin install rexray/ebs \
+  EBS_ACCESSKEY=AKIA2OFMX4GAZU6EING3 \
+  EBS_SECRETKEY=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
+
+docker-compose up -d
+
+docker-compose ps
+
+
+===================================
+Docker Swarm:
+
+#!/bin/bash
+sudo hostname node1
+sudo apt update -y 
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu 
+docker swarm join --token SWMTKN-1-533idox0kqom9s74rzzyjpwpr6nti816g0r3yyiwuiqcwzr162-6th8fvah8um78hxjk06am0a4p 172.31.30.151:2377
+
+
+docker service create <serviceName>
+
+docker service create --name javawebapp -p 7000:8080 acadalearning/java-web-app
+
+
+Docker Swarm has two modes:
+Replicas mode:  -- Default mode --  it will deploy based on the number of replicas
+                                   scalling is achievable 
+                                   docker service scale javawebapp=7
+                                   we can deploy custome application using this mode
+
+Global mode:  1 Server 2 worker nodes (all nodes)
+              Use to deploy log or monitoring management application
+              New Relic / Prometheus and Grafana / Cloudwatch / Dynatrace / DataDog / Splunk
+
+
+Stack is used to deploy a collection of more than one service (multiple services)
+
+
+version: '3.8'
+services:
+  mongo:
+    image: mongo
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=devdb
+    - MONGO_INITDB_ROOT_PASSWORD=devdb123
+    volumes:
+    - mongodb:/data/db
+    restart: always
+
+volumes:
+  mongodb:
+    driver: local
+
+
+docker stack deploy --compose-file dc.yml springmongo
+
+services creats containers and manages the containers
+
+docker service create --name mydb \
+--replicas 2 --constraint 'node.labels.server==dbnode' \
+mongo
