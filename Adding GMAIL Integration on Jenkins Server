@@ -1,0 +1,22 @@
+Addimg GMAIL Integration on Jenkins Server
+
+
+#GMAIL SMTP SETTINGS
+Gmail SMTP server address: smtp.gmail.com
+Gmail SMTP name: Your full name
+Gmail SMTP username: Your full Gmail address (e.g. you@gmail.com)
+Gmail SMTP password: The password that you use to log in to Gmail
+Gmail SMTP port (TLS): 587
+Gmail SMTP port (SSL): 465
+====Configure your Jenkins from GUI=======
+#From jenkins dashboard to manage jenkins --> configure system 
+#scroll down to E-mail Notification ---> fill in your credebtials  
+====Set up applications specific password google account======
+#Go to settings 
+#Click on all settings --> accounts and imports --> other Google settings 
+#Click on privacy and personization --> security 
+#Set up 2-step verification 
+#Generate app specific password
+#Copy the app specific password and paste under password on the jenkins page
+#test the configuration
+Done!
