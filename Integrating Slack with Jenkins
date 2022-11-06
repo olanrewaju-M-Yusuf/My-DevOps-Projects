@@ -1,0 +1,56 @@
+Integrating Slack with Jenkins
+
+----------------
+slack + Jenkins
+----------------
+
+download 'slack notification' as a plug-in in Jenkins
+
+====> Configure your Slack Channel <======  
+
+# Create new workspace 
+
+# Use your email to get 6-digits code
+
+# open slack
+
+# workspace name ---> DevOps Project
+
+# Create a slack channel ---> demo-project
+
+# ignore adding other team members for now (you can add them later)
+
+# Go to browse slack ---> Apps
+
+# Search for --- Jenkins
+
+# it opens slack App directory with Jenkins...then "Add to Slack"
+
+# Add the demo-project channel and integrate with Jenkins CI
+# Follow the 'Set-up instructions'
+
+workspace = dev-xnb4297
+secret text = 12KBlUGGqsOkCkXs4nD1rOw6
+
+====> Configure your Jenkins CI <======  
+Go to Manage Jenkins
+
+Go to Configure systems ---> Slack
+workspace = dev-xnb3943
+
+secret text = 12KAlUBGqsOsCkXs4nD1rOw6
+test slack connections
+
+After General configuration
+
+=====> Configure Slack for the Specific Project <=======
+Configure the Project
+
+Under Post-build action
+
+configure slack
+
+test slack connections by running the Jenkins job
+
+"You're done !!!"
+
