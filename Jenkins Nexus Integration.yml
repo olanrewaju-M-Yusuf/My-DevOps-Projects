@@ -1,0 +1,1058 @@
+<<cc
+JENKINS CICD NOTES
+cc
+
+13/08/2022
+
+Jenkins:
+	CI - continous integration - automating build and testing of code
+
+The DevOps lifecycle consists of eight stages in the planning, development, and operation of a system or software application:
+
+- Plan
+- Code
+- Build
+- Test
+- Release
+- Deploy
+- Operate
+- Monitor
+
+Jenkins automates building and testing by running commands that create the software artifact and run it through a series of tests.  This artifact could be a container image, a Java archive, a windows executable, or any other sort of software package.
+
+Jenkins can be applied in the following steps:
+
+CI
+- Build
+- Test - 
+	cost money to write application
+	application security 
+	JUnit test. - unit test. 1 + 1 = 4 failure
+CD
+- Release versioning 
+- Deploy make it available for use in a remote repository
+
+CI tools -
+	Buildbot
+	TeamCity
+	Draco.NET
+	TravisCI
+	Jenkins
+	GitLab
+	circleci
+	Bamboo
+	Buddy
+
+
+Jenkins depends on plugins. Plugin extends the functionality of jenkins.
+Plugin allow jenkins integration with of devops tools.
+------
+
+
+
+jenkins:
+  Jenkins, is an open source Continuous Integration
+         and cross-platform tool written in Java. 
+
+  Platform:   
+      Linux--> Redhat, UBUNTU
+      Windows
+      MacOS-
+      5 years expereince:
+
+
+  HUDSON   ------  2004  -----  Oracle
+
+  2011  ------  JENKINS Community  -----  Jenkins
+
+
+  Jenkins: 
+  Continoues Integration that automates the Build and test process in our projects
+  Maven:
+  validate --- Compiles --- test ---- Package (target Envi. Dir) -- tomcat
+
+  Continoues delivery
+  Code --- Build --- test --- (UAT/Testing)STAGING --- Manual Approval --- Production(Prod) -- JBoss/Tomcat
+                                                                           Continoues Delivery
+  Continoues Deployment
+  Code --- Build --- test --- (UAT/Testing)STAGING --- Auto Approval --- Production(Prod) -- JBoss/Tomcat
+                                                                          Continoues Deployment
+  Oxdit Envi: 
+  Developement
+  Stag/Test/UAT/Pre-prod
+  Production
+
+
+  Internal Project: In House ---  Continoues Deployment
+
+  External Project: Client ------ Continoues Delivery
+
+
+  Which edition of jenkins have you used in Production?
+   Community Edition (CE)
+       Jenkins
+   ENTERPRISE ENTERPRISE -EE
+       CloudBees Jenkins
+
+       Installation of Jenkins: Community Edition (CE)
+
+
+#Provisioning of Jenkins server.
+
+1. Goto AWS Account, login
+2. Goto EC2
+3. Create a Security Group 
+	Name - <name eg jenkins>
+	Inbound rule
+		- expose port 8080 from anywhere IPV4 to allow traffic to/from jenkins
+		- expose SSH on port 22 to allow you communicate with your jenkins server.
+	Save and exit
+
+4. Spin up a server with following configuration
+	RedHat v8
+	t2.medium
+
+	select existing SG - (No 3) under Network
+	default on others
+	Launch the instance
+
+5. SSH into the jenkins instance
+	
+#!/bin/bash
+# Author: Prof. Efe J.
+# date: 10/08/2022
+# Installing Jenkins on RHEL 7/8, CentOS 7/8 or Amazon Linux OS
+# You can execute this script as user-data when launching your EC2 VM.
+# Create Red hat EC2 t2.medium Instance with 4GB RAM.
+# Create Security Group and open Required ports 8080 got Jenkins, ..etc.
+
+cd /opt
+
+# 1. Install Java and other pre-requisits. 
+sudo yum update
+sudo yum -y install unzip wget tree git
+sudo wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm
+sudo yum install jdk-8u131-linux-x64.rpm -y
+
+# 2. Add Jenkins Repository and key
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+cd /etc/yum.repos.d/
+sudo curl -O https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+# 3. Install Jenkins
+sudo yum -y install jenkins --nobest
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+sudo systemctl status jenkins
+
+
+
+
+systemctl status jenkins --no-pager | grep -i "active"
+
+The command: sudo cat /var/lib/jenkins/secrets/initialAdminPassword will print the password at console.
+
+systemctl status jenkins --no-pager | grep -i "active"
+
+to access jenkins from the webUI <public-url>:8080 eg 72.93.56.34:8080
+
+----------------------------------------------------------------------------------------------------------------17.08.2022
+
+Jenkins - Git integration
+
+https://github.com/acadalearning/web-app
+
+Create your project directory and name it appropiately, add a description to it where neccessary
+
+1. Jenkins-Github Integration:
+-----------------------------------------------------------------------
+
+precheck - INSTALL GIT in Jenkins or  Configure git plugin in Jenkins
+
+In "Source Code Management" tab, select "Git" 
+
+Copy the remote repository URL from github and paste in the Repository URL
+
+Add/create credentials to access code in Guthub - Username and Password. ID == Description = Github-Cred and Add it.
+Apply and Save.
+
+Click build and monitor progress in the console output to check it connection is successful
+
+
+2. Jenkins - Maven Integration:
+
+# To be created
+
+
+Maven is a build tool for creating deployable artifact from source code
+
+Build tools
+ANT    1000lines 
+Gradle
+npm
+maven 400 lines
+
+Why Maven
+1. It reduces the line of code 
+2. It have set of standards
+
+  Project Management tool with project object Model  - pom.xml 
+
+  - Have set of standards
+  - Have a project Lifecycles
+  - A dependency management system
+  - logic for execution at various lifecyle of project
+  - Maven makes project IDE agnostic
+  - Allows for easy modification to the projects
+  - Simplifies the declaration of project dependency - focus on the what not how
+  - Ease the preparation of project documentation - pom.xml
+
+Organization of Code - Developer
+
+Directories/Folder
+POM file - Project Object Model (The heart of maven project) pom.xml 
+
+    Baseline construct - files are set-up with specific/default behaviours
+      source code - src/main folder/directory
+      resources - another folder/directory
+      test cases - another folder/directory unit test - junit
+      built artifact - target folder/directory
+
+    just place each in the right directory - maven handles the rest.
+
+Folder structure
+ src
+ target
+ pom
+
+
+Jenkins, maven need java
+
+
+Maven pre-requisite:
+JRE - Java Runtime Environment
+JDK - Java Developement Kit 1.8+
+
+Ways to Install Maven:
+1. Maven can be installed as a statefull application 
+2. Maven can be installed as tool in Jenkins
+3. Maven can be installed as a plugin in Jenkins
+
+
+Install Maven as a tool in Jenkins:
+
+
+Maven lifecycle Goal:
+  3 life cycles:
+
+1. Clean
+2. Site / Swagger
+3. Default
+
+
+Lifecycle                                    Goals
+==================================================
+
+Clean                                  clean:
+                                       Delete the old builds
+                                       
+                                       mvn clean
+                                       
+
+Site / Swagger                         Site:
+                                       Javac is a command that Compiles java classes,
+                                       Generate byets that JVM can understand
+                                       Then it will do a build
+
+                                       JVM = 110001011110101111110000101
+
+Default                                validate:
+                                       maven will validate that the project is correct and all neccessary 
+                                       information is available 
+                                       
+                                       mvn validate
+
+                                       Compile:
+                                       Compiles the source code of the project
+                                       Compile all the java classes and and the unit test cases
+                                       
+                                       mvn compile
+
+                                       Test:
+                                       it will run the unit test cases (JUnit)
+
+                                       mvn test
+
+                                       Package:
+                                       Will create the package file in the target directory
+                                       (Will create .jar or .war or .ear in the target directory)
+                                       This will download all plugins / dependencies of that application (maven central library)
+                                       mvn package
+
+                                       Install:
+                                       Install the package into the local repository for use as dependency for other projects
+                                       It will store the build artifacts in the repository
+                                       local  = .m2/repository
+
+                                       mvn install
+
+                                       Deploy:
+                                       It will upload the build artifacts to the remote repository
+                                       remote repo = Nexus
+
+                                       mvn deploy
+                                        
+
+Types of packages in Maven:
+acadalearning.jar     = Java archive  --  Standalone applications, Microservices
+acadalearning.war     = Web application archive -- Web applications
+acadalearning.ear     = Enterprice Applciation archive - Enterprice Applciations
+
+
+
+Source Code
+Unit Test Cases    
+Build Script
+
+
+
+Human readable:
+
+JVM = Java Virtual Machine
+bin:
+001110100101010101010101 
+
+
+git clone
+git merge
+git pull
+
+
+<h1> The lord is good </h1>
+
+convert to suitecase can understand 
+
+convert to human 
+
+
+mvn package 
+
+validate
+compile
+test
+package
+
+
+package
+Building war: /var/lib/jenkins/workspace/cohort8-project/target/web-app.war
+
+[INFO] Deleting /var/lib/jenkins/workspace/cohort8-project/target
+
+
+
+=======================================================================
+
+Overview on Maven:
+
+Back in time.
+
+
+
+You can install maven on windows and Linux
+Maven installation in Centos 7 & 8 and RHEL 7 & 8
+t2 medium 4GM RAM 
+-------------------------------------------------------------------------------------------------------------------------
+1. JAVA -  Pre Requisite Software  and Git for code download
+-----------------------------
+# Become root and cd /opt  (sudo su && cd /opt)
+
+sudo su – 
+cd /opt
+
+sudo yum install wget nano tree unzip git-all -y
+
+sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
+java -version
+git -version
+
+2. Install Maven.sh
+------------------
+Step1) Download the Maven Software
+
+sudo wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
+sudo unzip apache-maven-3.6.3-bin.zip 
+sudo rm -rf apache-maven-3.6.3-bin.zip
+sudo mv apache-maven-3.6.3/ maven
+
+Step3) Set Environmental Variable  -  For Specific User
+----------------------
+sudo vi ~/.bash_profile
+export M2_HOME=/opt/maven
+export PATH=$PATH:$M2_HOME/bin
+
+OR:
+
+Step3b) Set Environmental Variable  For All Users
+---------------------- 
+sudo vi /etc/profile
+export M2_HOME=/opt/maven
+export PATH=$PATH:$M2_HOME/bin
+
+step4) Activate the maven home and mvn by running the below scripts
+sudo source ~/.bash_profile
+sudo source /etc/profile
+
+Step5) Check the Maven version
+mvn -version
+END OF INSTALLATION.
+
+
+
+
+https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
+
+
+
+python pip
+
+nodeJS  angula
+
+
+
+Total time:  1.400 s    
+             .137 s
+
+
+mvn package --- local repository --- remote repository   ---- central repos  (maven central library)
+
+
+
+==============================================================
+Tomcat: (Apache Tomcat):
+
+Introduction:
+Tomcat or apache tomcat is a light weight, open source web container used to deploy amd run java-based web application.
+it is developed by Apache Software Foundation (ASF).
+
+Webserver:
+a webserver is a program that uses HTTP (Hypertext Transfer Protocol) protocols that serves web content 
+(HTML) Hypertext markup Language.
+
+Application server:
+  is a container upon which you can build and expose business logic and processes to client through various protocols 
+  including HTTP in an n-tier achitecture.
+
+
+Examples:
+Apache Tomcat
+JBoss/ Wildfly -- RedHat
+WebLogic - Oracle
+Websphere Liberty Profile - IBM
+Websphere Liberty Application Server - IBM
+GlassFish
+
+
+Apache Tomcat Installation:
+
+
+#!/bin/bash
+# install Java JDK 1.8+ as a pre-requisite for tomcat to run.
+# EC2 t2micro
+
+cd /opt 
+sudo yum install unzip wget -y
+sudo yum install java-1.8.0-openjdk-devel -y
+
+# Download tomcat software and extract it.
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65.tar.gz
+sudo tar -xvf apache-tomcat-9.0.65.tar.gz
+sudo rm apache-tomcat-9.0.65.tar.gz
+sudo mv apache-tomcat-9.0.65 tomcat9
+sudo chmod 777 -R /opt/tomcat9                                                        
+sudo sh /opt/tomcat9/bin/startup.sh
+
+# create a soft link to start and stop tomcat
+sudo ln -s /opt/tomcat9/bin/startup.sh /usr/bin/starttomcat
+sudo ln -s /opt/tomcat9/bin/shutdown.sh /usr/bin/stoptomcat
+sudo starttomcat
+
+echo "end on tomcat installation"
+
+To know if Tomcat is running
+ps -ef | grep tomcat
+
+
+Tomcat default Port: 8080
+
+Catalina.sh
+
+
+Tomcat configuration:
+
+1. Enable Tomcat External Access:
+
+
+Multiline comment:
+<!--
+
+-->
+
+TMD = /opt/tomcat9
+vi /opt/tomcat9/webapps/manager/META-INF/context.xml
+
+Comment the below value out:
+<!--
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+-->
+
+
+2 Create Tomcat User and Password:
+
+vi /opt/tomcat9/conf/tomcat-users.xml
+
+<user username="acada" password="admin123" roles="manager-gui,manager-script,admin-gui"/>
+
+  (Deployment takes place in the webapps directory)
+
+3. Change the tomcat default port from 8080 to 7000 (Custom Port):
+
+ vi /opt/tomcat9/conf/server.xml
+
+      <Connector port="7000" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+=============================================================================================
+
+4. Create password for your user:
+
+   sudo passwd ec2-user
+
+5. Enable password authentication:
+
+  sudo vi /etc/ssh/sshd_config
+
+  Change the no to yes
+  PasswordAuthentication yes
+
+
+  Restart sshd:
+  sudo service sshd restart
+  OR
+  sudo systemctl restart sshd
+
+
+
+http://54.225.2.53:7000/
+
+http://54.225.2.53:7000/
+
+
+
+on-prem
+
+SDLC =  Requirement --- design --- development --- testing  ---- Deployment --- maintainance(monitoring)
+     =  Coding   ----- Build  ---- test  ------  Deployment 
+
+
+We support Java based projects and a few .NET projects
+we support apps written in java, .NET, nodeJS
+
+Java, .NET, nodeJS is a programming Language
+
+http://54.167.55.55:7000/
+
+==========================================================
+
+.m2/repository
+
+.jar
+.war
+.ear
+
+/opt/tomcat9
+/var/lib/jenkins
+
+
+local server:
+cp <source> <destination>
+
+
+clone
+scp
+ssh copy id
+mv
+pull
+push
+fetch
+
+.war from server A to Server B
+scp <source> <destination>
+
+
+scp maven-web-app.war ec2-user@54.167.55.55:/opt/tomcat9/webapps
+
+
+
+ec2-user@54.167.55.55
+
+
+ec2-user@
+
+
+server A     to server B  =  ec2-user@54.167.55.55
+
+http://54.167.55.55:7000/maven-web-app/
+
+http://54.167.55.55:7000/web-app/
+
+
+http://54.167.55.55:7000/paypal/
+
+4.224 s
+
+
+standalone application (.jar)
+ web application (.war)
+enterprice application (.ear)
+
+
+I am managing a federated enterprice application for a banking client.
+Enterprice applciation with over 20 modules
+
+.war
+.ear = .war .jar .ear
+
+
+.ear .war
+
+pom.xml
+
+
+.
+├── MavenEnterpriseApp-ear
+│   ├── pom.xml
+│   └── src
+│       └── main
+│           └── application
+│               └── META-INF
+│                   └── MANIFEST.MF
+├── MavenEnterpriseApp-web
+│   ├── pom.xml
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── mt
+│       │   │           └── HelloWorldController.java
+│       │   └── webapp
+│       │       └── WEB-INF
+│       │           ├── home.jsp
+│       │           ├── mvc-dispatcher-servlet.xml
+│       │           └── web.xml
+│       └── test
+│           └── java
+│               └── com
+│                   └── mt
+│                       └── TestController.java
+└── pom.xml
+
+
+========================================
+
+.
+├── MavenEnterpriseApp-ear
+│   ├── pom.xml
+│   ├── src
+│   │   └── main
+│   │       └── application
+│   │           └── META-INF
+│   │               └── MANIFEST.MF
+│   └── target
+│       ├── application.xml
+│       ├── maven-archiver
+│       │   └── pom.properties
+│       ├── MavenEnterpriseApp-ear
+│       │   ├── MavenEnterpriseApp-web-1.0.war
+│       │   └── META-INF
+│       │       ├── application.xml
+│       │       └── MANIFEST.MF
+│       └── MavenEnterpriseApp-ear.ear
+├── MavenEnterpriseApp-web
+│   ├── pom.xml
+│   ├── src
+│   │   ├── main
+│   │   │   ├── java
+│   │   │   │   └── com
+│   │   │   │       └── mt
+│   │   │   │           └── HelloWorldController.java
+│   │   │   └── webapp
+│   │   │       └── WEB-INF
+│   │   │           ├── home.jsp
+│   │   │           ├── mvc-dispatcher-servlet.xml
+│   │   │           └── web.xml
+│   │   └── test
+│   │       └── java
+│   │           └── com
+│   │               └── mt
+│   │                   └── TestController.java
+│   └── target
+│       ├── classes
+│       │   └── com
+│       │       └── mt
+│       │           └── HelloWorldController.class
+│       ├── generated-sources
+│       │   └── annotations
+│       ├── generated-test-sources
+│       │   └── test-annotations
+│       ├── maven-archiver
+│       │   └── pom.properties
+│       ├── MavenEnterpriseApplication
+│       │   ├── META-INF
+│       │   └── WEB-INF
+│       │       ├── classes
+│       │       │   └── com
+│       │       │       └── mt
+│       │       │           └── HelloWorldController.class
+│       │       ├── home.jsp
+│       │       ├── lib
+│       │       │   ├── hamcrest-core-1.3.jar
+│       │       │   ├── junit-4.12.jar
+│       │       │   ├── spring-aop-5.0.2.RELEASE.jar
+│       │       │   ├── spring-beans-5.0.2.RELEASE.jar
+│       │       │   ├── spring-context-5.0.2.RELEASE.jar
+│       │       │   ├── spring-core-5.0.2.RELEASE.jar
+│       │       │   ├── spring-expression-5.0.2.RELEASE.jar
+│       │       │   ├── spring-jcl-5.0.2.RELEASE.jar
+│       │       │   ├── spring-web-5.0.2.RELEASE.jar
+│       │       │   └── spring-webmvc-5.0.2.RELEASE.jar
+│       │       ├── mvc-dispatcher-servlet.xml
+│       │       └── web.xml
+│       ├── MavenEnterpriseApplication.war
+│       ├── surefire-reports
+│       │   ├── com.mt.TestController.txt
+│       │   └── TEST-com.mt.TestController.xml
+│       └── test-classes
+│           └── com
+│               └── mt
+│                   └── TestController.class
+└── pom.xml
+
+
+aws.amazon.com
+
+login
+payment
+services
+etransfer
+loan
+training
+
+
+mvn package -DskipTests
+
+
+ mvn package -Dmaven.test skip=true
+ mvn -X package
+
+
+
+.m2/repository
+
+ls ~/.m2/repository/
+
+
+creating a maven custome repository:
+
+/tmp/fintech-mlr
+
+MHD = /opt/maven
+
+sudo vi /opt/maven/conf/settings.xml
+
+<localRepository>/tmp/fintech-mlr/</localRepository>
+
+
+
+hsperfdata_ec2-user   namespace-dev-cye0wE  systemd-private-a84944fb44fc4892910226ab611e535d-chronyd.service-DJiojf
+hsperfdata_root       namespace-dev-jlCLCb
+namespace-dev-70NTe7  namespace-dev-n8mpDQ
+
+
+fintech-mlr          namespace-dev-70NTe7  namespace-dev-n8mpDQ
+hsperfdata_ec2-user  namespace-dev-cye0wE  systemd-private-a84944fb44fc4892910226ab611e535d-chronyd.service-DJiojf
+hsperfdata_root      namespace-dev-jlCLCb
+
+
+
+ssh -i maven8.pem ec2-user@54.167.55.55
+
+
+scp -i maven8.pem target/*.war ec2-user@54.167.55.55:/opt/tomcat9/webapps
+
+
+==============================================================================
+
+SONARQUBE: Code Quality Check
+
+Why Code Quality Check:
+
+Make code readable
+Easy to maintain code in future
+Detech Bugs at earlier stage
+
+
+Code Quality Check tools:
+SonarQube
+Sonar Cloud
+Sylinium
+Codacy
+Checkmark
+CodeBeat
+Cypress
+snyk
+
+SonarQube Features:
+* It gives you a snapshot of your code quality at a giving time
+* It provides us with code quality metrics to help us in decision making.
+* it addresses coding rules, test coverage, code duplications, complexity, 
+  and architecture providing all the details in a dashboard.
+
+
+SRC, BS, UTC
+
+
+
+1000 lines of code
+
+75% of 1000 lins of code  = 750 lins of code
+
+<h1>welcome</h1>
+
+
+<h1>welcome</h1>
+
+
+Sonarqube Installation:
+
+#!/bin/bash
+# Author: Efe Joveluro
+# CentOS or REHEL 7/8
+#  Install JAVA pre-requisite
+t2 medium
+Default port 9000
+sudo hostname sonar
+cd /opt
+sudo yum -y install unzip wget git
+sudo wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm
+sudo yum install jdk-8u131-linux-x64.rpm -y
+#Download the SonarQube Server software. 
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.8.zip
+sudo unzip sonarqube-7.8.zip
+sudo rm -rf sonarqube-7.8.zip
+sudo mv sonarqube-7.8 sonarqube
+
+
+#As a good security practice, SonarQube Server is not advised to run sonar service as a root user, 
+so create a new user called sonar and grant sudo access to manage sonar services as follows
+add
+
+sudo useradd sonar
+
+# Grand sudo access to sonar user
+
+sudo echo "sonar ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/sonar
+
+sudo chown -R sonar:sonar /opt/sonarqube/
+sudo chmod -R 775 /opt/sonarqube/
+
+
+# start sonarqube as sonar user using relative path
+sudo su - sonar  
+cd /opt/sonarqube/bin/linux-x86-64/ 
+sh sonar.sh start
+# or start sonarqube as sonar user using absolute path
+sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start 
+
+#sh /opt/sonarqube/bin/linux-x86-64/sonar.sh start | stop | status | restart
+
+Sonarqube default user: admin
+Sonarqube default password: admin
+
+
+quality profile = are sets of rules passed for a specific project
+sonar way 
+
+
+mvn package: validate, compiles, test, package
+
+mvn sonar:sonar 
+
+
+<sonar.host.url>http://172.31.23.188:5000/</sonar.host.url>
+
+
+172.31.18.127:9000
+
+----------------------------------
+how to configure sonarqube details:
+
+vi pom.xml
+
+look for the properties tag and change the following:
+* sonar.host IP and post address
+* sonar.login: admin
+* sonar.password: admin
+
+
+How to change Sonarqube Default port:
+ sudo vi /opt/sonarqube/conf/sonar.properties
+
+look for:
+sonar.web.port=9000
+
+uncomment and the value
+save and exit
+
+restart sonarqube
+
+
+
+
+=======================================================================================
+NEXUS:
+
+  "Nexus is a repository manager. It allows you to proxy (Maven-remote repo), collect, 
+   and manage your dependencies so that you are not constantly juggling a 
+   collection of JARs. It makes it easy to distribute your software. 
+   Internally, you configure your build to publish artifacts to 
+   Nexus and they become available to other developers.
+
+
+
+Nexus Installation:
+
+#Nexus Default Username: admin Password: admin123
+As a good security practice, Nexus is not advised to run nexus service as a root user,
+# so create a new user called nexus and grant sudo access to manage nexus services as follows.
+# Nexus will run on 4G of RAM
+sudo hostname nexus
+sudo useradd nexus
+# Grant sudo access to nexus user
+sudo echo "nexus ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/nexus
+sudo su - nexus
+
+
+cd /opt
+sudo yum install wget git nano unzip -y
+sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
+
+
+#sudo wget http://download.sonatype.com/nexus/3/nexus-3.37.2-02-unix.tar.gz
+#sudo tar -zxvf nexus-3.37.2-02-unix.tar.gz
+sudo wget http://download.sonatype.com/nexus/3/nexus-3.15.2-01-unix.tar.gz
+sudo tar -zxvf nexus-3.15.2-01-unix.tar.gz
+sudo mv /opt/nexus-3.15.2-01 /opt/nexus
+
+
+# Change the owner and group permissions to /opt/nexus and /opt/sonatype-work directories.
+sudo chown -R nexus:nexus /opt/nexus
+sudo chown -R nexus:nexus /opt/sonatype-work
+sudo chmod -R 775 /opt/nexus
+sudo chmod -R 775 /opt/sonatype-work
+
+
+vi /opt/nexus/bin/nexus.rc
+#remove comment and add nexus
+
+
+sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
+
+#Enable and start the nexus services
+sudo systemctl enable nexus
+sudo systemctl start nexus
+sudo systemctl status nexus
+echo "end of nexus installation"
+
+
+Creating repository:
+
+http://172.31.85.41:8081/repository/rbc-release/
+
+http://172.31.85.41:8081/repository/rbc-snapshot/
+
+
+snapshot   ------ 
+
+release
+
+Why Nexus:
+version control
+disaster management
+downtime
+reduce redundancies
+rollback
+add a layer of security
+use to track progress or the porjects
+
+
+Nexus Configuration:
+
+1. Do the following on Jenkins server:
+
+vi /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven3.8.5/conf/settings.xml
+
+sudo vi /opt/maven/conf/settings.xml
+
+look for the server tag
+
+    <server>
+      <id>nexus</id>
+      <username>acada</username>
+      <password>admin123</password>
+    </server>
+
+
+2: Edit the pom.xml
+
+Look for the below
+
+
+  <distributionManagement>
+      <repository>
+        <id>nexus</id>
+        <name>ACADA Learning Releases Nexus Repository</name>
+        <url>http://172.31.85.41:8081/repository/rbc-release/</url>
+      </repository>
+      
+      <snapshotRepository>
+        <id>nexus</id>
+        <name>ACADA Learning Snapshot Nexus Repository </name>
+        <url>http://172.31.85.41:8081/repository/rbc-snapshot/</url>
+      </snapshotRepository>
+
+
+
+commit changes
+
+
+
+
+http://172.31.85.41:8081/repository/fransapp-release/
+
+
+http://172.31.85.41:8081/repository/fransapp-snapshot/
+
+
+
+Maven Home directory is where: in maven server = /opt/maven
+
+Maven Home directory is where: in jenkins server = /var/lib/jenkins/tools/hudson........../maven3.8.5
+
+
+
+    <server>
+      <id>nexus</id>
+      <username>acada</username>
+      <password>admin123</password>
+    </server>

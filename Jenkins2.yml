@@ -1,0 +1,245 @@
+<<cc
+JENKINS CICD NOTES
+cc
+
+13/08/2022
+
+Jenkins:
+	CI - continous integration - automating build and testing of code
+
+The DevOps lifecycle consists of eight stages in the planning, development, and operation of a system or software application:
+
+- Plan
+- Code
+- Build
+- Test
+- Release
+- Deploy
+- Operate
+- Monitor
+
+Jenkins automates building and testing by running commands that create the software artifact and run it through a series of tests.  This artifact could be a container image, a Java archive, a windows executable, or any other sort of software package.
+
+Jenkins can be applied in the following steps:
+
+CI
+- Build
+- Test - 
+	cost money to write application
+	application security 
+	JUnit test. - unit test. 1 + 1 = 4 failure
+CD
+- Release versioning 
+- Deploy make it available for use in a remote repository
+
+CI tools -
+	Buildbot
+	TeamCity
+	Draco.NET
+	TravisCI
+	Jenkins
+	GitLab
+	circleci
+	Bamboo
+	Buddy
+
+
+Jenkins depends on plugins. Plugin extends the functionality of jenkins.
+Plugin allow jenkins integration with of devops tools.
+------
+
+
+
+jenkins:
+  Jenkins, is an open source Continuous Integration
+         and cross-platform tool written in Java. 
+
+  Platform:   
+      Linux--> Redhat, UBUNTU
+      Windows
+      MacOS-
+      5 years expereince:
+
+
+  HUDSON   ------  2004  -----  Oracle
+
+  2011  ------  JENKINS Community  -----  Jenkins
+
+
+  Jenkins: 
+  Continoues Integration that automates the Build and test process in our projects
+  Maven:
+  validate --- Compiles --- test ---- Package (target Envi. Dir) -- tomcat
+
+  Continoues delivery
+  Code --- Build --- test --- (UAT/Testing)STAGING --- Manual Approval --- Production(Prod) -- JBoss/Tomcat
+                                                                           Continoues Delivery
+  Continoues Deployment
+  Code --- Build --- test --- (UAT/Testing)STAGING --- Auto Approval --- Production(Prod) -- JBoss/Tomcat
+                                                                          Continoues Deployment
+  Oxdit Envi: 
+  Developement
+  Stag/Test/UAT/Pre-prod
+  Production
+
+
+  Internal Project: In House ---  Continoues Deployment
+
+  External Project: Client ------ Continoues Delivery
+
+
+  Which edition of jenkins have you used in Production?
+   Community Edition (CE)
+       Jenkins
+   ENTERPRISE ENTERPRISE -EE
+       CloudBees Jenkins
+
+       Installation of Jenkins: Community Edition (CE)
+
+
+#Provisioning of Jenkins server.
+
+1. Goto AWS Account, login
+2. Goto EC2
+3. Create a Security Group 
+	Name - <name eg jenkins>
+	Inbound rule
+		- expose port 8080 from anywhere IPV4 to allow traffic to/from jenkins
+		- expose SSH on port 22 to allow you communicate with your jenkins server.
+	Save and exit
+
+4. Spin up a server with following configuration
+	RedHat v8
+	t2.medium
+
+	select existing SG - (No 3) under Network
+	default on others
+	Launch the instance
+
+5. SSH into the jenkins instance
+	
+#!/bin/bash
+# Author: Prof. Efe J.
+# date: 10/08/2022
+# Installing Jenkins on RHEL 7/8, CentOS 7/8 or Amazon Linux OS
+# You can execute this script as user-data when launching your EC2 VM.
+# Create Red hat EC2 t2.medium Instance with 4GB RAM.
+# Create Security Group and open Required ports 8080 got Jenkins, ..etc.
+
+cd /opt
+
+# 1. Install Java and other pre-requisits. 
+sudo yum update
+sudo yum -y install unzip wget tree git
+sudo wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm
+sudo yum install jdk-8u131-linux-x64.rpm -y
+
+# 2. Add Jenkins Repository and key
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+cd /etc/yum.repos.d/
+sudo curl -O https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+# 3. Install Jenkins
+sudo yum -y install jenkins --nobest
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+sudo systemctl status jenkins
+
+
+
+
+systemctl status jenkins --no-pager | grep -i "active"
+
+The command: sudo cat /var/lib/jenkins/secrets/initialAdminPassword will print the password at console.
+
+systemctl status jenkins --no-pager | grep -i "active"
+
+to access jenkins from the webUI <public-url>:8080 eg 72.93.56.34:8080
+
+----------------------------------------------------------------------------------------------------------------17.08.2022
+
+Jenkins - Git integration
+
+https://github.com/acadalearning/web-app
+
+Create your project directory and name it appropiately, add a description to it where neccessary
+
+1. Jenkins-Github Integration:
+-----------------------------------------------------------------------
+
+precheck - INSTALL GIT in Jenkins or  Configure git plugin in Jenkins
+
+In "Source Code Management" tab, select "Git" 
+
+Copy the remote repository URL from github and paste in the Repository URL
+
+Add/create credentials to access code in Guthub - Username and Password. ID == Description = Github-Cred and Add it.
+Apply and Save.
+
+Click build and monitor progress in the console output to check it connection is successful
+
+
+2. Jenkins - Maven Integration
+
+# To be created
+
+
+
+Maven is a build tool for creating deployable artifact from source code
+
+Build tools
+ANT    1000lines 
+Gradle
+npm
+maven 400 lines
+
+Why Maven
+1. It reduces the line of code 
+2. It have set of standards
+
+  Project Management tool with project object Model  - pom.xml 
+
+  - Have set of standards
+  - Have a project Lifecycles
+  - A dependency management system
+  - logic for execution at various lifecyle of project
+  - Maven makes project IDE agnostic
+  - Allows for easy modification to the projects
+  - Simplifies the declaration of project dependency - focus on the what not how
+  - Ease the preparation of project documentation - pom.xml
+
+Organization of Code - Developer
+
+Directories/Folder
+POM file - Project Object Model (The heart of maven project) pom.xml 
+
+    Baseline construct - files are set-up with specific/default behaviours
+      source code - src/main folder/directory
+      resources - another folder/directory
+      test cases - another folder/directory unit test - junit
+      built artifact - target folder/directory
+
+    just place each in the right directory - maven handles the rest.
+
+Folder structure
+ src
+ target
+ pom
+
+
+Jenkins, maven need java
+
+
+Maven lifecycle Goal
+
+
+
+
+
+
+
+
+
+
+
+
