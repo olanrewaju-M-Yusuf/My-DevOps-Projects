@@ -1,0 +1,434 @@
+ACADA Learning:
+DevOps Master Program:
+Tell: +1 587 574 2233
+
+
+Payment Details:
+Bank Name: Royal Bank of Canada
+Account Number: 1004951
+Transit Number: 02169
+Institution Number: 003
+ 
+Swift code: ROYCCAT2
+Branch Address: Village square shopping center
+                            Unit 100-2640 52nd Street NE
+                            Calgary, AB T1Y 3R6.
+ 
+e-transfer:
+payment@acadalearning.com
+
+============================================================
+
+BASH SHELL SCRIPTING:
+
+Shell scripting is an important part of process of automation in Linux.
+
+Shell scripting helps to write a sequence (lists) of commands in a file and then we execute them
+
+mkdir efe
+cd efe
+date
+cal
+whoami
+
+
+Computer:
+     Bare metal  ===  Hardware
+ Monitor
+ CPU
+ keyboard
+ mouse
+ RAM
+ HDD
+
+   Software Components
+OS  =  Operating systems:
+       macOS
+       Windows
+       Linux
+       ChromeOS
+
+Application:
+     Sublime
+     Mobaxterm
+     NodePad++
+
+
+GUI   ===  Graphic User Interface
+      Pros: User friendly easy to use or navigate or understand
+      Cons: Security lapses
+            time consuming
+            Uses more storage
+            limited function   
+
+CLI   ===   Command Line Interface
+      Pros: More level of Security
+            Uses less storage
+            faster in processing 
+            Affordability
+      cons: Complex
+
+
+seperators:
+     &&  or ; or ;;
+
+whoami && pwd && ls
+
+
+
+BSS  == Bash shell scripting  ==  Mulptiple lines of commands or collection of commands in a sequence in a file
+
+Interpreter:  == shell
+
+Types of Shell in Linux:
+     bash
+     sh
+     csh
+     ksh
+     tsh
+
+Default shell in Linux:
+sh   = Bourne shell
+bash = bourne again shell
+
+
+Shell naming convention:
+shell-script
+
+<scriptname>.sh or sc
+eg:
+     hello.sh
+     hello.sc
+     hello
+
+     java-code
+     hello.java
+
+     Python
+     hello.py
+
+     text-file
+     hello.txt
+
+     database
+     hello.db
+
+     html
+     hello.html
+
+     yaml
+     hello.yaml
+     hello.yml
+
+
+example:
+
+whoami
+pwd
+date
+cal
+
+
+echo hello
+whoami
+echo Good morning Nigeria
+echo Good Evening Canada
+date
+
+bash <filename>.sh
+
+./<filename>.sh
+
+sh <filename>.sh
+
+csh <filename>.sh
+
+
+bash <filename>
+
+./<filename>
+
+sh <filename>
+
+csh <filename>
+
+#!/bin/bash
+echo "Hello Engineers"
+echo "Welcome to scripting"
+echo "This is the third shell script example"
+echo "Todays date is"
+date
+echo "Scripting is very easy, so your's"
+
+
+shebang: #!/bin/bash
+
+
+IQ: How do you resolve an issue in a script:
+
+Answer:
+     1. debug your script or you run the script in debugging mode ( -x )
+     2. vi into the file and edit it
+     3. redirect the error into another file
+
+#!/bin/bash
+whoami
+set -x
+pwd
+echo thanks
+Pwd
+date
+set +x
+echo $SHELL
+echo welcome onboard
+
+
+Package Management:
+
+#!/bin/bash
+echo "Start installation of Packages"
+sudo yum install ksh git wget -y
+echo Installation successfull
+
+
+Comment:
+two types of comments
+1. single line comment       ====  #
+2. multi line comment        ====  <<qqq
+
+                                    qqq
+
+Comment  = Explains the code better
+
+Single line comment:
+
+#!/bin/bash
+#Auther: Efe
+#Date: 20 July 2022
+#this script is going to intall packages
+#like: ksh git and wget
+echo "Start installation of Packages"
+sudo yum install ksh git wget -y
+echo Installation successfull
+
+
+Multi line comment:
+
+#!/bin/bash
+<<zin
+Auther: Efe
+Date: 20 July 2022
+this script is going to intall packages
+like: ksh git and wget
+zin
+echo "Start installation of Packages"
+sudo yum install ksh git wget -y
+echo Installation successfull
+
+Java or groovy:
+// = single line comment
+
+Scripting or automation languages:
+1. Bash shell scripting
+2. Python 
+3. Groovy   (Jenkins)
+4. Ruby
+5. Powershell
+6. ymal  (K8s, Ansible, cloudformation)
+7. Json
+8. HCL Terraform
+9. XML  html
+10. Go and Golang
+
+What does shell script do?
+
+Shell script automate task on our machine
+Ansible to automate task on multi servers
+
+Uses of Script:
+Package Management
+User management
+file management
+export SSH-Keys
+monitor server
+deploy application  
+
+
+Option A === 3000
+Option B === 7000
+
+========================================================
+
+#!/bin/bash
+echo "DevOps Requires Consistency studies"
+echo Also needs patients
+echo "At the end of the cohort you all will be hired with multiple job's"
+echo 'At the end of the cohort you all will be hired with multiple job's'
+
+
+Variables:
+A variable is a character of string assigned to a value
+name=efe
+school="acada learning"
+A.K.A  = USA  = United states of America
+
+Types of variables in Linux shell scripting:
+
+1. System defined variable  
+SDV = are generally in UPPERCASES
+   SHELL
+   USER
+   PWD
+   HISTSIZE
+
+2. User defind variables
+   Lowercases recommended
+   name=efe
+   school="ACADA Learning"
+
+env = environmental variables:
+     Howe to modify History size
+1. session or user:
+      vi /etc/bashrc
+      export HISTSIZE=2000
+      source /etc/bashrc
+2. All-user:
+     vi /etc/profile
+     export HISTSIZE=2000
+     source /etc/profile
+
+
+call a variables:
+we use the $ sign to call a variables in Linux
+
+#!/bin/bash
+name="Cohort 8"
+school="ACADA Learning"
+course=DevOpsMasterProgram
+echo $name
+echo $school
+echo course
+echo $course
+echo ${name}
+echo ${school}
+echo ${course}
+echo "This is $name and the school is $school"
+echo The course we are offering is $course
+
+
+read command is used to accept input values
+
+#!/bin/bash
+school="ACADA Learning"
+course=DevOpsMasterProgram
+echo "welcome to $school"
+echo "Please enter your name"
+read username
+echo "Hello $username"
+echo "Thank you for signing up"
+
+
+echo "your's time is now"
+
+
+name="acada learning"
+school=acadalearning
+
+
+
+#!/bin/bash
+firstname=Efe
+lastname=Joveluro
+echo Your firstname and lastname is $firstname and $lastname
+
+Hard Coding
+
+#!/bin/bash
+echo "please enter your firstname"
+read firstname
+echo "please enter your lastname"
+read lastname
+echo Your firstname and lastname is $firstname and $lastname
+
+
+school="ACADA Learning"
+echo "welcome to ${school}"
+echo "Please enter your student code"
+read code
+echo "Is this $code correct"
+read answer
+echo "You have successfully confirmed your student code"
+
+
+
+
+Bank="RBC"
+echo "Welcome to $Bank"
+echo "Please slot in your card details"
+echo "Please enter your pin"
+read pin
+echo "The pin you entered is $pin"
+echo "Is this correct"
+read answer
+echo "Login successfull"
+
+
+
+
+#!/bin/bash
+<<ss
+Author: Efe Joveluro
+You need to be root user or have sudo access to execute this script.
+This script will only execute in Linux
+ss
+
+echo "Creating a new user in Linux"
+echo "Enter user name"
+read username
+echo "Enter your password"
+read -s password
+sudo adduser $username
+echo $password | sudo passwd $username --stdin
+tail -2 /etc/passwd
+
+# this option is used to indicate that 
+# passwd should read the new user password 
+# from the standard input value, which can be a pipe.
+# cat /etc/password to verify
+
+
+
+#!/bin/bash
+<<ss
+Author: Efe Joveluro
+You need to be root user or have sudo access to execute this script.
+This script will only execute in Linux
+ss
+
+echo "Creating a new user in Linux"
+echo "Enter username"
+read answer
+sudo adduser $answer
+sudo passwd $answer
+tail -2 /etc/passwd
+
+# this option is used to indicate that 
+# passwd should read the new user password 
+# from the standard input value, which can be a pipe.
+# cat /etc/password to verify
+
+
+sudo passwd efe
+
+
+Assignment:
+touch a file, copy the file and pipe it and 
+then change the ownsership of that file to another user
+
+stderr
+stdin
+stdout
+
+sh <filename>.sh
+
+

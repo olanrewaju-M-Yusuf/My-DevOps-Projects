@@ -1,0 +1,508 @@
+ACADA Learning:
+Tell: +1 587 574 2233
+
+DevOps Master Program (Cohort 8):
+
+
+1. Put on your camera
+2. Change your name to your full registration name, both on zoom and Telegram
+
+
+Things to do.
+1. Download slack on your comupter and mobile
+
+
+
+=================================================================================
+Linux:
+
+OS = Operating System
+  
+
+Types of OS:
+1. Linux
+2. Windows
+3. Mac
+4. Chrome 
+5. Solaris
+
+
+Why Linux:
+Open source       == Free
+Security          == 
+Multiples users
+
+GUI = Graphic User Interface
+
+
+Windows === Folders
+Linux   === Directory
+
+
+SSH = Secured Shell
+Key.pem = cohort8
+
+
+Linux Server:
+REDHat
+
+IP === Internet Protocol 192.175.2.4
+
+Address: 444 center street SW Calgary
+
+info@acadalearning.com
+
+
+
+
+Linux Directory structure:
+
+/      = root Directory 
+/home  = contains a home directory(folders) for each users
+/bin   = 
+/sbin  = system binaries
+/etc   = Configuration files
+/lib   = System library
+/opt   = Optional add-on app
+/proc  = process file & Kernal
+/dev   = 
+/tmp   = 
+/boot  = 
+/mnt
+/usr 
+/var
+/srv
+/run
+/media
+
+
+mother ==== /
+child  ==== home     =    /home  
+
+
+
+difference users: 
+/home/efe
+/home/meke
+ifeoma
+ayeni
+rasheed
+
+
+AWS = Amazon web services
+SSH = Secured shell    === tunnel   = partway  port = 22
+
+
+GUI = Graphic User Interface
+CLI = Command line interface 
+
+
+Linux Command:
+
+ls            = list
+ls -l or ll   = long list
+ls -t
+ls -ltr
+ls -ltra
+
+
+mkdir   = make directory :
+mkdir <directoryName>
+mkdir efe
+cd      =  change directory:
+ch <directoryName>
+cd efe
+pwd     = present working directory:
+
+cd Multiples steps backward:
+cd ../../..
+
+cd 
+cd ~
+cd -
+
+to clear your screen:
+clear
+ctrl + l
+
+To create a file
+touch <filename>
+touch acada.txt
+vi acada.txt
+press (i)
+insert your test
+press (esc)
+:wq!
+
+
+aws 750hours 
+terminate 9 
+
+
+Class Days:
+Wednesday 7:00 PM MST
+Saturday 6:00 AM MST 
+
+1. Registration
+2. Slack 
+
+
+remove a file:
+  rm efe
+
+verbose:
+mkdir barclay -v 
+
+man  = manual
+help = help
+
+
+mkdir --help
+man mkdir
+
+vi <filename>
+vim <filename>
+nano <filename>
+
+Head:
+head user.txt
+head -5 users.txt
+
+tail:
+tail user.txt
+tail -5 user.txt
+
+
+mkdir efe
+mkdir Efe
+mkdir eFe
+mkdir efE
+mkdir EFe
+
+this will create a file:
+vi <filename>
+
+pipe ==== | :
+
+------
+
+Pipe takes the output of the first command and converts it to 
+the input of the next command
+
+
+cat /etc/passwd  = list the users in your linux
+/etc/shadow      = password for each users
+
+cat user.txt | head -3
+
+echo command:
+echo This is ACADA Learning
+
+
+Redirect:
+echo Today is our second DevOps Master Class > log.txt
+echo The Lord is Good > log.txt
+
+Append:
+
+cat >> goodman.txt
+
+
+echo add these text using pipe into an existing file | cat >> file2.txt
+
+
+18.221.149.143
+
+18.191.153.30
+
+
+sudo yum install tree -y 
+
+tree
+
+
+
+------------------------------
+ACADA Learning:
++1 587 574 2233
+
+meke
++1 403 969 0233
+
+
+------------
+Option A:
+3000 USD (Canada CAD)
+
+Option B:
+7000 USD (Canada CAD) 
+
+--------------------------------------------------
+
+copy file / directory:
+
+cp <source> <destination>
+
+cp user.txt /home/ec2-user/wale
+
+cp -r  deji/ /home/ec2-user/dela/
+
+
+
+free command:
+free 
+free -h
+free -m
+
+
+top
+
+remame:
+
+
+
+move command:
+  mv <source> <destination>
+
+
+remove:
+rm -rf <DIRname>
+
+rm -rf omotade/
+
+
+User Management:
+----------------------
+
+to add users:
+
+sudo useradd <username>
+eg:
+
+sudo useradd efe
+sudo adduser rasheed
+
+
+to switch a user:
+
+sudo su - <username>
+eg:
+sudo su - efe
+
+
+give users sudoer access:
+
+sudo vi /etc/sudoers
+
+efe        ALL=(ALL)       NOPASSWD: ALL
+
+save and quite
+
+
+
+removing a user:
+
+sudo userdel -r josh   == remove the user with the home directory
+
+sudo userdel josh      == remove the user without the removing the home directory
+
+
+hostname -i   == private IP
+
+hostname      == display your hostname
+
+curl ifconfig.co  == public IP
+
+
+to change hostname:
+sudo hostname <newhostname>
+
+sudo hostname cohort8
+
+
+Package Management:
+Linux is open source: Kernel  (Source Code)
+RedHat   ----  Ubuntu     ----- CentOS      -------- 
+
+package manager:
+
+RedHat   == yum
+Ubuntu   == apt (apt-get)
+windows  == Choco
+MacOS    == homebrew
+
+
+yum install tree
+yum install vim
+yum install mailx
+
+RPM === RedHat Package Management
+
+sudo yum install tree
+sudo yum install mailx -y
+
+wget   === webget     === download applciations from the internet
+
+
+to unzip a zipped application:
+unzip <appName>
+unzip apache-tomcat-9.0.64.zip
+
+to zip an application:
+
+zip <Newzipname> <appName> 
+
+
+
+---------------------------
+/etc/passwd
+
+
+efe:   x:   1001:  1001:      :   /home/efe:    /bin/bash
+ 1     2     3      4      5         6             7      
+
+1. username
+2. password
+3. userID  
+4. GroupID 
+5. User ID Info
+6. Home Directory
+7. Command / Shell
+
+
+
+1   ----- 1000
+
+1001  -  1002 -- 1003 -- 1004
+
+
+c shell
+K shell
+/bin/bash == interpreter
+
+
+bourne shell            ===  /bin/sh
+bourne again shell      ===  /bin/bash  == advance shell
+korn shell              ===  /bin/ksh
+c Shell                 ===  /bin/csh
+
+to know the current shell:
+echo $SHELL
+cat /etc/passwd
+ps -p $$   == process ID ==== CMD = Command
+
+
+ec2-user  Redhat AWS version of Linux
+
+
+
+GCP  redhat 
+
+
+ssh -i cohort8.pem ec2-user@172.17.54.2
+
+
+ssh -i cohort8.pem ubuntu@172.17.54.2
+
+
+ssh -i cohort8.pem root@172.17.54.2
+
+
+
+----------------------
+chmod 400 osa/download/cohort8.pem 
+
+enter
+
+
+ssh -i osa/download/cohort8.pem ec2-user@172.157.153.2
+
+
+Link:
+
+Hard Link   ===== 
+Soft Link   ===== 500mb 
+
+200kb 
+
+ln -s goodman.txt goodsoft
+
+ln acada.txt hardlink
+
+
+Files and Directory Permissions:
+
+d        rwx      rwx      r-x         6     ec2-user     ec2-user     59       Jul 9     12:57     efe
+File     user    Group    Others     Links   UserName     Group        Size     Date      time      File/Dir Name
+type 
+
+Default Permission level for a user in linux:
+rwx      rwx      r-x   = 775    = Directory
+rw-      rw-      r--   = 664    = Files
+
+
+rwx   = 7
+
+r       = Read                 = 4
+w       = Write                = 2
+x       = Execute              = 1
+-       = Denied/no Permission = 0
+
+--x   = 1   |   -wx  = 3   |  r--  = 4   | rwx  = 7
+
+5  = r-x        6 ==== rw-
+
+
+rwx r-x rwx    = 757
+
+chmod 757 <filename/dirname>
+
+chmod 400 <filename/dirname>
+
+
+drwxrwxr-x.
+drwxr-xrwx.
+
+400  = r-- --- ---
+
+
+umask
+0   = Read,Write,Execute
+1   = Read, Write
+2   = Read, Execute
+3   = Read Only
+4   = Write and Execute
+5   = Write Only
+6   = Execute Only
+7   = No Permission 
+
+
+Default umask value is:
+umask  = 0002
+
+rwx rwx r-x
+
+umask <value>
+
+
+chown <username> <file/dirname>
+
+groupadd
+
+
+
+date 
+cal 
+
+sudo timedatectl set-timezone America/New_York
+
+
+grep command:
+
+cat /etc/passwd | grep efe
+
+seperator:
+
+[;] [&&] [;;]
+
+

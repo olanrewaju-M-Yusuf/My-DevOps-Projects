@@ -1,0 +1,44 @@
+GIT
+GIT is a version control system (VCS).
+A Version Conotrol System is one in which changes to a file or a group of files are being tracked such that those changes can be recalled at any point in time.
+
+We have 3 kinds or types of VCS:
+
+1. Local VCS: Here, you make changes to your files on your local system and the changes are tracked but only on your system.
+2. Centralised VCS: Here, a developer pulls out or checks out a file from the remote repository to his local repository, makes changes and pushes back to the remote repository. No one else can work on that file at the time it is pulled out.
+3. Distributed VCS: Here, developers can pull files from the remote repo to their local repo, make changes from different locations, and mergge those changes to the remote repository.
+
+Why VCS?
+1. Traceability
+2. Collaboration
+3. Time saving
+4. Logging/Tracking
+5. Security
+6. Snapshots of files and projects over time
+7. Quality Control.
+8. Manages project updates
+9. Version management
+10. Disaster recovery
+11. Backup and recovery.
+12. Storage
+
+Git Installation: sudo yum install -y git
+git config --global user.name "acadalearning"
+git config --global user.email "info@acadalearning.com"
+
+mkdir fintech
+cd fintech
+git init: to initialise the directory fintech for tracking
+git status: to show the status of the working tree. 
+git add <filename>: moves the commit from working directory to staging area
+git commit -m "<commit message": moves the change from staging area to local repo
+git commit -am "<commit message" moves directly from working dir to local repo, but only used for files that are already being tracked.
+git log: to show a log of all commits made to the local repository
+git log --oneline: for an abridged version of all the commits made
+git log --since=<date>
+git log --until=<date>
+git log -3: to view the last 3 commits
+git show <commit ID>: gives more detail about a commit
+git diff <commit ID 1> <commit ID 2>: displays the difference between 2 commits.
+git commit --amend -m <new message>: updates the latest commit message
+

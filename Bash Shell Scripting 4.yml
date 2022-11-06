@@ -1,0 +1,954 @@
+ACADA Learning:
+DevOps Master Program:
+Tell: +1 587 574 2233
+
+
+Payment Details:
+Bank Name: Royal Bank of Canada
+Account Number: 1004951
+Transit Number: 02169
+Institution Number: 003
+ 
+Swift code: ROYCCAT2
+Branch Address: Village square shopping center
+                            Unit 100-2640 52nd Street NE
+                            Calgary, AB T1Y 3R6.
+ 
+e-transfer:
+payment@acadalearning.com
+
+============================================================
+
+BASH SHELL SCRIPTING:
+
+Shell scripting is an important part of process of automation in Linux.
+
+Shell scripting helps to write a sequence (lists) of commands in a file and then we execute them
+
+mkdir efe
+cd efe
+date
+cal
+whoami
+
+
+Computer:
+     Bare metal  ===  Hardware
+ Monitor
+ CPU
+ keyboard
+ mouse
+ RAM
+ HDD
+
+   Software Components
+OS  =  Operating systems:
+       macOS
+       Windows
+       Linux
+       ChromeOS
+
+Application:
+     Sublime
+     Mobaxterm
+     NodePad++
+
+
+GUI   ===  Graphic User Interface
+      Pros: User friendly easy to use or navigate or understand
+      Cons: Security lapses
+            time consuming
+            Uses more storage
+            limited function   
+
+CLI   ===   Command Line Interface
+      Pros: More level of Security
+            Uses less storage
+            faster in processing 
+            Affordability
+      cons: Complex
+
+
+seperators:
+     &&  or ; or ;;
+
+whoami && pwd && ls
+
+
+
+BSS  == Bash shell scripting  ==  Mulptiple lines of commands or collection of commands in a sequence in a file
+
+Interpreter:  == shell
+
+Types of Shell in Linux:
+     bash
+     sh
+     csh
+     ksh
+     tsh
+
+Default shell in Linux:
+sh   = Bourne shell
+bash = bourne again shell
+
+
+Shell naming convention:
+shell-script
+
+<scriptname>.sh or sc
+eg:
+     hello.sh
+     hello.sc
+     hello
+
+     java-code
+     hello.java
+
+     Python
+     hello.py
+
+     text-file
+     hello.txt
+
+     database
+     hello.db
+
+     html
+     hello.html
+
+     yaml
+     hello.yaml
+     hello.yml
+
+
+example:
+
+whoami
+pwd
+date
+cal
+
+
+echo hello
+whoami
+echo Good morning Nigeria
+echo Good Evening Canada
+date
+
+bash <filename>.sh
+
+./<filename>.sh
+
+sh <filename>.sh
+
+csh <filename>.sh
+
+
+bash <filename>
+
+./<filename>
+
+sh <filename>
+
+csh <filename>
+
+#!/bin/bash
+echo "Hello Engineers"
+echo "Welcome to scripting"
+echo "This is the third shell script example"
+echo "Todays date is"
+date
+echo "Scripting is very easy, so your's"
+
+
+shebang: #!/bin/bash
+
+
+IQ: How do you resolve an issue in a script:
+
+Answer:
+     1. debug your script or you run the script in debugging mode ( -x )
+     2. vi into the file and edit it
+     3. redirect the error into another file
+
+#!/bin/bash
+whoami
+set -x
+pwd
+echo thanks
+Pwd
+date
+set +x
+echo $SHELL
+echo welcome onboard
+
+
+Package Management:
+
+#!/bin/bash
+echo "Start installation of Packages"
+sudo yum install ksh git wget -y
+echo Installation successfull
+
+
+Comment:
+two types of comments
+1. single line comment       ====  #
+2. multi line comment        ====  <<qqq
+
+                                    qqq
+
+Comment  = Explains the code better
+
+Single line comment:
+
+#!/bin/bash
+#Auther: Efe
+#Date: 20 July 2022
+#this script is going to intall packages
+#like: ksh git and wget
+echo "Start installation of Packages"
+sudo yum install ksh git wget -y
+echo Installation successfull
+
+
+Multi line comment:
+
+#!/bin/bash
+<<zin
+Auther: Efe
+Date: 20 July 2022
+this script is going to intall packages
+like: ksh git and wget
+zin
+echo "Start installation of Packages"
+sudo yum install ksh git wget -y
+echo Installation successfull
+
+Java or groovy:
+// = single line comment
+
+Scripting or automation languages:
+1. Bash shell scripting
+2. Python 
+3. Groovy   (Jenkins)
+4. Ruby
+5. Powershell
+6. ymal  (K8s, Ansible, cloudformation)
+7. Json
+8. HCL Terraform
+9. XML  html
+10. Go and Golang
+
+What does shell script do?
+
+Shell script automate task on our machine
+Ansible to automate task on multi servers
+
+Uses of Script:
+Package Management
+User management
+file management
+export SSH-Keys
+monitor server
+deploy application  
+
+
+Option A === 3000
+Option B === 7000
+
+========================================================
+
+#!/bin/bash
+echo "DevOps Requires Consistency studies"
+echo Also needs patients
+echo "At the end of the cohort you all will be hired with multiple job's"
+echo 'At the end of the cohort you all will be hired with multiple job's'
+
+
+Variables:
+A variable is a character of string assigned to a value
+name=efe
+school="acada learning"
+A.K.A  = USA  = United states of America
+
+Types of variables in Linux shell scripting:
+
+1. System defined variable  
+SDV = are generally in UPPERCASES
+   SHELL
+   USER
+   PWD
+   HISTSIZE
+
+2. User defind variables
+   Lowercases recommended
+   name=efe
+   school="ACADA Learning"
+
+env = environmental variables:
+     Howe to modify History size
+1. session or user:
+      vi /etc/bashrc
+      export HISTSIZE=2000
+      source /etc/bashrc
+2. All-user:
+     vi /etc/profile
+     export HISTSIZE=2000
+     source /etc/profile
+
+
+call a variables:
+we use the $ sign to call a variables in Linux
+
+#!/bin/bash
+name="Cohort 8"
+school="ACADA Learning"
+course=DevOpsMasterProgram
+echo $name
+echo $school
+echo course
+echo $course
+echo ${name}
+echo ${school}
+echo ${course}
+echo "This is $name and the school is $school"
+echo The course we are offering is $course
+
+
+read command is used to accept input values
+
+#!/bin/bash
+school="ACADA Learning"
+course=DevOpsMasterProgram
+echo "welcome to $school"
+echo "Please enter your name"
+read username
+echo "Hello $username"
+echo "Thank you for signing up"
+
+
+echo "your's time is now"
+
+
+name="acada learning"
+school=acadalearning
+
+
+
+#!/bin/bash
+firstname=Efe
+lastname=Joveluro
+echo Your firstname and lastname is $firstname and $lastname
+
+Hard Coding
+
+#!/bin/bash
+echo "please enter your firstname"
+read firstname
+echo "please enter your lastname"
+read lastname
+echo Your firstname and lastname is $firstname and $lastname
+
+
+school="ACADA Learning"
+echo "welcome to ${school}"
+echo "Please enter your student code"
+read code
+echo "Is this $code correct"
+read answer
+echo "You have successfully confirmed your student code"
+
+
+
+
+Bank="RBC"
+echo "Welcome to $Bank"
+echo "Please slot in your card details"
+echo "Please enter your pin"
+read pin
+echo "The pin you entered is $pin"
+echo "Is this correct"
+read answer
+echo "Login successfull"
+
+
+
+
+#!/bin/bash
+<<ss
+Author: Efe Joveluro
+You need to be root user or have sudo access to execute this script.
+This script will only execute in Linux
+ss
+
+echo "Creating a new user in Linux"
+echo "Enter user name"
+read username
+echo "Enter your password"
+read -s password
+sudo adduser $username
+echo $password | sudo passwd $username --stdin
+tail -2 /etc/passwd
+
+# this option is used to indicate that 
+# passwd should read the new user password 
+# from the standard input value, which can be a pipe.
+# cat /etc/password to verify
+
+
+
+#!/bin/bash
+<<ss
+Author: Efe Joveluro
+You need to be root user or have sudo access to execute this script.
+This script will only execute in Linux
+ss
+
+echo "Creating a new user in Linux"
+echo "Enter username"
+read answer
+sudo adduser $answer
+sudo passwd $answer
+tail -2 /etc/passwd
+
+# this option is used to indicate that 
+# passwd should read the new user password 
+# from the standard input value, which can be a pipe.
+# cat /etc/password to verify
+
+
+sudo passwd efe
+
+
+Assignment:
+touch a file, copy the file and pipe it and 
+then change the ownsership of that file to another user
+
+stderr
+stdin
+stdout
+
+sh <filename>.sh
+
+COMMAND LINE ARGUMENT:
+
+Bash shell uses a positional parameters to provide a means of entering
+data into bash program when it is invoked from the command line
+
+sh user.sh stop start restart
+ARGUMENT:
+
+
+echo $#   : no of Arugument
+echo $$   : process ID
+echo $0   : scriptname
+echo $2   : second argument 
+echo ${3} : third argument
+echo $*   : Displays all the arguments
+echo $@   : Displays all the arguments
+echo $?   : Output the status of the last executed command
+          : $?   = 0 it means the last command executed successfully
+          : $? ! = 1 - 127 it means the last command did not execute successfully
+
+
+
+sh user.sh  restart  School   start    dev
+     $0       $1       $2       $3     $4
+
+sh monitor_server.sh
+
+
+pwd
+echo $0
+echo $1
+echo $2
+echo $3
+echo $9
+Date
+echo $?
+
+
+#Number of arguments on the command line. echo $#
+echo '$#:' $#
+#Process number of the current process.echo $$
+echo '$$:' $$
+#Display the 3rd argument on the command line, from left to right. echo $3
+echo '$3:' $3
+#Display the 10th argument on the command line, from left to right.
+echo '${10}:' ${10}
+#Display the name of the current shell or program.
+echo '$0:' $0
+#Display all the arguments on the command line using * symbol.
+echo '$*:' $*
+#Display all the arguments on the command line using @ symbol.
+echo '$@:' $@
+date
+echo '$?:' $?
+
+
+
+----------------
+#if (( $# >= 3 ))
+#if [ $# -gt 3 ]
+#if [ $# -lt 3 ]
+
+if (( $# >= 3 ))
+then
+#Number of arguments on the command line
+echo '$#:' $#
+#Process number of the current process.echo $$
+echo '$$:' $$
+#Display the 3rd argument on the command line, from left to right. echo $3
+echo '$3:' $3
+#Display the 10th argument on the command line, from left to right.
+echo '${10}:' ${10}
+#Display the name of the current shell or program.
+echo '$0:' $0
+#Display all the arguments on the command line using * symbol.
+echo '$*:' $*
+#Display all the arguments on the command line using @ symbol.
+echo '$@:' $@
+date
+echo '$?:' $?
+else
+echo "Please pass 3rd command line arguments along with the script"
+fi
+
+
+arithemic_operations:
+
+expr 6 + 5
+expr 6 - 5
+expr 6 / 2
+expr 6 / 5
+expr 6 \* 5
+history
+
+
+
+redirect standard output (stdout):
+  cat /etc/passwd > newUser.txt
+  cat /etc/passwd >> newUser.txt
+
+
+#!/bin/bash
+echo what is 6 + 5 :`expr 6 + 5`
+echo what is 6 - 5 :`expr 6 - 5` 
+echo what is 10 x 2 :`expr 10 \* 2`
+echo what is todays date:`date`
+date
+Date
+
+sh <scriptname>.sh 1> <filename>
+sh test.sh 1>log.txt
+
+
+Standard Error: stderr
+  sh test.sh 2>file.log
+
+
+sh test.sh 1>log1.txt 2>error2.txt
+
+sh test.sh >log10.txt 2>&1
+
+
+echo Welcome to Bank of America
+read -p "Please enter your name: " name
+read -p "Enter the first number: " num1
+
+
+echo Welcome to Bank of America
+echo Please enter your name
+read name
+echo Enter the first number
+read num1
+echo Enter the second number
+read num2
+echo Enter the third number
+read num3
+echo Hello $name the Sum of the numbers you entered is: `expr $num1 + $num2 + $num3`
+
+
+echo Welcome to Bank of America
+echo Please enter your name
+read name
+echo Enter the first installment payment
+read num1
+echo Enter the second installment payment
+read num2
+echo Enter the third installment payment
+read num3
+echo Hello $name the balance of your payment is: `expr 3000 - $num1 - $num2 - $num3`
+ 
+
+echo Welcome to Bank of America
+read -p "Please enter your name: " name
+read -p "Enter the first number: " num1
+read -p "Enter the second number: " num2
+read -p "Enter the third number: " num3
+echo Hello $name the Sum of the numbers you entered is: `expr $num1 + $num2 + $num3`
+
+
+echo -n "Enter your username: "
+read username
+echo -n "Enter your password"
+read -s password
+sudo adduser $username
+echo "$password" | sudo passwd $username --stdin
+
+
+cp file1.txt file2.txt | sudo chown Patrick file2.txt
+
+-----------------------------------------------
+
+CONDITIONS:
+
+a=5
+b=4
+
+a==b
+a!=b
+
+
+iphone!=b
+
+
+-eq      ==        equal to:
+                   [ a -eq b ]   or   [ a == b ]
+
+-ne      !=        not equal to:
+                   [ a -ne b ]   or   [ a != b ]
+
+-gt      >         greater than:
+                   [ a -gt b ]   or   [ a > b ]
+
+-lt      <         Less than:
+                   [ a -lt b ]   or   [ a < b ] 
+
+-ge      >=        greater than or equal to:
+                   [ a -ge b ]   or   [ a >= b ] 
+
+-le      <=        less than or equal to:
+                   [ a -le b ]   or   [ a <= b ]
+
+
+if else statement:
+
+syntax for if statement:
+    if
+    then
+    command or statment 
+    else
+    fi
+
+if statement:
+syntax for if statement:
+    if
+    then
+    command or statment 
+    fi
+
+
+a=10
+b=20
+if [ $a == $b ]
+then
+echo "The values is not the same"
+echo "Login not successfull"
+fi
+      
+
+
+condition:
+echo Please slot in your bank card
+echo please enter your pin for authentication
+read pin
+if [ $pin == 1234 ]
+then 
+echo login successfull
+else
+echo Sorry you entered the wrong pin
+fi
+
+
+echo -n "please enter a number: " 
+read num1
+echo please enter another number
+read num2
+if [ $num1 == $num2 ]
+then 
+echo $num1 is equals to $num2
+fi
+
+
+compare price:
+echo please enter the price of mangoes
+read price1
+echo Enter the price of oranges
+read price2
+echo mangoes sells for $price1
+echo oranges sells for $price2
+if [ $price1 == $price2 ]
+then 
+echo mangoes and oranges sells for the same price
+echo mangoes sells for $price1
+echo oranges sells for $price2
+else
+echo mangoes and oranges sells for different prices
+echo mangoes sells for $price1
+echo oranges sells for $price2
+fi
+
+
+
+Loops:
+
+b <= 100; b= expr $b+1
+b=1
+
+echo $b
+b = 1
+b = 1 + 1 = 2
+b = 2 + 1 = 3
+b = 3 + 1 = 4
+b = 4 + 1 = 5
+
+r 2000 + 1000 = 3000
+
+r 3000 + 1000 = 4000
+ 
+
+
+
+
+c for customers
+c <=5000000; c=expr $c + 1000
+
+
+examples of loops:
+for-loops:
+
+c/c++/java:
+for ( Initiation;condition;inc/dec)
+{
+  wrtie statement/command
+}
+
+
+
+shell script:
+for (( Initiation;condition;inc/dec ))
+do
+command/statement
+done
+
+echo "for-loops starts"
+for (( a=1;a<=5;a++ ))
+do
+echo $a
+done
+
+
+a+1 or a++  === same
+
+
+for (( r=1000;r<=10000;r+=1000 ))
+do 
+echo $r
+done
+echo "for-loops ends"
+
+
+
+for (( i=98;i<=100;i++ ))
+do
+echo $i
+done
+echo "End of loop"
+
+
+Assignment:
+Write a shell script to print numbers 
+from 100 to 1 using for loop
+
+
+while loop:
+  c/c++/java
+
+  initiation
+  while [ condition ]
+
+Bash shell scripting:
+  initiation
+  while [ condition ]
+  do 
+  command / statement
+  done
+
+
+echo "While loop starts"
+i=1
+while [ $i -le 5 ]
+do 
+echo $i
+i=`expr $i + 1`
+done
+echo "while loop ends"
+
+
+
+i 1 = 1
+i 1 + 1 = 2
+i 2 + 1 = 3
+i 3 + 1 = 4
+i 4 + 1 = 5
+i 5 + 1 = 6 ****** out of range
+
+
+#Performing load test for a web application
+#using while loop
+#rc = request count
+echo "Performing load test"
+echo "Load testing starts"
+rc=5000
+while [ $rc -le 50000 ]
+do 
+echo $rc
+rc=`expr $rc + 5000`
+done
+echo "load-testing complete"
+echo "end of load testing"
+
+
+
+Managing Mulptiple Conditions:
+
+switch case: 
+
+case
+Option1)
+command statement;;
+Option2)
+command statement
+;;
+Option3)
+command statement;;
+esac
+
+
+example:
+  service httpd start|stop|enable|restart|status|disable|install|uninstall|shutdown|update|upgrade
+
+  sh sonar.sh enable
+
+echo "switch case demo start"
+case $1 in
+start)
+echo "Starting sonarqube server"
+echo "sonarqube server started";;
+stop)
+echo "Stopping sonarqube server"
+echo "sonarqube server stopped";;
+enable)
+echo "enable sonarqube server"
+echo "sonarqube server enabled";;
+status)
+echo "sonarqube status display"
+echo "sonarqube status output";;
+*)
+echo "You passed the wrong option"
+echo "the options are start | stop | enable | status"
+esac
+echo "End of switch case demo"
+
+
+fi
+if
+
+<<the
+
+the
+case
+
+esac
+
+
+Assignment:
+write a switch case script to take values from 1 to 5
+
+
+
+functions:
+
+  syntax:
+fn()
+{
+  statements / command
+}
+fn
+
+or 
+
+greetfn()
+userfn()
+
+
+packagesMGT()
+{
+  statements / command
+}
+packagesMGT
+
+
+greetfn()
+{
+  echo "Hello Engineers"
+  echo "Welcome to DevOps Master Program"
+  echo "todays date is:"
+  date
+}
+greetfn
+
+
+#!/bin/bash
+#This function verify user account status
+#-e = exist
+check()
+{
+  if [ -e /etc/passwd ]
+  then
+  echo "It Exist. Please proceed"
+  grep efe /etc/passwd
+  tail -3 /etc/passwd
+  touch /home/ec2-user/test1234.java
+  else
+  echo "User does not exist"
+  fi
+}
+check
+
+Explain your experience in bash shell scripting:
+
+Explain a problem you encountered and how you resolved it in scripting
+
+you ran the script and the exit code !=0, 
+How did you troubleshoot:
+  Identity and explain
+  the script was for user management
+  1. I ran it in debugging mode sh -x <scriptname>
+  2. contacted your peers 
+  3. check google, youtube  and stack overflow
+  4. check with server vendor (AWS) echo $BASH_VERSION
+  5. Open source   === enterprise
+
+  hard coding === static
+
+  dynamic
+
+  ./
+
+  bash <filename>
+  sh <filename>
+  ./
+  chmod +x <filename>

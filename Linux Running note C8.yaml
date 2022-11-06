@@ -1,0 +1,144 @@
+ACADA Learning:
+Tell: +1 587 574 2233
+
+DevOps Master Program (Cohort 8):
+
+
+1. Put on your camera
+2. Change your name to your full registration name, both on zoom and Telegram
+
+
+Things to do.
+1. Download slack on your comupter and mobile
+
+
+
+=================================================================================
+Linux:
+
+OS = Operating System
+  
+
+Types of OS:
+1. Linux
+2. Windows
+3. Mac
+4. Chrome 
+5. Solaris
+
+
+Why Linux:
+Open source       == Free
+Security          == 
+Multiples users
+
+GUI = Graphic User Interface
+
+
+Windows === Folders
+Linux   === Directory
+
+
+SSH = Secured Shell
+Key.pem = cohort8
+
+
+Linux Server:
+REDHat
+
+IP === Internet Protocol 192.175.2.4
+
+Address: 444 center street SW Calgary
+
+info@acadalearning.com
+
+
+
+
+Linux Directory structure:
+
+/      = root Directory 
+/home  = contains a home directory(folders) for each users
+/bin   = 
+/sbin  = system binaries
+/etc   = Configuration files
+/lib   = System library
+/opt   = Optional add-on app
+/proc  = process file & Kernal
+/dev   = 
+/tmp   = 
+/boot  = 
+/mnt
+/usr 
+/var
+/srv
+/run
+/media
+
+
+mother ==== /
+child  ==== home     =    /home  
+
+
+
+difference users: 
+/home/efe
+/home/meke
+ifeoma
+ayeni
+rasheed
+
+
+AWS = Amazon web services
+SSH = Secured shell    === tunnel   = partway  port = 22
+
+
+GUI = Graphic User Interface
+CLI = Command line interface 
+
+
+Linux Command:
+
+ls            = list
+ls -l or ll   = long list
+ls -t
+ls -ltr
+ls -ltra
+
+
+mkdir   = make directory :
+mkdir <directoryName>
+mkdir efe
+cd      =  change directory:
+ch <directoryName>
+cd efe
+pwd     = present working directory:
+
+cd Multiples steps backward:
+cd ../../..
+
+cd 
+cd ~
+cd -
+
+to clear your screen:
+clear
+ctrl + l
+
+To create a file
+touch <filename>
+touch acada.txt
+vi acada.txt
+press (i)
+insert your test
+press (esc)
+:wq!
+
+
+aws 750hours 
+terminate 9 
+
+
+Class Days:
+Wednesday 7:00 PM MST
+Saturday 6:00 AM MST 
