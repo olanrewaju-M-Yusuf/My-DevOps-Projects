@@ -18,6 +18,7 @@ Gmail SMTP port (SSL): 465
 ====Configure your Jenkins from GUI=======
 
 #From jenkins dashboard to manage jenkins --> configure system 
+
 #scroll down to E-mail Notification ---> fill in your credebtials  
 
 ====Set up applications specific password google account======
