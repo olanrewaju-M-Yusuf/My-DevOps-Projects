@@ -52,5 +52,5 @@ configure slack
 
 test slack connections by running the Jenkins job
 
-"You're done !!!"
+"Done ✅!!!"
 
