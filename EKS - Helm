@@ -1,0 +1,45 @@
+HELM:
+
+Helm is a package 
+helm 3
+
+yum
+npm
+apt
+brew
+choco
+
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+
+we can use helm to install third party application and also custom application.
+like: nginx , prometheus and grafana, datadog, efk
+springapp
+
+helm create springapp
+
+springapp/
+├── Chart.yaml
+├── charts
+├── templates
+│   ├── NOTES.txt
+│   ├── _helpers.tpl
+│   ├── deployment.yaml
+│   ├── hpa.yaml
+│   ├── ingress.yaml
+│   ├── service.yaml
+│   ├── serviceaccount.yaml
+│   └── tests
+│       └── test-connection.yaml
+└── values.yaml
+
+
+##HELMS INSTALLATION## 
+wget https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz 
+tar xvf helm-v3.4.1-linux-amd64.tar.gz 
+sudo mv linux-amd64/helm /usr/local/bin 
+rm helm-v3.4.1-linux-amd64.tar.gz 
+rm -rf linux-amd64 
+helm version 
