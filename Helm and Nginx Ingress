@@ -1,0 +1,174 @@
+HELM:
+
+Helm Installation 3
+
+wget https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz 
+tar xvf helm-v3.4.1-linux-amd64.tar.gz 
+sudo mv linux-amd64/helm /usr/local/bin 
+rm helm-v3.4.1-linux-amd64.tar.gz 
+rm -rf linux-amd64 
+helm version 
+
+---------------------
+Install Helm 3:
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+
+helm create myapp
+tree myapp
+myapp
+├── Chart.yaml
+├── charts
+├── templates
+│   ├── NOTES.txt
+│   ├── _helpers.tpl
+│   ├── deployment.yaml
+│   ├── hpa.yaml
+│   ├── ingress.yaml
+│   ├── service.yaml
+│   ├── serviceaccount.yaml
+│   └── tests
+│       └── test-connection.yaml
+└── values.yaml
+
+3 directories, 10 files
+
+
+
+helm install <appName> <chartName>
+helm install javaapp myapp
+
+
+"client.authentication.k8s.io/v1alpha1
+
+
+18.118.185.70:31210/java-web-app/
+
+
+54.189.104.171:31210/java-web-app/
+
+http://abe76eb184d08492c9b9e6cf55791319-1567171424.us-west-2.elb.amazonaws.com/java-web-app/
+
+
+
+deploy nginx ingress:
+The Ingress is a Kubernetes resource that lets you configure an HTTP load 
+balancer for applications running on Kubernetes, represented by one or more Services. 
+Such a load balancer is necessary to deliver those applications to clients outside of 
+the Kubernetes cluster. It also provides SSL Termination and SSL Redirect for HTTPS.
+
+features of nginx ingress:
+
+Content-based routing:
+Host-based routing. For example, routing requests with the host header foo.example.com 
+to one group of services and the host header bar.example.com to another group.
+Path-based routing. For example, routing requests with the URI that starts with /serviceA 
+to service A and requests with the URI that starts with /serviceB to service B.
+See the Ingress User Guide to learn more about the Ingress resource.
+
+
+What is the Ingress Controller?:
+The Ingress controller is an application that runs in a cluster and configures an 
+HTTP load balancer according to Ingress resources. The load balancer can be a software 
+load balancer running in the cluster or a hardware or cloud load balancer running externally. 
+Different load balancers require different Ingress controller implementations.
+
+
+path /java-web-app
+
+login.acadalearning.com
+
+payment.acadalearning.com
+
+
+
+--------------------
+host: webapp.ocdit.com
+path /web-web-app
+
+
+host: java.ocdit.com
+path /web-web-app
+
+
+
+creating ingress rule:
+two type:
+
+Path-based
+Host-based
+
+path based routing:
+
+
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-resource-1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: acadalearning.ca
+    http:
+      paths:
+      - backend:
+          service: 
+            name: springapp
+            port: 
+              number: 80
+        path: /
+        pathType: Prefix
+      - backend:
+          service: 
+            name: javawebapp
+            port: 
+              number: 80
+        path: /java-web-app
+        pathType: Prefix
+      - backend:
+          service: 
+            name: webappsvc
+            port: 
+              number: 80
+        path: /maven-web-app
+        pathType: Prefix
+
+
+
+
+
+
+
+====================
+Rules:
+  Host              Path  Backends
+  ----              ----  --------
+  acadalearning.ca
+                    /                springapp:80 (192.168.19.28:8080,192.168.39.168:8080)
+                    /java-web-app    javawebapp:80 (<error: endpoints "javawebapp" not found>)
+                    /maven-web-app   webappsvc:80 (<error: endpoints "webappsvc" not found>)
+Annotations:        <none>
+
+
+
+
+acadalearning.ca/maven-web-app 
+
+
+
+javawebapp
+mavenapp
+
+login.acadalearning.ca
+payment.acadalearning.ca
+cart.acadalearning.ca
+registration.acadalearning.ca
+
+
+
+jenkins AG kubectl command
+
+sh "kubectl apply -f johnson.yml" 
