@@ -1,0 +1,125 @@
+AWS - AMAZON WEB SERVICES
+=========================
+Cloud Service Provider:
+
+
+You do not need to have on-prem (on-premises) resources: Servers, Routers, etc
+
+Company A (TD Bank):
+  Time: 8am - 10am = 1000k users
+        10am - 2pm = 2000k users
+        2pm - 6pm = 1500k users
+        6pm - 11pm = 750k users
+
+  Capex: = very high
+  OpEx: = high
+
+
+  Cloud providers: - eg AWS came into the picture
+  Lots of headache associated with on-prem configurations have been taken care of.
+
+
+  - Autoscaling is achieved
+
+Week 1: - I need 10GB of storage
+Week 2: - I now require about 100GB of storage
+Week 3: - I no longer require any storage
+
+Concepts in Cloud Services:
+  1. IAAS: Infrastructure as a Service
+     For eg; EC2 instance, EBS, S3 buckets
+  2. PAAS: Platfrom as a Service
+     For eg; EKS (Elastic Kubernetes Service) - AWS manages the master node / control plane
+  3. SAAS: Software as a Service 
+     For eg; MS 365, SonarCloud, Github, AWS Cloudwatch
+---
+  IAAC: - Infrastructure as a Code
+     For eg: Terraform, Ansible, Cloudformation
+
+AWS has:
+  - Regions: (for eg; us-east-1)
+    - Availability Zones (AZ): For eg; us-east-1a, us-east-1b, us-east-1c
+
+Considerations in creating resources in AWS:
+  1. Pricing
+  2. Latency
+  3. Service availability
+  4. Resource type
+  5. User location
+  6. Security and Compliance requirement in that area
+
+
+Latency: This is the time/speed it takes a user to communicate with an application.
+  - High Latency: higher communication time between a user and an app
+  - Low Latency: <desired>
+
+Types of Cloud Computing:
+  - Public: AWS, GCP, MS Azure, IBM, Oracle, AliBaba
+  - Private: on-prem
+  - Hybrid: Combination of public and private cloud
+  - Multi Cloud: For eg an organization utilizing the service of more than 1 cloud provider (eg AWS and GCP/MS Azure)
+
+
+AWS:
+  EC2: - Elastic Cloud Compute
+  EBS: - Elastic Block Storage
+  EFS: - Elastic File System
+  S3 Bucket: - Simple Storage Service
+  VPC: - Virtual Private Cloud;
+      - Subnets
+      - NAT Gateway,
+      - IGW - Internet Gateway
+      - Route Tables
+      - etc
+  ECR: - Elastic Container Registry
+  IAM: - Identity and Access Management
+  ELB: - Elastic Load Balancer
+  ASG: - Auto Scaling Group
+  Route53: 
+  Cloudformation:
+
+DNS: - Domain Name Service
+
+172.10.12.14:80        www.facebook.com
+
+DNS: ayodeji.com
+CNAME: app.ayodeji.com ----> elb.hadcvkbiudslb.673256248498@elb:80 ----> 172.10.12.14:80
+
+
+.............................
+EC2: - Elastic Cloud Compute
+-----------------------------
+By default, an EC2 instance comes with an EBS volume / instance volume
+- When the instance is terminated, by default, the default EBS volume gets terminated as well
+
+If you create an EBS volume and attache it to an EC2 instance
+- When the instance is terminated, the EBS volume remains (persistent)
+
+
+Intance Pricing/Purchasing options:
+  1. On demand
+  2. Reserved
+  -------dedicated host
+  3. Spot
+    - 70% usage capacity (USED)
+    - 30% spare capacity
+      - 10% can be placed as contingency
+      - 20% goes into auction
+        - ClientX - $5,000
+        - ClientY - $9,000
+        - ClientZ - $11,000 (Bid winner)
+
+        - ClientW - $15,000 (New bid winner)
+
+AMI: - Amazon Machine Image
+
+IP Addressing:
+  1. PrivateIP
+     - This IP does not change .... it is permanent
+  2. PublicIP
+     - This changes when you terminate and restart an instance
+  3. ElasticIP
+     -  This makes the PublicIP permanent
+
+
+Download: drawio
