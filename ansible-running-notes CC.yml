@@ -1,0 +1,596 @@
+ANSIBLE:
+
+
+Is a configuration Management tool
+Use it to configure our servers and also deploy application.
+
+DevOps
+Aws DevOps Guru
+Azure DevOps   --- Git/Maven
+
+
+infrastructure --- servers  -- VPC Subnets  - gateway Firewall SG route Table
+        On-prem
+        Cloud Based  =AWS, GCP, Azure, Alibaba
+
+Platform 
+  Linux - Redhat, Ubuntu, CentOS, Alpine
+  Windows
+  Solaris
+
+
+DevOps Foundation
+SDLC
+
+Waterfall
+Agile
+  Scrum   ---> 200 Features
+  iterations or production period
+  a sprint = 10 working days
+  sprints 1   20 features
+  sprints 2   20 features
+  sprints 3   20 features
+  sprints 4   20 features
+  sprints 5   20 features
+  sprints 6   20 features
+  sprints 7   20 features
+  sprints 8   20 features
+
+kanban 
+
+Resources:
+  Developers 10 
+  DevOps Engineer 3
+  QA      = 2
+  Dev-sec-ops  1
+  Linux admin  2
+
+Meetings:
+  standup meeting:
+  talk about what you did yesterday 
+  what you are doing today
+  blocker
+
+  Sprint planning meetings 1hrs
+
+  reprospect
+
+DevOps
+Operating System:
+  Linux
+  unix ----- Darwin
+  Ubuntu
+  CentOS
+  RedHat
+Windows
+Soloris
+etc
+
+SCM:
+  Git/GitHub/GitLab, Bitbucket, Code commit, Cloud code  = BS, UTC, SC
+  Testing:
+    TestNG
+    Selenium
+    Sonarqube
+    SonarCloud
+    Cypress
+    Snyk
+    Junit
+  Build
+  Maven
+  Gradle Ant
+  NodeJS
+  MSbuild
+
+Artifactory:
+  Nexus
+  Jfrog
+
+APplication servers:
+  Tomcat
+  Wildfly/Jbose
+
+webservers/LB
+ELB
+Nginx Ingress
+HAproxy
+
+
+users -----> webservers/LB  ---------------> tomcat
+            Apache/Nginx/HAproxy/ELB
+
+
+DevOps Tools:
+  CI/CD:
+Jenkins /CloudBees
+Bamboo
+CircleCI
+TravisCI
+CruiseControl
+TeamCIty
+GitLab
+BitBucket
+
+
+Environment:
+  Dev
+  Stage/QA/UAT/Pre-prod
+  Prod.
+
+
+Containarazation:
+  DOcker
+  Rocket
+  CoreOS
+  Container-D
+
+Cloud Providers:
+  AWS = 
+  Azure
+  GCP
+  IBM
+  VMWare
+  Alibaba
+
+infrastructure as a code 
+Terraform
+Cloudformation
+
+
+Helm 2 --- Tiler Agent
+Helm 3     Does not require tiler agent
+
+
+Configurations Management:
+  Localhost: = 1 server / Single host
+  CLI
+  GUI
+  Automation:
+    Commands
+    scripts  == (BashShell, Powershell, Python, Groovy)
+
+
+
+10 servers tomcat:
+Multi-hosts = 
+Tools
+Push  === Anisble
+pull == Chef
+
+Anible is an open source configuration Management tool, 
+also used to deploy, managed and maintain server.
+RedHat === Anisble
+
+
+COnnection plugins:
+  Linux SSH == openSSH
+  windows  - WINRM
+
+  HOST: Ipadress  /hostname / key.pem
+  username: ansible
+
+  How does anible connect to your hosts:
+    ssh  
+    private-key (pem) or password
+    ssh-public-key
+
+
+ansible Installation:
+#1 Ansible installation in ubuntu using apt repo   (Use this)
+Ansible installation in ubuntu
+ sudo adduser ansible
+ echo "ansible  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible
+ sudo su - ansible
+ sudo apt-add-repository ppa:ansible/ansible  
+ sudo apt install ansible  -y 
+
+
+
+#2 Ansible installation in ubuntu using python3-pip
+sudo useradd ansible
+sudo passwd ansible
+echo "ansible  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible
+sudo su - ansible
+sudo apt install python3
+sudo apt update
+sudo apt install python3-pip
+pip3 install ansible --user
+sudo apt update
+sudo apt install sshpass
+sudo mkdir /etc/ansible
+sudo chown -R ansible:ansible /etc/ansible/
+vi  /etc/ansible/ansible.cfg
+vi  /etc/ansible/hosts
+
+
+
+
+How to install python3 on Ansible:
+sudo apt install python3 -y
+
+OR 
+
+ansible localhost -a "apt install python3 -y" -b 
+
+OR
+
+ansible localhost -a "apt install python3 -y" -become
+
+
+==================================================
+#3 Ansible installation in redhat using python3-pip
+1)     SSH to Redhat System & Switch to ansible user
+       sudo su - ansible
+      
+2)     Install python
+       sudo yum install python3 -y
+      
+3)    Update python alaternatives
+       sudo alternatives --set python /usr/bin/python3
+      
+4)    Verify Python Version
+         python --version
+ 
+5)    Install PIP
+       sudo yum -y install python3-pip
+      
+6)    Install ansible using PIP
+       pip3 install ansible --user
+      
+7)    Verify Ansible version
+       ansible --version
+      
+8)    Create ansible folder under /etc
+       sudo mkdir /etc/ansible
+       sudo chown -R ansible:ansible /etc/ansible/
+       
+      
+9)    create ansible.cfg file under /etc/ansible ., and paste complete content from below git link.
+      https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
+  
+        vi  /etc/ansible/ansible.cfg
+
+10)   Create hosts file under /etc/ansible.
+        Sample content can found in below git link.
+        https://raw.githubusercontent.com/ansible/ansible/devel/examples/hosts
+ 
+        vi  /etc/ansible/hosts
+
+//Optional Step
+11) Install sshpass in Ansible server if you want to cofigure host machines with username and  
+      password.
+
+
+Modules:
+ping
+yum
+copy
+
+
+
+[tomcat]
+172.31.88.242 ansible_user=ubuntu ansible_ssh_private_key_file=/tmp/mavenc8.pem
+[sonar]
+54.183.73.49 ansible_user=ec2-user ansible_ssh_private_key_file=/tmp/cohortab.pem
+[nexus]
+184.72.11.251 ansible_user=ec2-user ansible_ssh_private_key_file=/tmp/cohortab.pem
+[jenkins]
+13.57.241.62 ansible_user=ec2-user ansible_ssh_private_key_file=/tmp/cohortab.pem
+
+
+
+remove hostkey checking for easy automation:
+vi /etc/ansible/ansible.cfg
+
+uncomment host_key_checking = false
+
+default ansible module is the command module
+
+
+
+ansible all -a "free"
+
+
+  ansible all -m ping -i myhosts 
+  ansible tomcat -m shell -a "dh -h" -i myhosts 
+  ansible tomcat -m shell -a "free -m" -i myhosts
+  ansible tomcat -m shell -a "uname -a" -i myhosts
+  ansible tomcat -m command "dh -h" -i myhosts 
+  ansible-playbook -i myhosts 
+  
+
+
+Types of host inventory files: It contains hosted servers details (IP or Hostname)
+1. Static inventory: 
+  it is a static file where hosted servers are grouped
+2. Dynamic inventory:
+   It is a script either shell or python used to fetch host details from a cloud provider
+
+
+
+   Configuration 
+   Shell script
+   ansible
+
+===========================================
+Ansible Playbook:
+
+  imperative 
+  Declarative
+
+-------
+main.tf   
+
+
+- hosts: all
+  become: true
+  tasks:
+  - name: Create Ansible User
+    user:
+      name: ansible
+      create_home: true
+      shell: /bin/bash
+      comment: "Ansible Management Account"
+      expires: -1
+      password: "{{ 'DevOps@2020' | password_hash('sha512','A512') }}"
+  - name: Deploy Local User SSH Key
+    authorized_key:
+      user: ansible
+      state: present
+      manage_dir: true
+      key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
+  - name: Setup Sudo Access for Ansible User
+    copy:
+      dest: /etc/sudoers.d/ansible
+      content: 'ansible ALL=(ALL) NOPASSWD: ALL' 
+      validate: /usr/sbin/visudo -cf %s
+  -  name: Disable Password Authentication
+     lineinfile:
+        dest=/etc/ssh/sshd_config
+        regexp='^PasswordAuthentication'
+        line="PasswordAuthentication no"
+        state=present
+        backup=yes
+     notify:
+       - restart ssh
+  handlers:
+  - name: restart ssh
+    service:
+      name=sshd
+      state=restarted
+
+
+
+[tomcat]
+172.31.88.242 #ansible_user=ubuntu ansible_ssh_private_key_file=/tmp/mavenc8.pem
+[tom]
+172.31.88.242 ansible_user=ubuntu ansible_ssh_private_key_file=/tmp/mavenc8.pem
+
+
+Ansible commands:
+
+  ansible all -m 
+
+
+sudo yum install httpd
+
+ansible jenkins -a "yum install httpd -y" 
+
+
+ansible jenkins -m yum -a "name=httpd state=present" -b
+ansible jenkins -m copy -a "src=index.html dest=/var/www/html/index.html" -b
+
+
+- hosts: jenkins
+  become: true
+  tasks:
+    - name: Install Apache
+      yum:
+        name: httpd
+        state: present
+    - name: Copy Index File
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+    - name: Start httpd service
+      service:
+        name: httpd
+        state: started
+
+
+
+- hosts: jenkins
+  become: true
+  tasks:
+    - name: Install Apache
+      yum: name=httpd state=latest
+    - name: Copy Index File
+      copy: src=index.html dest=/var/www/html/index.html
+    - name: Start httpd service
+      service: name=httpd state=started
+
+
+k8s
+- hosts: tomcat
+  tasks:
+  - name: Install Git
+    package: 
+      name: git 
+      state: latest
+  - name: Install wget
+    package: name=wget state=latest
+
+
+
+anisble-playbook k8s -b
+
+
+Template Module:
+# this playbook is only play in ubuntu server
+- hosts: tomcat
+  become: true
+  tasks:
+    - name: Install Apache
+      package: name=apache2 state=latest
+    - name: Copy Index File
+      template: src=index.html dest=/var/www/html/index.html
+    - name: Start httpd Apache
+      service: name=apache2 state=started
+
+
+handlers:
+
+- hosts: tomcat
+  become: true
+  tasks:
+    - name: Install Apache
+      package: name=apache2 state=present
+    - name: Copy Index File
+      copy: src=index.html dest=/var/www/html/index.html
+    - name: Start httpd Apache
+      service: name=apache2 state=started
+
+-------------------------------------
+- hosts: tomcat
+  vars:
+    Name: Cohort 7
+  become: true
+  tasks:
+    - name: install apache
+      package: name=apache2 state=present
+    - name: install index page
+      template: src=index.html dest=/var/www/html/index.html
+    - name: Start apache
+      service: name=apache2 state=started
+
+-------------------------------
+
+<h1>This is Ansible Module</h1>
+This is {{ Name }}
+
+
+
+ansible-playbook variable --extra-vars "Name=ACADADevOps"
+
+run-time variable
+playbook variable
+host_vars
+group_vars
+
+
+
+packages module:
+
+- hosts: tomcat
+  become: true
+  tasks:
+  - name: Install packages
+    package:
+     name: ['unzip', 'wget', 'nano']
+     update_cache: yes
+     state: latest
+
+
+------------------------
+Setup module:
+
+- hosts: all
+  become: true
+  tasks:
+  - name: Install packages
+    package:
+     name: ['unzip', 'wget', 'nano']
+     update_cache: yes
+     state: latest
+    when: ansible_os_family == "Debian"
+
+
+- hosts: tomcat
+  vars:
+    Name: Cohort 7
+  become: true
+  tasks:
+    - name: install apache
+      package: name=apache2 state=present
+    - name: install index page
+      template: src=index.html dest=/var/www/html/index.html
+    - name: Start apache
+      service: name=apache2 state=started
+
+- hosts: tomcat
+  vars:
+    name: From Playbook
+    password: dev@123
+  tasks:
+  - name: vars demo
+    debug:
+      msg: "{{name}}"
+  - name: vars demo2
+    debug:
+      msg: "{{password}}"
+============================================================
+
+What is the difference between tasks and handlers?:
+
+
+ANSIBLE  Variables. {{}}:
+
+ 1. runtime vars
+        --> defined at run-time
+2. playbook vars
+        --> The scope of the variable is within the playbook
+3. host_vars
+4. group_vars
+
+
+- hosts: tomcat 
+  become: true
+  tasks:
+  - name: vars demo
+    debug:
+     msg: "{{username}}"
+    ignore_errors: true
+  - name: vars demo2
+    debug:
+     msg: DevOps is very good with ACADA Learning
+
+
+[tomcat]
+18.144.34.118 ansible_user=ansible ansible_password="{{password}}"
+
+- hosts: tomcat 
+  become: true
+  gather_facts: true
+  tasks:
+  - name: vars demo
+    debug:
+     msg: "{{username}}"
+    ignore_errors: true
+  - name: vars demo2
+    debug:
+     msg: DevOps is very good with ACADA Learning
+
+
+
+Ansible vault:
+
+used to store or encrypt data or secret 
+hashicorp vault
+
+
+[docker]
+18.144.34.118 ansible_user=ansible ansible_password=admin123
+[dk]
+18.144.34.118 #ansible_user=ansible ansible_ssh_public_key=~.ssh/id_rsa.pub
+[tomcat]
+172.31.88.242
+#ansible_user=ansible ansible_ssh_pub_key_file=/tmp/mavenc8.pem
+[tom]
+172.31.88.242 #ansible_user=ubuntu ansible_ssh_private_key_file=/tmp/mavenc8.pem
+[sonar]
+54.183.73.49
+[nexus]
+184.72.11.251
+[jenkins]
+13.57.241.62
+
